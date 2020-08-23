@@ -1,0 +1,342 @@
+/*------------------------------------------------------------------------
+ --------------------------------- RESET ---------------------------------
+ ------------------------------------------------------------------------ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    /* line-height: 1; */
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+li,
+a,
+img,
+video,
+div,
+article,
+section {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+li{
+    list-style: none;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- COLOR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+:root {
+    --green: #33481F;
+  }
+
+.color-white{
+    color: #fff;
+}
+
+.bgcolor-white{
+    background-color: #fff;
+}
+
+.hidden{
+    display: none;
+}
+  /*------------------------------------------------------------------------
+ --------------------------------- GENERAL ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ .btn{
+     border: 3px solid #1c1c1c;
+     padding: 10px;
+     text-align: center;
+     text-transform: uppercase;
+ }
+
+  /*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+header{
+    padding: 10px;
+    background-color: var(--green);
+    position: fixed;
+    width: 100%;
+    height: 10vh;
+}
+
+header #logo{
+    width: 15%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+header #logo img{
+    width: 100%;
+}
+
+header #hamburger-menu{
+    width: 80%;
+    text-align: right;
+    cursor: pointer;
+    position: fixed;
+    z-index: 999;
+    right: 10px;
+}
+
+header nav{
+    background-color: var(--green);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    top: 0;
+    padding: 30vh 0;
+    left: 0;
+}
+
+header nav ul{
+    width: 100%;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- INTRO ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ #intro{
+     width: 100%;
+     position: absolute;
+     height: 100vh;
+     z-index: -999;
+     top: 0;
+ }
+
+ #intro video{
+    width: 100%;
+}
+
+li, figure, figcaption, img, article, section{
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+
+
+   /*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+
+}
+
+@media (min-width: 1024px) {
+  /*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+ header{
+    padding: 10px;
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+}
+
+header #logo{
+    width: 6%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+header #logo img{
+    width: 100%;
+}
+
+header #hamburger-menu{
+    display: none;
+}
+
+header nav{
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 9999;
+    top: 0;
+    padding: 30vh 0;
+    left: 0;
+}
+
+header nav ul{
+    width: 100%;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+   /*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+}
