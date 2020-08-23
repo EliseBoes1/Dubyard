@@ -160,6 +160,7 @@ li{
  ------------------------------------------------------------------------ */
 
 :root {
+    font-size: 16px;
     --green: #33481F;
   }
 
@@ -178,7 +179,29 @@ li{
  --------------------------------- GENERAL ---------------------------------
  ------------------------------------------------------------------------ */
 
- .btn{
+h1{
+    font-size: 2.8rem;
+    font-weight: 580;
+}
+
+h2{
+    font-size: 1.9rem;
+    font-weight: 600;
+}
+
+h3{
+    font-size: 1.5rem;
+}
+
+h4{
+   font-size: 1.25rem;
+}
+
+a, li, .btn{
+    cursor: pointer;
+}
+
+.btn{
      border: 3px solid #1c1c1c;
      padding: 10px;
      text-align: center;
@@ -193,6 +216,7 @@ header{
     padding: 10px;
     background-color: var(--green);
     position: fixed;
+    z-index: 9999;
     width: 100%;
     height: 10vh;
 }
@@ -209,7 +233,7 @@ header #logo img{
 }
 
 header #hamburger-menu{
-    width: 80%;
+    width: 10%;
     text-align: right;
     cursor: pointer;
     position: fixed;
@@ -222,7 +246,6 @@ header nav{
     position: fixed;
     width: 100%;
     height: 100vh;
-    z-index: 9999;
     top: 0;
     padding: 30vh 0;
     left: 0;
@@ -249,15 +272,25 @@ header nav ul li a {
  ------------------------------------------------------------------------ */
 
  #intro{
-     width: 100%;
      position: absolute;
      height: 100vh;
      z-index: -999;
      top: 0;
+     overflow: hidden;
  }
 
- #intro video{
-    width: 100%;
+#intro video{
+    max-height: 100vh;
+}
+
+#intro article{
+    width: 90%;
+    position: absolute;
+    max-height: 100vh;
+    top: 20vh;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
 
 li, figure, figcaption, img, article, section{
@@ -265,8 +298,40 @@ li, figure, figcaption, img, article, section{
 }
 
 /*------------------------------------------------------------------------
+ --------------------------------- MAIN ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ main{
+     position: absolute;
+     top: 105vh;
+     padding: 10px;
+ }
+
+ main h2{
+     text-align: center;
+     margin-bottom: 10px;
+ }
+
+/*------------------------------------------------------------------------
+ --------------------------------- LATEST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ #updates figure{
+     margin-bottom: 20px;
+ }
+
+/*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
+
+footer{
+    position: absolute;
+    bottom: 0;
+}
+
+footer #calendar, footer #sitemap{
+    display: none;
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
   /*------------------------------------------------------------------------
