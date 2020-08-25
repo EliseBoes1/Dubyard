@@ -164,6 +164,7 @@ li {
 :root {
     font-size: 14px;
     --l-green: #33481F;
+    --l-green-op: rgba(51, 72, 31, 0.6);
     --d-green: #004D0F;
     --d-grey: #1c1c1c;
     --l-grey: #333333;
@@ -206,13 +207,13 @@ h2 {
 }
 
 h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-family: 'Segoe UI Bold';
 }
 
 h4 {
     font-size: 1.4rem;
-    font-family: 'Segoe UI Regular';
+    font-family: 'Segoe UI Bold';
 }
 
 a,
@@ -304,6 +305,7 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: white;
+    padding: 5px;
 }
 
 /*------------------------------------------------------------------------
@@ -328,8 +330,8 @@ header nav ul li a {
     position: absolute;
     max-height: 100vh;
     top: 20vh;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    background-color: var(--l-green-op);
     color: #fff;
 }
 
@@ -366,17 +368,54 @@ main #updates {
     border: 1px solid var(--d-grey);
     padding: 15px;
     margin: 15px;
-
 }
 
 .calendar {
     background-color: var(--l-green);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 25px;
+}
+
+.calendar .weekdays{
+    width: 100%;
+}
+
+.calendar .month{
+    width: 100%;
+}
+
+.calendar .month ul{
+    width: 60%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar .next, .calendar .prev{
+    width: 10%;
+}
+
+.calendar .days, .calendar .weekdays{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar .days li, .calendar .weekdays li{
+    width: calc(100%/7);
+    padding: 10px;
 }
 
 #posts figure .post-inf {
     font-size: 0.8rem;
     width: 100%;
     display: flex;
+}
+
+#workshop-calendar #posts .post-inf{
+    margin: 15px 0 0 0;
 }
 
 #posts figure .post-inf .line {
@@ -391,6 +430,7 @@ main #updates {
 
 figure {
     width: 100%;
+    margin-top: 10%;
 }
 
 figure img {
@@ -447,8 +487,6 @@ h3 {
     width: 100%;
 }
 
-#updates .post-inf .line {}
-
 /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
@@ -479,7 +517,7 @@ h3 {
     top: 0;
     height: 99%;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     color: #fff;
     text-transform: uppercase;
 }
@@ -491,12 +529,19 @@ h3 {
 #workshops #to-calendar {
     width: 100%;
     display: flex;
-    margin-top: 2%;
+    position: relative;
+}
+
+#workshops #to-calendar a,
+#workshops #to-calendar .line {
+    position: absolute;
+    bottom: 0;
 }
 
 #workshops #to-calendar .line {
     width: 20%;
     margin: 20px 20px 5px 5px;
+    left: 0;
 }
 
 #workshops #to-calendar a {
@@ -504,6 +549,7 @@ h3 {
     font-weight: 600;
     font-size: 0.8rem;
     color: var(--l-grey);
+    left: 30%;
 }
 
 /*------------------------------------------------------------------------
@@ -515,9 +561,12 @@ h3 {
     margin-top: 15%;
 }
 
+#workshop-calendar h2 {
+    text-align: center;
+}
+
 #workshop-calendar figure {
     position: relative;
-    width: 100%;
     overflow: hidden;
     border-radius: 5%;
     margin-top: 5%;
@@ -617,14 +666,16 @@ footer #sitemap {
         width: 70%;
         height: 10%;
         display: block;
+        position: absolute;
         left: 30%;
         padding: 0;
-        font-size: 0.8rem;
     }
 
     header nav ul {
+        position: absolute;
         display: flex;
         margin-top: 4vh;
+        right: 7.5%;
     }
 
     header #hamburger-menu {
@@ -632,11 +683,9 @@ footer #sitemap {
     }
 
     header #logo {
+        position: absolute;
         max-width: 6vw;
-    }
-
-    header nav ul {
-        margin-top: 6vh;
+        left: 7.5%;
     }
 
     #intro {
@@ -759,17 +808,40 @@ footer #sitemap {
         width: calc(90%/3);
     }
 
-    #workshop-calendar .post-inf img {
-        width: 1.5vw;
-    }
+           /*------------------------------------------------------------------------
+ ------------------------------ WORKSHOP CALENDAR -------------------------------
+ ------------------------------------------------------------------------ */
 
-    #workshop-calendar #month-controls img {
-        width: 3vw;
-    }
+ #workshop-calendar #posts .head-post figcaption {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
 
-    #workshop-calendar #month-controls p {
-        max-width: 20vw;
-    }
+#workshop-calendar #posts figcaption h4,
+#workshop-calendar #posts figcaption p {
+    padding-left: 15px;
+}
+
+#workshop-calendar #posts figcaption h4{
+    margin-top: 25px;
+}
+
+#workshop-calendar #posts figcaption>p {
+    padding-bottom: 15px;
+}
+
+#workshop-calendar .post-inf img {
+    width: 1.5vw;
+}
+
+#workshop-calendar #month-controls img {
+    width: 3vw;
+}
+
+#workshop-calendar #month-controls p {
+    max-width: 20vw;
+}
 
     /*------------------------------------------------------------------------
  --------------------------------- DUURZAAMHEID ---------------------------------
@@ -806,6 +878,7 @@ footer #sitemap {
 
     #insta {
         width: 100%;
+        margin: 10% 0;
     }
 
     #insta #insta-slider {
@@ -821,6 +894,10 @@ footer #sitemap {
 
     #insta img {
         max-width: 100%;
+    }
+
+    #insta figure{
+        margin-top: 10px;
     }
 
     #insta .btn {
@@ -902,18 +979,18 @@ footer #sitemap {
     }
 
     header nav {
-        width: 50%;
+        max-width: 50%;
         max-height: 10vh;
         display: block;
         position: absolute;
         left: 40%;
         padding: 0;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     header nav ul {
         display: flex;
-        margin-top: 5.5vh;
+        margin-top: 4vh;
     }
 
     header #hamburger-menu {
@@ -929,6 +1006,7 @@ footer #sitemap {
 
     header #logo img {
         width: 100%;
+        max-height: 11vh;
     }
 
     /*------------------------------------------------------------------------
@@ -1001,29 +1079,8 @@ footer #sitemap {
         width: 47.5% !important;
     }
 
-    #workshop-calendar #posts,
-    #duurzaamheid #posts {
-        width: 100%;
-        margin-top: 5vh;
-    }
-
     #duurzaamheid figure {
         margin: 10px;
-    }
-
-    #workshop-calendar #posts .head-post figcaption {
-        bottom: 0;
-        position: absolute;
-        right: 0;
-    }
-
-    #workshop-calendar #posts figcaption h3,
-    #workshop-calendar #posts figcaption p {
-        padding-left: 15px;
-    }
-
-    #workshop-calendar #posts figcaption>p {
-        padding-bottom: 15px;
     }
 
     #posts .head-post .img-wrapper {
@@ -1066,16 +1123,52 @@ footer #sitemap {
         width: calc(90%/3);
     }
 
+    #workshop-calendar #posts,
+    #duurzaamheid #posts {
+        width: 100%;
+        margin-top: 5vh;
+    }   
+
+       /*------------------------------------------------------------------------
+ ------------------------------ WORKSHOP CALENDAR -------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshop-calendar #posts .head-post figcaption {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    #workshop-calendar #posts figcaption h4,
+    #workshop-calendar #posts figcaption p {
+        padding-left: 15px;
+    }
+
+    #workshop-calendar #posts figcaption h4{
+        margin-top: 25px;
+    }
+
+    #workshop-calendar #posts figcaption>p {
+        padding-bottom: 15px;
+    }
+
     #workshop-calendar .post-inf img {
         width: 1.5vw;
     }
 
     #workshop-calendar #month-controls img {
-        width: 3vw;
+        width: 2.5vw;
     }
 
     #workshop-calendar #month-controls p {
         max-width: 20vw;
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+
+    #workshop-calendar h2{
+        margin-bottom: 40px;
+        font-size: 2.8rem;
     }
 
     /*------------------------------------------------------------------------
@@ -1084,7 +1177,6 @@ footer #sitemap {
 
     #duurzaamheid {
         width: 100%;
-        margin-top: 15%;
     }
 
     #duurzaamheid #inf {
@@ -1117,7 +1209,7 @@ footer #sitemap {
 
     #insta {
         width: 100%;
-        margin-top: 15vh;
+        margin-top: 10vh;
     }
 
     #insta #insta-slider {
@@ -1132,12 +1224,13 @@ footer #sitemap {
     #insta #insta-slider figure {
         width: 24%;
         overflow: hidden;
+        margin-top: 0;
     }
 
     #insta img {
         width: auto;
         min-width: 100%;
-        max-width: 200%;
+        max-width: 120%;
         max-height: 100%;
     }
 
@@ -1201,6 +1294,50 @@ footer #sitemap {
     #workshops #to-calendar {
         grid-area: seemore;
     }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- BLOGPOST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #blogpost {
+        margin-top: 25vh;
+    }
+
+    #blogpost h1 {
+        font-size: 3rem;
+    }
+
+    #blogpost #post-head {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #blogpost #post-head h1 {
+        max-width: 70%;
+    }
+
+    #blogpost #post-head #blog-inf {
+        max-width: 30%;
+        text-align: right;
+        font-size: 0.9rem;
+    }
+
+    #blogpost #article {
+        column-count: 2;
+        column-gap: 3em;
+    }
+
+    #blogpost div {
+        display: inline-block;
+        width: 100%;
+        margin: 5px 0 20px 0;
+    }
+
+    #blogpost img {
+        width: 100%;
+    }
+
 
     /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
