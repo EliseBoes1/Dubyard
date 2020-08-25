@@ -153,7 +153,7 @@ section {
     -webkit-tap-highlight-color: transparent;
 }
 
-li{
+li {
     list-style: none;
 }
 
@@ -163,86 +163,100 @@ li{
 
 :root {
     font-size: 16px;
-    --green: #33481F;
-  }
-
-body{
+    --l-green: #33481F;
+    --d-green: #004D0F;
+    --d-grey: #1c1c1c;
+    --l-grey: #333333;
+    --reggae-grad: -webkit-linear-gradient(left, #59A846, #FFDB26, #DD4B48);
 }
 
-.color-white{
+body {
+    color: var(--l-grey);
+}
+
+.color-white {
     color: #fff;
 }
 
-.bgcolor-white{
+.bgcolor-white {
     background-color: #fff;
 }
 
-.hidden{
-    display: none;
-}
-  /*------------------------------------------------------------------------
+/*------------------------------------------------------------------------
  --------------------------------- GENERAL ---------------------------------
  ------------------------------------------------------------------------ */
 
-h1{
+h1 {
     font-size: 2.8rem;
     font-weight: 580;
     font-family: 'Segoe UI Bold';
 }
 
-h2{
+h2 {
     font-size: 1.9rem;
     font-weight: 600;
     font-family: 'Segoe UI Bold';
 }
 
-h3{
-    font-size: 1.5rem;
-    font-weight: 800;
+h3 {
+    font-size: 1.8rem;
     font-family: 'Segoe UI Bold';
 }
 
-h4{
-   font-size: 1.25rem;
-   font-family: 'Segoe UI Regular';
+h4 {
+    font-size: 1.25rem;
+    font-family: 'Segoe UI Regular';
 }
 
-a, li, .btn{
+a,
+li,
+.btn {
     cursor: pointer;
 }
 
-.btn{
-     border: 3px solid #1c1c1c;
-     padding: 10px;
-     text-align: center;
-     text-transform: uppercase;
- }
+.btn {
+    border: 3px solid var(--d-grey);
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-  /*------------------------------------------------------------------------
+.line {
+    background-image: var(--reggae-grad);
+    height: 3px;
+}
+
+.read-more {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/*------------------------------------------------------------------------
  --------------------------------- HEADER ---------------------------------
  ------------------------------------------------------------------------ */
 
-header{
+header {
     padding: 10px;
-    background-color: var(--green);
+    background-color: var(--l-green);
     position: fixed;
     z-index: 9999;
     width: 100%;
     height: 10vh;
+    top: 0;
 }
 
-header #logo{
+header #logo {
     width: 15%;
     position: fixed;
     left: 10px;
     top: 10px;
 }
 
-header #logo img{
+header #logo img {
     width: 100%;
 }
 
-header #hamburger-menu{
+header #hamburger-menu {
     width: 10%;
     text-align: right;
     cursor: pointer;
@@ -251,8 +265,8 @@ header #hamburger-menu{
     right: 10px;
 }
 
-header nav{
-    background-color: var(--green);
+header nav {
+    background-color: var(--l-green);
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -261,7 +275,7 @@ header nav{
     left: 0;
 }
 
-header nav ul{
+header nav ul {
     width: 100%;
     justify-content: space-between;
 }
@@ -281,19 +295,19 @@ header nav ul li a {
  --------------------------------- INTRO ---------------------------------
  ------------------------------------------------------------------------ */
 
- #intro{
-     position: relative;
-     height: 100vh;
-     z-index: -999;
-     top: 0;
-     overflow: hidden;
- }
+#intro {
+    position: relative;
+    height: 100vh;
+    z-index: -999;
+    top: 0;
+    overflow: hidden;
+}
 
-#intro video{
+#intro video {
     max-width: 100vw;
 }
 
-#intro article{
+#intro article {
     width: 90%;
     position: absolute;
     max-height: 100vh;
@@ -303,7 +317,11 @@ header nav ul li a {
     color: #fff;
 }
 
-li, figure, figcaption, article, section{
+li,
+figure,
+figcaption,
+article,
+section {
     width: 100%;
 }
 
@@ -311,61 +329,229 @@ li, figure, figcaption, article, section{
  --------------------------------- MAIN ---------------------------------
  ------------------------------------------------------------------------ */
 
- main{
-     padding: 10px;
-     margin-top: 20px;
- }
+main {
+    padding: 10px;
+    margin-top: 20px;
+}
 
- main h2{
-     text-align: center;
-     margin-bottom: 10px;
- }
+main h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
- main #updates{
-     top: 100vh;
- }
+main #updates {
+    top: 100vh;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#updates aside {
+    border: 1px solid var(--d-grey);
+    padding: 15px;
+    margin: 15px;
+    
+}
+
+.calendar{
+    background-color: var(--l-green);
+}
 
 /*------------------------------------------------------------------------
  --------------------------------- LATEST ---------------------------------
  ------------------------------------------------------------------------ */
 
-#updates{
+#updates {}
 
+#updates figure {
+    margin-bottom: 20px;
 }
 
- #updates figure{
-     margin-bottom: 20px;
- }
+#updates a.read-more {
+    padding-top: 50%;
+}
 
- /*------------------------------------------------------------------------
- --------------------------------- LATEST ---------------------------------
+#updates .post-inf {
+    font-size: 0.8rem;
+    display: flex;
+}
+
+#updates .post-inf .line {}
+
+/*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
 
- #workshops{
-     margin-top: 13vh;
- }
+#workshops {
+    margin-top: 13vh;
+}
+
+#workshops figure {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#workshops figure img {
+    width: 120%;
+    max-height: 100%;
+}
+
+#workshops figure figcaption {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding-top: 30%;
+    top: 0;
+    height: 98%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#workshops figure figcaption h3 {
+    font-size: 1.2rem;
+}
+
+#workshops #to-calendar {
+    width: 100%;
+    display: flex;
+    margin-top: 5%;
+}
+
+#workshops #to-calendar .line {
+    width: 20%;
+    margin: 5px 20px 5px 5px;
+}
+
+#workshops #to-calendar a {
+    width: 80%;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+ /*------------------------------------------------------------------------
+ --------------------------------- LARGE CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ 
 
 /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
 
-footer{
+footer {
     position: relative;
     bottom: 0;
 }
 
-footer #calendar, footer #sitemap{
+footer #calendar,
+footer #sitemap {
     display: none;
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-  /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  --------------------------------- HEADER ---------------------------------
  ------------------------------------------------------------------------ */
 
+    header {
+        min-height: 15vh;
+    }
 
+    header nav {
+        width: 70%;
+        height: 10%;
+        display: block;
+        left: 30%;
+        padding: 0;
+        font-size: 0.8rem;
+    }
 
-   /*------------------------------------------------------------------------
+    header nav ul {
+        display: flex;
+        margin-top: 4vh;
+    }
+
+    header #hamburger-menu {
+        display: none;
+    }
+
+    header #logo{
+        max-width: 6vw;
+    }
+
+    header nav ul{
+        margin-top: 6vh;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- MAIN ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    main {
+        width: 85%;
+        margin: auto;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshops {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-areas: "em1 post1 post2 em2"
+            "inf inf post3 post4"
+            "em3 post5 post6 seemore";
+    }
+
+    #workshops>article {
+        width: 90%;
+        margin-top: 25px;
+        grid-area: inf;
+    }
+
+    #workshops>article h2 {
+        text-align: left;
+    }
+
+    #workshops figure {
+        width: 95%;
+        margin-top: 3%;
+    }
+
+    #workshops #sjorren {
+        grid-area: post1;
+    }
+
+    #workshops #yoga {
+        grid-area: post2;
+    }
+
+    #workshops #henna {
+        grid-area: post3;
+    }
+
+    #workshops #beekeeping {
+        grid-area: post4;
+    }
+
+    #workshops #cyclegardening {
+        grid-area: post5;
+    }
+
+    #workshops #juggling {
+        grid-area: post6;
+    }
+
+    #workshops #to-calendar {
+        grid-area: seemore;
+    }
+
+    /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
 
@@ -373,148 +559,200 @@ footer #calendar, footer #sitemap{
 }
 
 @media (min-width: 1024px) {
-  /*------------------------------------------------------------------------
+
+    /*------------------------------------------------------------------------
  --------------------------------- HEADER ---------------------------------
  ------------------------------------------------------------------------ */
- header{
-    padding: 10px;
-    background-color: transparent;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-}
+    header {
+        height: 13vh;
+    }
 
-header #logo{
-    width: 6%;
-    position: fixed;
-    left: 10px;
-    top: 10px;
-}
+    header nav {
+        width: 50%;
+        max-height: 10vh;
+        display: block;
+        left: 40%;
+        padding: 0;
+        font-size: 0.8rem;
+    }
 
-header #logo img{
-    width: 100%;
-}
+    header nav ul {
+        display: flex;
+        margin-top: 5.5vh;
+    }
 
-header #hamburger-menu{
-    display: none;
-}
+    header #hamburger-menu {
+        display: none;
+    }
 
-header nav{
-    background-color: transparent;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    top: 0;
-    padding: 30vh 0;
-    left: 0;
-}
+    header #logo {
+        width: 5%;
+        position: fixed;
+        left: 10%;
+        top: 10px;
+    }
 
-header nav ul{
-    width: 100%;
-    justify-content: space-between;
-}
+    header #logo img {
+        width: 100%;
+    }
 
-header nav ul li {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-header nav ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-   /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  --------------------------------- INTRO ---------------------------------
  ------------------------------------------------------------------------ */
 
-#intro article{
-    width: 50%;
-    margin-left: 15px;
-    top: 40vh;
-}
+    #intro article {
+        width: 50%;
+        margin-left: 15px;
+        top: 40vh;
+    }
 
-   /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  ---------------------------------- MAIN ------------------------------------
  ------------------------------------------------------------------------ */
 
-main{
-    width: 70%;
-    margin: auto;
-}
+    main {
+        width: 70%;
+        margin: auto;
+    }
 
-   /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  ----------------------------- LATEST UPDATES -------------------------------
  ------------------------------------------------------------------------ */
 
- #updates{
-    width: 100%;
-    display: flex;
-    margin-top:10%;
- }
+    #updates {
+        width: 100%;
+        display: flex;
+        margin-top: 10%;
+    }
 
-#updates h2{
-    margin-bottom: 10%;
-}
+    #updates h2 {
+        margin-bottom: 10%;
+    }
 
- #updates #posts{
-     width: calc(100%/3*2);
- }
+    #updates #posts {
+        width: calc(100%/3*2);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
- #updates .head-post{
-     width: 100%;
-     display: flex;
- }
+    #updates .head-post {
+        width: 100%;
+        display: flex;
+    }
 
- #updates .head-post img, #updates .head-post figcaption{
-    width: 50%;
-    margin-left: 15px;
- }
+    #updates .head-post img,
+    #updates .head-post figcaption {
+        width: 50%;
+    }
 
- #updates .reg-post img, #updates .reg-post figcaption{
-    width: 100%;
- }
+    #updates .head-post figcaption {
 
- #updates .reg-post{
-    width: 50%;
- }
+        margin-left: 15px;
+    }
 
- #updates a.read-more{
-     text-transform: uppercase;
-     font-size: 0.8rem;
-     padding-top: 50%;
- }
+    #updates .reg-post img,
+    #updates .reg-post figcaption {
+        width: 100%;
+    }
 
-   /*------------------------------------------------------------------------
- --------------------------------- FOOTER ---------------------------------
+    #updates .reg-post {
+        width: 47.5%;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- CALENDAR ---------------------------------
  ------------------------------------------------------------------------ */
 
- #insta{
-     width: 100%;
- }
+    /*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
 
- #insta #insta-slider{
-     width: 100%;
-     display: flex;
- }
+    #insta {
+        width: 100%;
+    }
 
-#insta #insta-slider article{
-    width: 25%;
-    overflow: hidden;
-    max-height: 10%;
-}
+    #insta #insta-slider {
+        width: 100%;
+        display: flex;
+    }
 
- #insta img{
-     max-width: 100%;
- }
+    #insta #insta-slider article {
+        width: 25%;
+        overflow: hidden;
+        max-height: 10%;
+    }
 
- #insta .btn{
-     width: 20%;
- }
+    #insta img {
+        max-width: 100%;
+    }
 
-   /*------------------------------------------------------------------------
+    #insta .btn {
+        width: 20%;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshops {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-areas: "em1 post1 post2 em2"
+            "inf inf post3 post4"
+            "em3 post5 post6 seemore";
+            margin-top: 20vh;
+    }
+
+    #workshops>article {
+        width: 90%;
+        margin-top: 25px;
+        grid-area: inf;
+    }
+
+    #workshops>article h2 {
+        text-align: left;
+    }
+
+    #workshops figure {
+        width: 95%;
+        margin-top: 3%;
+        max-height: 22vh;
+    }
+
+    #workshops #sjorren {
+        grid-area: post1;
+    }
+
+    #workshops #yoga {
+        grid-area: post2;
+    }
+
+    #workshops #henna {
+        grid-area: post3;
+    }
+
+    #workshops #beekeeping {
+        grid-area: post4;
+    }
+
+    #workshops #cyclegardening {
+        grid-area: post5;
+    }
+
+    #workshops #juggling {
+        grid-area: post6;
+    }
+
+    #workshops #to-calendar {
+        grid-area: seemore;
+    }
+
+ /*------------------------------------------------------------------------
+ --------------------------------- LARGE CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+    
+    /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
 }
