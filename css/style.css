@@ -1,3 +1,5 @@
+@import "/css/fonts/Segoe/segoe.css";
+
 /*------------------------------------------------------------------------
  --------------------------------- RESET ---------------------------------
  ------------------------------------------------------------------------ */
@@ -164,6 +166,9 @@ li{
     --green: #33481F;
   }
 
+body{
+}
+
 .color-white{
     color: #fff;
 }
@@ -182,19 +187,24 @@ li{
 h1{
     font-size: 2.8rem;
     font-weight: 580;
+    font-family: 'Segoe UI Bold';
 }
 
 h2{
     font-size: 1.9rem;
     font-weight: 600;
+    font-family: 'Segoe UI Bold';
 }
 
 h3{
     font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Segoe UI Bold';
 }
 
 h4{
    font-size: 1.25rem;
+   font-family: 'Segoe UI Regular';
 }
 
 a, li, .btn{
@@ -272,7 +282,7 @@ header nav ul li a {
  ------------------------------------------------------------------------ */
 
  #intro{
-     position: absolute;
+     position: relative;
      height: 100vh;
      z-index: -999;
      top: 0;
@@ -280,7 +290,7 @@ header nav ul li a {
  }
 
 #intro video{
-    max-height: 100vh;
+    max-width: 100vw;
 }
 
 #intro article{
@@ -293,7 +303,7 @@ header nav ul li a {
     color: #fff;
 }
 
-li, figure, figcaption, img, article, section{
+li, figure, figcaption, article, section{
     width: 100%;
 }
 
@@ -302,9 +312,8 @@ li, figure, figcaption, img, article, section{
  ------------------------------------------------------------------------ */
 
  main{
-     position: absolute;
-     top: 105vh;
      padding: 10px;
+     margin-top: 20px;
  }
 
  main h2{
@@ -312,12 +321,28 @@ li, figure, figcaption, img, article, section{
      margin-bottom: 10px;
  }
 
+ main #updates{
+     top: 100vh;
+ }
+
 /*------------------------------------------------------------------------
  --------------------------------- LATEST ---------------------------------
  ------------------------------------------------------------------------ */
 
+#updates{
+
+}
+
  #updates figure{
      margin-bottom: 20px;
+ }
+
+ /*------------------------------------------------------------------------
+ --------------------------------- LATEST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ #workshops{
+     margin-top: 13vh;
  }
 
 /*------------------------------------------------------------------------
@@ -325,7 +350,7 @@ li, figure, figcaption, img, article, section{
  ------------------------------------------------------------------------ */
 
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
 }
 
@@ -356,6 +381,7 @@ footer #calendar, footer #sitemap{
     background-color: transparent;
     position: fixed;
     width: 100%;
+    margin: 0;
 }
 
 header #logo{
@@ -400,6 +426,93 @@ header nav ul li a {
     color: white;
 }
 
+   /*------------------------------------------------------------------------
+ --------------------------------- INTRO ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#intro article{
+    width: 50%;
+    margin-left: 15px;
+    top: 40vh;
+}
+
+   /*------------------------------------------------------------------------
+ ---------------------------------- MAIN ------------------------------------
+ ------------------------------------------------------------------------ */
+
+main{
+    width: 70%;
+    margin: auto;
+}
+
+   /*------------------------------------------------------------------------
+ ----------------------------- LATEST UPDATES -------------------------------
+ ------------------------------------------------------------------------ */
+
+ #updates{
+    width: 100%;
+    display: flex;
+    margin-top:10%;
+ }
+
+#updates h2{
+    margin-bottom: 10%;
+}
+
+ #updates #posts{
+     width: calc(100%/3*2);
+ }
+
+ #updates .head-post{
+     width: 100%;
+     display: flex;
+ }
+
+ #updates .head-post img, #updates .head-post figcaption{
+    width: 50%;
+    margin-left: 15px;
+ }
+
+ #updates .reg-post img, #updates .reg-post figcaption{
+    width: 100%;
+ }
+
+ #updates .reg-post{
+    width: 50%;
+ }
+
+ #updates a.read-more{
+     text-transform: uppercase;
+     font-size: 0.8rem;
+     padding-top: 50%;
+ }
+
+   /*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ #insta{
+     width: 100%;
+ }
+
+ #insta #insta-slider{
+     width: 100%;
+     display: flex;
+ }
+
+#insta #insta-slider article{
+    width: 25%;
+    overflow: hidden;
+    max-height: 10%;
+}
+
+ #insta img{
+     max-width: 100%;
+ }
+
+ #insta .btn{
+     width: 20%;
+ }
 
    /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
