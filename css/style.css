@@ -167,7 +167,13 @@ li {
     --d-green: #004D0F;
     --d-grey: #1c1c1c;
     --l-grey: #333333;
-    --reggae-grad: -webkit-linear-gradient(left, #59A846, #FFDB26, #DD4B48);
+    --red: #DD4B48;
+    --yellow: #FFDB26;
+    --reggae-grad: -webkit-linear-gradient(left, var(--d-green), var(--yellow), var(--red));
+}
+
+html{
+    scroll-behavior: smooth;
 }
 
 body {
@@ -212,6 +218,7 @@ a,
 li,
 .btn {
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn {
@@ -273,6 +280,7 @@ header nav {
     top: 0;
     padding: 30vh 0;
     left: 0;
+    display: none;
 }
 
 header nav ul {
@@ -351,18 +359,16 @@ main #updates {
     border: 1px solid var(--d-grey);
     padding: 15px;
     margin: 15px;
-    
+
 }
 
-.calendar{
+.calendar {
     background-color: var(--l-green);
 }
 
 /*------------------------------------------------------------------------
  --------------------------------- LATEST ---------------------------------
  ------------------------------------------------------------------------ */
-
-#updates {}
 
 #updates figure {
     margin-bottom: 20px;
@@ -432,11 +438,73 @@ main #updates {
     font-size: 0.8rem;
 }
 
- /*------------------------------------------------------------------------
+/*------------------------------------------------------------------------
  --------------------------------- LARGE CALENDAR ---------------------------------
  ------------------------------------------------------------------------ */
 
- 
+#workshop-calendar {
+    width: 100%;
+    margin-top: 15%;
+}
+
+#workshop-calendar figure {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5%;
+    margin-top: 5%;
+}
+
+#workshop-calendar .num-calendar {
+    position: absolute;
+    z-index: 10;
+    max-width: 25vw;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    color: var(--red);
+    font-weight: 1000;
+    font-size: 2rem;
+    padding: 10px;
+    max-height: 10vh;
+}
+
+#workshop-calendar figure img {
+    width: 120%;
+    max-height: 100%;
+}
+
+#workshop-calendar .post-inf {
+    background-color: var(--l-green);
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    font-size: 0.8rem;
+}
+
+#workshop-calendar .post-inf img {
+    width: 10%;
+}
+
+#workshop-calendar #month-controls{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#workshop-calendar #month-controls img{
+    width: 7vw;
+}
+
+#workshop-calendar #month-controls p{
+    text-align: center;
+    width: 40vw;
+    margin-top: 5px;
+}
+
+#workshop-calendar #month-controls .bold{
+    font-weight: 700;
+}
 
 /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
@@ -459,6 +527,7 @@ footer #sitemap {
 
     header {
         min-height: 15vh;
+        position: relative;
     }
 
     header nav {
@@ -479,12 +548,16 @@ footer #sitemap {
         display: none;
     }
 
-    header #logo{
+    header #logo {
         max-width: 6vw;
     }
 
-    header nav ul{
+    header nav ul {
         margin-top: 6vh;
+    }
+
+    #intro {
+        height: auto;
     }
 
     /*------------------------------------------------------------------------
@@ -495,6 +568,129 @@ footer #sitemap {
         width: 85%;
         margin: auto;
     }
+
+    /*------------------------------------------------------------------------
+ ---------------------- LATEST UPDATES/LARGE CALENDAR ------------------------
+ ------------------------------------------------------------------------ */
+
+    #updates {
+        width: 100%;
+        display: flex;
+    }
+
+    #updates h2, #workshop-calendar h2 {
+        margin-bottom: 5%;
+    }
+
+    #updates #posts,
+    #workshop-calendar #posts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    #updates #posts {
+        width: calc(100%/3*2);
+    }
+
+    #workshop-calendar #posts {
+        width: 100%;
+        margin-top: 5vh;
+    }
+
+    #workshop-calendar figure{
+        margin: 10px;
+    }
+
+    #updates .head-post {
+        width: 100%;
+        display: flex;
+    }
+
+    #workshop-calendar #posts .head-post {
+        width: calc(95%/3*2);
+        display: flex;
+    }
+
+    #workshop-calendar #posts .head-post figcaption{
+        bottom: 0;
+        position :absolute;
+        right: 0;
+    }
+
+    #workshop-calendar #posts figcaption h3, #workshop-calendar #posts figcaption p{
+        padding-left: 15px;
+    }
+
+    #workshop-calendar #posts figcaption > p{
+        padding-bottom: 15px;
+    }
+
+    #updates .head-post img,
+    #updates .head-post figcaption,
+    #workshop-calendar .head-post img,
+    #workshop-calendar .head-post figcaption {
+        width: 50%;
+    }
+
+    #updates .head-post figcaption,
+    #workshop-calendar .head-post figcaption {
+        margin-left: 15px;
+    }
+
+    #updates .reg-post > img,
+    #updates .reg-post figcaption,
+    #workshop-calendar .reg-post figcaption {
+        width: 100%;
+    }
+
+    #updates .reg-post{
+        width: 47.5%;
+    }
+
+    #workshop-calendar .reg-post{
+        width: calc(90%/3);
+    }
+
+    #workshop-calendar .post-inf img{
+        width: 1.5vw;
+    }
+    
+    #workshop-calendar #month-controls img{
+        width: 3vw;
+    }
+    
+    #workshop-calendar #month-controls p{
+        max-width: 20vw;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #insta {
+        width: 100%;
+    }
+
+    #insta #insta-slider {
+        width: 100%;
+        display: flex;
+    }
+
+    #insta #insta-slider article {
+        width: 25%;
+        overflow: hidden;
+        max-height: 10%;
+    }
+
+    #insta img {
+        max-width: 100%;
+    }
+
+    #insta .btn {
+        width: 20%;
+    }
+
 
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
@@ -565,12 +761,14 @@ footer #sitemap {
  ------------------------------------------------------------------------ */
     header {
         height: 13vh;
+        position: absolute;
     }
 
     header nav {
         width: 50%;
         max-height: 10vh;
         display: block;
+        position: absolute;
         left: 40%;
         padding: 0;
         font-size: 0.8rem;
@@ -587,7 +785,7 @@ footer #sitemap {
 
     header #logo {
         width: 5%;
-        position: fixed;
+        position: absolute;
         left: 10%;
         top: 10px;
     }
@@ -615,50 +813,102 @@ footer #sitemap {
         margin: auto;
     }
 
+
+
     /*------------------------------------------------------------------------
- ----------------------------- LATEST UPDATES -------------------------------
+ ---------------------- LATEST UPDATES/LARGE CALENDAR ------------------------
  ------------------------------------------------------------------------ */
 
-    #updates {
-        width: 100%;
-        display: flex;
-        margin-top: 10%;
-    }
+ #updates {
+    width: 100%;
+    display: flex;
+}
 
-    #updates h2 {
-        margin-bottom: 10%;
-    }
+#updates h2, #workshop-calendar h2 {
+    margin-bottom: 5%;
+}
 
-    #updates #posts {
-        width: calc(100%/3*2);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
+#updates #posts,
+#workshop-calendar #posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
-    #updates .head-post {
-        width: 100%;
-        display: flex;
-    }
+#updates #posts {
+    width: calc(100%/3*2);
+}
 
-    #updates .head-post img,
-    #updates .head-post figcaption {
-        width: 50%;
-    }
+#workshop-calendar #posts {
+    width: 100%;
+    margin-top: 5vh;
+}
 
-    #updates .head-post figcaption {
+#workshop-calendar figure{
+    margin: 10px;
+}
 
-        margin-left: 15px;
-    }
+#updates .head-post {
+    width: 100%;
+    display: flex;
+}
 
-    #updates .reg-post img,
-    #updates .reg-post figcaption {
-        width: 100%;
-    }
+#workshop-calendar #posts .head-post {
+    width: calc(95%/3*2);
+    display: flex;
+}
 
-    #updates .reg-post {
-        width: 47.5%;
-    }
+#workshop-calendar #posts .head-post figcaption{
+    bottom: 0;
+    position :absolute;
+    right: 0;
+}
+
+#workshop-calendar #posts figcaption h3, #workshop-calendar #posts figcaption p{
+    padding-left: 15px;
+}
+
+#workshop-calendar #posts figcaption > p{
+    padding-bottom: 15px;
+}
+
+#updates .head-post img,
+#updates .head-post figcaption,
+#workshop-calendar .head-post img,
+#workshop-calendar .head-post figcaption {
+    width: 50%;
+}
+
+#updates .head-post figcaption,
+#workshop-calendar .head-post figcaption {
+    margin-left: 15px;
+}
+
+#updates .reg-post > img,
+#updates .reg-post figcaption,
+#workshop-calendar .reg-post figcaption {
+    width: 100%;
+}
+
+#updates .reg-post{
+    width: 47.5%;
+}
+
+#workshop-calendar .reg-post{
+    width: calc(90%/3);
+}
+
+#workshop-calendar .post-inf img{
+    width: 1.5vw;
+}
+
+#workshop-calendar #month-controls img{
+    width: 3vw;
+}
+
+#workshop-calendar #month-controls p{
+    max-width: 20vw;
+}
 
     /*------------------------------------------------------------------------
  --------------------------------- CALENDAR ---------------------------------
@@ -701,7 +951,7 @@ footer #sitemap {
         grid-template-areas: "em1 post1 post2 em2"
             "inf inf post3 post4"
             "em3 post5 post6 seemore";
-            margin-top: 20vh;
+        margin-top: 20vh;
     }
 
     #workshops>article {
@@ -748,10 +998,6 @@ footer #sitemap {
         grid-area: seemore;
     }
 
- /*------------------------------------------------------------------------
- --------------------------------- LARGE CALENDAR ---------------------------------
- ------------------------------------------------------------------------ */
-    
     /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
