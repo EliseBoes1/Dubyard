@@ -241,7 +241,8 @@ li,
 }
 
 .selected {
-    border-bottom: 1px solid #fff;
+    font-family: 'Segoe UI Bold';
+    font-weight: 1000;
 }
 
 /*------------------------------------------------------------------------
@@ -365,9 +366,13 @@ main #updates {
  ------------------------------------------------------------------------ */
 
 #updates aside {
-    border: 1px solid var(--d-grey);
     padding: 15px;
     margin: 15px;
+}
+
+#updates a{
+    color: var(--l-green);
+    font-weight: 500;
 }
 
 .calendar {
@@ -388,7 +393,7 @@ main #updates {
 }
 
 .calendar .month ul {
-    width: 60%;
+    max-width: 20vw;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -425,6 +430,40 @@ main #updates {
     width: 20%;
     height: 2px;
     margin: 7.5px 20px 0 20px;
+}
+
+
+
+/*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#insta {
+    width: 100%;
+    margin: 10% 0;
+}
+
+#insta #insta-slider {
+    width: 100%;
+}
+
+#insta #insta-slider article {
+    width: 25%;
+    overflow: hidden;
+    max-height: 10%;
+}
+
+#insta img {
+    max-width: 100%;
+}
+
+#insta figure {
+    margin-top: 5px;
+}
+
+#insta .btn {
+    width: 50%;
+    margin: 10px auto;
 }
 
 /*------------------------------------------------------------------------
@@ -496,6 +535,10 @@ h3 {
 
 #workshops {
     margin-top: 10vh;
+}
+
+#workshops article{
+    margin-bottom: 30px;
 }
 
 #workshops figure {
@@ -640,6 +683,47 @@ h3 {
     color: #fff;
 }
 
+    /*------------------------------------------------------------------------
+ --------------------------------- BLOGPOST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+ #blogpost {
+    margin-top: 15vh;
+}
+
+#blogpost h1 {
+    font-size: 3rem;
+}
+
+#blogpost #post-head {
+    width: 100%;
+}
+
+#blogpost #post-head h1 {
+    max-width: 100%;
+}
+
+#blogpost #post-head #blog-inf {
+    max-width: 100%;
+    position: absolute;
+    right: 10vw;
+    top: 14vh;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+#blogpost #article {
+}
+
+#blogpost div {
+    margin: 5px 0 20px 0;
+}
+
+#blogpost img {
+    width: 100%;
+}
+
+
 /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
@@ -647,6 +731,36 @@ h3 {
 footer {
     position: relative;
     bottom: 0;
+    /* background-color: var(--l-green); */
+    color: #fff;
+    padding: 30px 15%;
+    margin-top: 5%;
+}
+
+footer>img{
+    width: 100%;
+    left: 0;
+    position: absolute;
+    z-index: -50;
+    bottom: 0;
+}
+
+footer #contact a{
+    width:100%;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+footer #contact a img{
+    width: 10%;
+}
+
+footer #contact p{
+    width: 80%;
+    max-width: 80%;
+    margin-left: 5%;
 }
 
 footer #calendar,
@@ -718,7 +832,8 @@ footer #sitemap {
     }
 
     #updates #posts {
-        width: calc(100%/3*2);
+        width: calc(90%/3*2);
+        margin-right: 3.3%;
     }
 
     #updates aside {
@@ -740,6 +855,8 @@ footer #sitemap {
 
     #updates .head-post {
         width: 100%;
+        display: flex;
+        flex-wrap: wrap;
     }
 
     #updates .reg-post {
@@ -810,6 +927,84 @@ footer #sitemap {
     #posts .reg-post {
         width: calc(90%/3);
     }
+
+        /*
+
+
+
+#updates aside {
+    width: calc(90%/3);
+    margin-left: 5%;
+}
+
+#posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.head-post {
+    width: calc(95%/3*2);
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 60vh;
+}
+
+#updates .head-post {
+    width: 100%;
+}
+
+#updates .reg-post {
+    width: 47.5% !important;
+}
+
+#duurzaamheid figure {
+    margin: 10px;
+}
+
+#posts .head-post .img-wrapper {
+    overflow: hidden;
+    width: calc(90%/3);
+}
+
+#posts .head-post img {
+    height: 100%;
+}
+
+#posts .head-post figcaption {
+    width: calc(90%/3*2);
+}
+
+#posts .head-post figcaption {
+    margin-left: 15px;
+}
+
+#posts figure img {
+    max-height: 100vh;
+}
+
+#posts figure {
+    overflow: hidden;
+}
+
+#posts .reg-post>img,
+#posts .reg-post figcaption {
+    width: 100%;
+}
+
+.reg-post {
+    width: 47.5%;
+}
+
+#posts .reg-post {
+    width: calc(90%/3);
+}
+
+#workshop-calendar #posts,
+#duurzaamheid #posts {
+    width: 100%;
+    margin-top: 5vh;
+} */
 
     /*------------------------------------------------------------------------
  ------------------------------ WORKSHOP CALENDAR -------------------------------
@@ -1078,11 +1273,12 @@ footer #sitemap {
     }
 
     #updates #posts {
-        width: calc(100%/3*2);
+        width: calc(90%/3*2);
     }
 
     #updates aside {
         width: calc(90%/3);
+        margin-left: 5%;
     }
 
     #posts {
@@ -1115,18 +1311,13 @@ footer #sitemap {
         width: calc(100%/3);
     }
 
-    #posts .head-post img {
-        max-width: 400%;
-        max-height: 100%;
-        width: auto;
+    #posts .head-post .img-wrapper img {
+         min-width: 100%; 
+        min-height: 100%;
     }
 
     #posts .head-post figcaption {
         width: calc(100%/3*2);
-    }
-
-    #posts .head-post figcaption {
-        margin-left: 15px;
     }
 
     #posts figure img {
@@ -1184,11 +1375,11 @@ footer #sitemap {
     }
 
     #workshop-calendar #month-controls img {
-        width: 2.5vw;
+        width: 2vw;
     }
 
     #workshop-calendar #month-controls p {
-        max-width: 20vw;
+        max-width: 13vw;
         font-size: 1.8rem;
         margin-top: 0;
     }
@@ -1263,6 +1454,7 @@ footer #sitemap {
 
     #insta .btn {
         width: 20%;
+        margin: 10px 0 0 0;
     }
 
     /*------------------------------------------------------------------------
@@ -1392,4 +1584,48 @@ footer #sitemap {
     /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
+ footer {
+    position: relative;
+    bottom: 0;
+    background-color: var(--l-green);
+    color: #fff;
+    padding: 30px 15%;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+footer>img{
+    width: 100%;
+    left: 0;
+    position: absolute;
+    z-index: -50;
+    bottom: 0;
+}
+
+footer #contact{
+    width: calc(100%/3);
+}
+
+footer a{
+    width:100%;
+    color: #fff;
+    margin-top: 15px;
+}
+
+footer #contact a img{
+    width: 2%;
+}
+
+footer #contact p{
+    width: 80%;
+    max-width: 80%;
+    margin-left: 15px;
+}
+
+footer #calendar,
+footer #sitemap {
+    display: block;
+    width: calc(100%/3);
+}
 }
