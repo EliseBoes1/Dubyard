@@ -379,31 +379,34 @@ main #updates {
     padding: 25px;
 }
 
-.calendar .weekdays{
+.calendar .weekdays {
     width: 100%;
 }
 
-.calendar .month{
+.calendar .month {
     width: 100%;
 }
 
-.calendar .month ul{
+.calendar .month ul {
     width: 60%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
 }
 
-.calendar .next, .calendar .prev{
+.calendar .next,
+.calendar .prev {
     width: 10%;
 }
 
-.calendar .days, .calendar .weekdays{
+.calendar .days,
+.calendar .weekdays {
     display: flex;
     flex-wrap: wrap;
 }
 
-.calendar .days li, .calendar .weekdays li{
+.calendar .days li,
+.calendar .weekdays li {
     width: calc(100%/7);
     padding: 10px;
 }
@@ -414,7 +417,7 @@ main #updates {
     display: flex;
 }
 
-#workshop-calendar #posts .post-inf{
+#workshop-calendar #posts .post-inf {
     margin: 15px 0 0 0;
 }
 
@@ -808,40 +811,40 @@ footer #sitemap {
         width: calc(90%/3);
     }
 
-           /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  ------------------------------ WORKSHOP CALENDAR -------------------------------
  ------------------------------------------------------------------------ */
 
- #workshop-calendar #posts .head-post figcaption {
-    bottom: 0;
-    position: absolute;
-    right: 0;
-}
+    #workshop-calendar #posts .head-post figcaption {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
 
-#workshop-calendar #posts figcaption h4,
-#workshop-calendar #posts figcaption p {
-    padding-left: 15px;
-}
+    #workshop-calendar #posts figcaption h4,
+    #workshop-calendar #posts figcaption p {
+        padding-left: 15px;
+    }
 
-#workshop-calendar #posts figcaption h4{
-    margin-top: 25px;
-}
+    #workshop-calendar #posts figcaption h4 {
+        margin-top: 25px;
+    }
 
-#workshop-calendar #posts figcaption>p {
-    padding-bottom: 15px;
-}
+    #workshop-calendar #posts figcaption>p {
+        padding-bottom: 15px;
+    }
 
-#workshop-calendar .post-inf img {
-    width: 1.5vw;
-}
+    #workshop-calendar .post-inf img {
+        width: 1.5vw;
+    }
 
-#workshop-calendar #month-controls img {
-    width: 3vw;
-}
+    #workshop-calendar #month-controls img {
+        width: 3vw;
+    }
 
-#workshop-calendar #month-controls p {
-    max-width: 20vw;
-}
+    #workshop-calendar #month-controls p {
+        max-width: 20vw;
+    }
 
     /*------------------------------------------------------------------------
  --------------------------------- DUURZAAMHEID ---------------------------------
@@ -896,14 +899,13 @@ footer #sitemap {
         max-width: 100%;
     }
 
-    #insta figure{
+    #insta figure {
         margin-top: 10px;
     }
 
     #insta .btn {
         width: 20%;
     }
-
 
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
@@ -958,6 +960,31 @@ footer #sitemap {
 
     #workshops #to-calendar {
         grid-area: seemore;
+    }
+
+
+
+    /*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+    #recipes {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15vh;
+    }
+
+    #recipes #filter-recipes {
+        width: calc(100%/3);
+    }
+
+    #recipes .reg-post {
+        width: calc(90%/3);
+        margin-left: 3%;
+    }
+
+    #recipes figure {
+        margin: 0 0 7.5% 0;
     }
 
     /*------------------------------------------------------------------------
@@ -1127,9 +1154,9 @@ footer #sitemap {
     #duurzaamheid #posts {
         width: 100%;
         margin-top: 5vh;
-    }   
+    }
 
-       /*------------------------------------------------------------------------
+    /*------------------------------------------------------------------------
  ------------------------------ WORKSHOP CALENDAR -------------------------------
  ------------------------------------------------------------------------ */
 
@@ -1144,7 +1171,7 @@ footer #sitemap {
         padding-left: 15px;
     }
 
-    #workshop-calendar #posts figcaption h4{
+    #workshop-calendar #posts figcaption h4 {
         margin-top: 25px;
     }
 
@@ -1166,7 +1193,7 @@ footer #sitemap {
         margin-top: 0;
     }
 
-    #workshop-calendar h2{
+    #workshop-calendar h2 {
         margin-bottom: 40px;
         font-size: 2.8rem;
     }
@@ -1293,6 +1320,29 @@ footer #sitemap {
 
     #workshops #to-calendar {
         grid-area: seemore;
+    }
+
+    /*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+    #recipes {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 25vh;
+    }
+
+    #recipes #filter-recipes {
+        width: calc(100%/3);
+    }
+
+    #recipes .reg-post {
+        width: calc(90%/3);
+        margin-left: 3%;
+    }
+
+    #recipes figure {
+        margin: 0 0 7.5% 0;
     }
 
     /*------------------------------------------------------------------------
