@@ -177,7 +177,7 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
+body, input {
     color: var(--l-grey);
     font-family: 'Segoe UI';
 }
@@ -361,6 +361,11 @@ main #updates {
     top: 100vh;
 }
 
+#posts a{
+    color: var(--d-grey);
+    font-weight: 600;
+}
+
 /*------------------------------------------------------------------------
  --------------------------------- CALENDAR ---------------------------------
  ------------------------------------------------------------------------ */
@@ -370,7 +375,7 @@ main #updates {
     margin: 15px;
 }
 
-#updates a{
+#updates a {
     color: var(--l-green);
     font-weight: 500;
 }
@@ -416,7 +421,7 @@ main #updates {
     padding: 10px;
 }
 
-#posts figure .post-inf {
+figure .post-inf {
     font-size: 0.8rem;
     width: 100%;
     display: flex;
@@ -426,13 +431,11 @@ main #updates {
     margin: 15px 0 0 0;
 }
 
-#posts figure .post-inf .line {
+figure .post-inf .line {
     width: 20%;
     height: 2px;
     margin: 7.5px 20px 0 20px;
 }
-
-
 
 /*------------------------------------------------------------------------
  --------------------------------- INSTA ---------------------------------
@@ -537,7 +540,7 @@ h3 {
     margin-top: 10vh;
 }
 
-#workshops article{
+#workshops article {
     margin-bottom: 30px;
 }
 
@@ -615,7 +618,19 @@ h3 {
     position: relative;
     overflow: hidden;
     border-radius: 5%;
-    margin-top: 5%;
+}
+
+.img-wrapper {
+    max-height: 20vh;
+    overflow: hidden;
+}
+
+#workshop-calendar figcaption p {
+    padding: 0 0 5px 5px;
+}
+
+#workshop-calendar figcaption h4 {
+    padding: 5px 0 0 5px;
 }
 
 #workshop-calendar .num-calendar {
@@ -683,11 +698,11 @@ h3 {
     color: #fff;
 }
 
-    /*------------------------------------------------------------------------
+/*------------------------------------------------------------------------
  --------------------------------- BLOGPOST ---------------------------------
  ------------------------------------------------------------------------ */
 
- #blogpost {
+#blogpost {
     margin-top: 15vh;
 }
 
@@ -712,8 +727,7 @@ h3 {
     text-align: right;
 }
 
-#blogpost #article {
-}
+#blogpost #article {}
 
 #blogpost div {
     margin: 5px 0 20px 0;
@@ -723,6 +737,76 @@ h3 {
     width: 100%;
 }
 
+
+/*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+#recipes {
+    margin-top: 12vh;
+}
+
+#recipes h2 {
+    margin-bottom: 20px;
+}
+
+#recipes #filter-recipes {
+    margin-bottom: 40px;
+}
+
+#recipes input {
+    width: 85%;
+    border: 2px solid var(--l-green);
+    padding: 5px;
+}
+
+#recipes #search-icon {
+    width: 11%;
+    background-color: var(--l-green);
+    padding: 10px;
+    max-height: 5vh;
+}
+
+#recipes #search-icon img {
+    width: 100%;
+}
+
+#recipes ul {
+    margin-top: 10px;
+}
+
+#recipes #filter-type {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recipes #filter-type li {
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    color: var(--l-green);
+    border: 2px solid var(--l-green);
+}
+
+#recipes #filter-type li:hover {
+    background-color: var(--l-green);
+    color: #fff;
+}
+
+#recipes li:hover {
+    font-weight: 1000;
+}
+
+#recipes #filter-type .selected {
+    color: #fff;
+    background-color: var(--l-green);
+    font-weight: 500 !important;
+}
+
+#recipes figure {
+    margin: 0 0 7.5% 0;
+}
 
 /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
@@ -737,7 +821,7 @@ footer {
     margin-top: 5%;
 }
 
-footer>img{
+footer>img {
     width: 100%;
     left: 0;
     position: absolute;
@@ -745,19 +829,19 @@ footer>img{
     bottom: 0;
 }
 
-footer #contact a{
-    width:100%;
+footer #contact a {
+    width: 100%;
     color: #fff;
     display: flex;
     flex-wrap: wrap;
     margin-top: 15px;
 }
 
-footer #contact a img{
+footer #contact a img {
     width: 10%;
 }
 
-footer #contact p{
+footer #contact p {
     width: 80%;
     max-width: 80%;
     margin-left: 5%;
@@ -850,7 +934,7 @@ footer #sitemap {
         width: calc(95%/3*2);
         display: flex;
         flex-wrap: wrap;
-        max-height: 60vh;
+        max-height: 40vh;
     }
 
     #updates .head-post {
@@ -869,10 +953,6 @@ footer #sitemap {
         margin-top: 5vh;
     }
 
-    #duurzaamheid figure {
-        margin: 10px;
-    }
-
     #workshop-calendar #posts .head-post figcaption {
         bottom: 0;
         position: absolute;
@@ -884,8 +964,9 @@ footer #sitemap {
         padding-left: 15px;
     }
 
-    #workshop-calendar #posts figcaption>p {
+    #posts figcaption>p {
         padding-bottom: 15px;
+        padding-left: 15px;
     }
 
     #posts .head-post .img-wrapper {
@@ -901,9 +982,6 @@ footer #sitemap {
 
     #posts .head-post figcaption {
         width: calc(100%/3*2);
-    }
-
-    #posts .head-post figcaption {
         margin-left: 15px;
     }
 
@@ -922,89 +1000,12 @@ footer #sitemap {
 
     .reg-post {
         width: 47.5%;
+        margin-top: 5%;
     }
 
     #posts .reg-post {
         width: calc(90%/3);
     }
-
-        /*
-
-
-
-#updates aside {
-    width: calc(90%/3);
-    margin-left: 5%;
-}
-
-#posts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.head-post {
-    width: calc(95%/3*2);
-    display: flex;
-    flex-wrap: wrap;
-    max-height: 60vh;
-}
-
-#updates .head-post {
-    width: 100%;
-}
-
-#updates .reg-post {
-    width: 47.5% !important;
-}
-
-#duurzaamheid figure {
-    margin: 10px;
-}
-
-#posts .head-post .img-wrapper {
-    overflow: hidden;
-    width: calc(90%/3);
-}
-
-#posts .head-post img {
-    height: 100%;
-}
-
-#posts .head-post figcaption {
-    width: calc(90%/3*2);
-}
-
-#posts .head-post figcaption {
-    margin-left: 15px;
-}
-
-#posts figure img {
-    max-height: 100vh;
-}
-
-#posts figure {
-    overflow: hidden;
-}
-
-#posts .reg-post>img,
-#posts .reg-post figcaption {
-    width: 100%;
-}
-
-.reg-post {
-    width: 47.5%;
-}
-
-#posts .reg-post {
-    width: calc(90%/3);
-}
-
-#workshop-calendar #posts,
-#duurzaamheid #posts {
-    width: 100%;
-    margin-top: 5vh;
-} */
 
     /*------------------------------------------------------------------------
  ------------------------------ WORKSHOP CALENDAR -------------------------------
@@ -1243,7 +1244,7 @@ footer #sitemap {
     #intro article {
         width: 50%;
         left: 10%;
-        top: 60vh;
+        top: 40vh;
     }
 
     /*------------------------------------------------------------------------
@@ -1291,7 +1292,7 @@ footer #sitemap {
         width: calc(95%/3*2);
         display: flex;
         flex-wrap: wrap;
-        max-height: 60vh;
+        max-height: 40vh;
     }
 
     #updates .head-post {
@@ -1302,17 +1303,13 @@ footer #sitemap {
         width: 47.5% !important;
     }
 
-    #duurzaamheid figure {
-        margin: 10px;
-    }
-
     #posts .head-post .img-wrapper {
         overflow: hidden;
         width: calc(100%/3);
     }
 
     #posts .head-post .img-wrapper img {
-         min-width: 100%; 
+        min-width: 100%;
         min-height: 100%;
     }
 
@@ -1328,6 +1325,12 @@ footer #sitemap {
         overflow: hidden;
     }
 
+    #posts .head-post figcaption>p {
+        padding-bottom: 15px;
+        padding-left: 15px;
+        margin-top: 15%;
+    }
+
     #posts .reg-post>img,
     #posts .reg-post figcaption {
         width: 100%;
@@ -1335,6 +1338,7 @@ footer #sitemap {
 
     .reg-post {
         width: 47.5%;
+        margin-top: 5%;
     }
 
     #posts .reg-post {
@@ -1351,10 +1355,9 @@ footer #sitemap {
  ------------------------------ WORKSHOP CALENDAR -------------------------------
  ------------------------------------------------------------------------ */
 
-    #workshop-calendar #posts .head-post figcaption {
-        bottom: 0;
-        position: absolute;
-        right: 0;
+
+    #workshop-calendar .head-post .img-wrapper {
+        max-height: 40vh;
     }
 
     #workshop-calendar #posts figcaption h4,
@@ -1370,8 +1373,19 @@ footer #sitemap {
         padding-bottom: 15px;
     }
 
+    #workshop-calendar .post-inf .location,
+    #workshop-calendar .post-inf .date {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #workshop-calendar .post-inf p {
+        width: 90%;
+        margin-top: 7.5px;
+    }
+
     #workshop-calendar .post-inf img {
-        width: 1.5vw;
+        width: 10%;
     }
 
     #workshop-calendar #month-controls img {
@@ -1385,7 +1399,7 @@ footer #sitemap {
     }
 
     #workshop-calendar h2 {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         font-size: 2.8rem;
     }
 
@@ -1563,6 +1577,8 @@ footer #sitemap {
         max-width: 30%;
         text-align: right;
         font-size: 0.9rem;
+        top: 27.5vh;
+        right: 15vw;
     }
 
     #blogpost #article {
@@ -1584,48 +1600,48 @@ footer #sitemap {
     /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
  ------------------------------------------------------------------------ */
- footer {
-    position: relative;
-    bottom: 0;
-    background-color: var(--l-green);
-    color: #fff;
-    padding: 30px 15%;
-    margin-top: 5%;
-    display: flex;
-    flex-wrap: wrap;
-}
+    footer {
+        position: relative;
+        bottom: 0;
+        background-color: var(--l-green);
+        color: #fff;
+        padding: 30px 15%;
+        margin-top: 5%;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-footer>img{
-    width: 100%;
-    left: 0;
-    position: absolute;
-    z-index: -50;
-    bottom: 0;
-}
+    footer>img {
+        width: 100%;
+        left: 0;
+        position: absolute;
+        z-index: -50;
+        bottom: 0;
+    }
 
-footer #contact{
-    width: calc(100%/3);
-}
+    footer #contact {
+        width: calc(100%/3);
+    }
 
-footer a{
-    width:100%;
-    color: #fff;
-    margin-top: 15px;
-}
+    footer a {
+        width: 100%;
+        color: #fff;
+        margin-top: 15px;
+    }
 
-footer #contact a img{
-    width: 2%;
-}
+    footer #contact a img {
+        width: 2%;
+    }
 
-footer #contact p{
-    width: 80%;
-    max-width: 80%;
-    margin-left: 15px;
-}
+    footer #contact p {
+        width: 80%;
+        max-width: 80%;
+        margin-left: 15px;
+    }
 
-footer #calendar,
-footer #sitemap {
-    display: block;
-    width: calc(100%/3);
-}
+    footer #calendar,
+    footer #sitemap {
+        display: block;
+        width: calc(100%/3);
+    }
 }
