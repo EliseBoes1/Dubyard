@@ -1,35 +1,40 @@
 const express = require('express');
 const app = express();
-const port = 3000;
-const cors = require('cors');
+const port = 27017;
 const bodyParser = require('body-parser');
 const fs = require('fs');
 var bcrypt = require('bcryptjs');
 const MongoClient = require('mongodb').MongoClient;
 const user = 'Elise';
 const password = 'qckkln3tCjkGuxFt';
-const url = `mongodb://${user}:${password}@172.20.0.54:27017/?authMechanism=DEFAULT&authSource=${user}`;
+// mongodb+srv://Elise:qckkln3tCjkGuxFt@dubyard.whehk.gcp.mongodb.net/Dubyard?retryWrites=true&w=majority
+const url = `mongodb+srv://Elise:Dub2020Yard@dubyard.whehk.gcp.mongodb.net/Dubyard?retryWrites=true&w=majority`;
 const client = new MongoClient(url);
 const dbName = 'Dubyard';
 let loggedInUser;
 let loggedInUsername;
 var db;
-const appId = '377764';
+const appId = 'dubyard-jygvc';
 // mongodb+srv://Elise:<password>@dubyard.whehk.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority
 
-MongoClient.connect(url, (err, database) => {
-  if (err) return console.log(err);
-  db = database.db(dbName);
-  app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-});
+// MongoClient.connect(url, (err, database) => {
+//   if (err) return console.log(err);
+//   db = database.db(dbName);
+//   app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// });
 
-app.use(cors());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
 
 //when a user registers, a post request gets sended to adduser route
 // app.post('/api/adduser', (user, res) => {
@@ -385,6 +390,6 @@ app.use(bodyParser.json());
 
 //find saved tracks of user in database and push new track to this list
 
-app.get('/otherprofile.', function (req, res) {
-  console.log(req.query);
-  });
+// app.get('/otherprofile.', function (req, res) {
+//   console.log(req.query);
+//   });
