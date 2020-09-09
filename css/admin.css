@@ -1,0 +1,198 @@
+.admin-nav ul,
+.admin-nav ul li {
+    opacity: 0;
+}
+
+.admin-main {
+    opacity: 0;
+}
+
+#admin-header #logo {
+    margin-left: 5%;
+}
+
+#signup-form,
+#login-form {
+    width: 90%;
+    left: 5vw;
+    position: absolute;
+    z-index: 999;
+    top: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#signup-form h2,
+#login-form h2 {
+    width: 100%;
+
+}
+
+#signup-form label,
+#login-form label {
+    width: 20%;
+    max-width: 20%;
+}
+
+#signup-form input,
+#login-form input {
+    width: 75%;
+    padding: 5px;
+}
+
+#signup-form input,
+#signup-form label,
+#login-form input,
+#login-form label {
+    margin-top: 10px;
+}
+
+#signup-form .btn,
+#signup-form p,
+#login-form .btn,
+#login-form p {
+    margin-top: 30px;
+}
+
+#signup-form p,
+#login-form p {
+    margin-left: 20px;
+}
+
+#login-form a,
+#signup-form a {
+    color: #1c1c1c;
+    font-weight: bolder;
+}
+
+#sign-btns {
+    width: 40vw;
+    position: fixed;
+    z-index: 99999;
+    color: #fff;
+    right: 30vw;
+    top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+}
+
+#sign-btns li {
+    width: 48%;
+}
+
+#account-inf p{
+    color: #1c1c1c;
+}
+
+@media screen and (min-width: 1000px) {
+
+    .admin-nav ul,
+    .admin-nav ul li {
+        opacity: 0;
+    }
+
+    .admin-main {
+        opacity: 0;
+    }
+
+    #admin-header #logo {
+        margin-left: 5%;
+    }
+
+    #signup-form, #login-form, #addpost-form {
+        width: 50%;
+        position: absolute;
+        z-index: 999;
+        top: 25vh;
+        left: 15vw;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #addpost-form h4{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #addpost-form #tags{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 15px 0px;
+        width: 100%;
+    }
+
+    #addpost-form #tags label{
+        width: 30%;
+
+    }
+
+    #addpost-form #tags input{
+        width: 10%;
+        margin-right: 10%;
+    }
+
+    #addpost-form #imgs{
+        margin: 10px 0;
+    }
+
+    #addpost-form #post-content{
+        width: 100%;
+        height: 500px;
+        overflow-y: scroll;
+    }
+
+    form h2 {
+        width: 100%;
+
+    }
+
+   form label {
+        width: 20%;
+        max-width: 20%;
+    }
+
+    input {
+        width: 75%;
+        padding: 5px;
+    }
+
+    form input,
+    form label {
+        margin-top: 10px;
+    }
+
+    form .btn,
+    form p{
+        margin-top: 30px;
+    }
+
+    form p{
+        margin-left: 20px;
+    }
+
+    form a {
+        color: #1c1c1c;
+        font-weight: bolder;
+    }
+
+    #sign-btns {
+        width: 10vw;
+        position: fixed;
+        z-index: 99999;
+        color: #fff;
+        right: 15px;
+        top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: right;
+    }
+
+    #sign-btns li {
+        width: 48%;
+    }
+
+    #sign-btns a{
+        color: #fff;
+    }
+}

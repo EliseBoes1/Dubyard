@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Dubyard</title>
+</head>
+
+<body>
+
+    <nav id="sign-btns">
+        <li>
+            <a href="index.html">Log out</a>
+        </li>
+    </nav>
+    <header id="admin-header">
+        <a href="#" id="logo">
+            <img src="../img/logo_dubyard.png" alt="logo dubyard">
+        </a>
+        <a id="hamburger-menu">
+            <img src="../img/icons/menu.svg" alt="menu metro hamburger">
+        </a>
+        <nav id="main-nav">
+            <ul>
+                <li>
+                    <a href="#" class="selected">Creeër post</a>
+                </li>
+                <li>
+                    <a href="manageposts.html">Beheer posts</a>
+                </li>
+                <li>
+                    <a href="manageaccount.html">Beheer account</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="addpost-form">
+            <h2>Add post</h2>
+            <label for="title-post">Titel:</label><input id="title-post" type="text">
+            <label for="description-post">Beschrijving:</label><input id="description-post" type="text">
+
+            <div id="tags">
+                <h4>Tags</h4>
+                <label for="tag">Workshops</label><input id="workshops-input" type="checkbox" name="workshops">
+                <label for="tag">Vrijwilligers</label><input id="vrijwilligers-input" type="checkbox"
+                    name="vrijwilligers">
+                <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox" name="duurzaamheid">
+                <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding">
+                <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
+                <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
+            </div>
+
+            <label for="post-content">Inhoud: </label><input id="post-content" type="text">
+
+            <div id="imgs">
+                <label for="images">Afbeeldingen: </label><input id="images" type="file">
+            </div>
+
+            <button type="submit" id="submitpost"><a>Submit post</a></button>
+        </form>
+    </main>
+</body>
+<script type="module" src="../js/index.js"></script>
+
+</html>

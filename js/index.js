@@ -11,6 +11,7 @@ hamburgerMenu.addEventListener('click', function () {
     }
     this.src = '';
 });
+
 fetch('../data/blogposts.json')
     .then(response => {
         return response.json()
@@ -178,3 +179,12 @@ calendarDivs.forEach(calendarDiv => {
     <li>31</li>
 </ul>`
 });
+
+// fetch('https://jsonplaceholder.typicode.com/users', {
+//   headers: { "Content-Type": "application/json; charset=utf-8" },
+//   method: 'POST',
+//   body: JSON.stringify({
+//     username: 'Elon Musk',
+//     email: 'elonmusk@gmail.com',
+//   })
+// })

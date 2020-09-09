@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 27017;
+const port = 12345;
 const bodyParser = require('body-parser');
 const fs = require('fs');
 var bcrypt = require('bcryptjs');
 const MongoClient = require('mongodb').MongoClient;
 const user = 'Elise';
 const password = 'qckkln3tCjkGuxFt';
-// mongodb+srv://Elise:qckkln3tCjkGuxFt@dubyard.whehk.gcp.mongodb.net/Dubyard?retryWrites=true&w=majority
 const url = `mongodb+srv://Elise:Dub2020Yard@dubyard.whehk.gcp.mongodb.net/Dubyard?retryWrites=true&w=majority`;
 const client = new MongoClient(url);
 const dbName = 'Dubyard';
@@ -15,13 +14,15 @@ let loggedInUser;
 let loggedInUsername;
 var db;
 const appId = 'dubyard-jygvc';
-// mongodb+srv://Elise:<password>@dubyard.whehk.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority
+const cors = require('cors')
 
-// MongoClient.connect(url, (err, database) => {
-//   if (err) return console.log(err);
-//   db = database.db(dbName);
-//   app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-// });
+app.use(cors())
+
+MongoClient.connect(url, (err, database) => {
+  if (err) return console.log(err);
+  db = database.db(dbName);
+  app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+});
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -32,65 +33,61 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+// app.get('/signup', (req, res) => {
+//       const users = db.collection('Users');
+//       //search for the online user
+//       users.find({}).toArray(function (err, docs) {
+//         res.send(docs);
+//       });
+// });
+
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`)
+// })
 
 //when a user registers, a post request gets sended to adduser route
-// app.post('/api/adduser', (user, res) => {
-//   //Find collection of users
-//   const users = db.collection('users');
-//   //hash password
-//   const pwToHash = user.body.password;
-//   bcrypt.genSalt(10, function (err, salt) {
-//     bcrypt.hash(pwToHash, salt, function (err, hash) {
-//       user.body.password = hash;
-//       //Add userdata object provided by registration in frontend to database
-//       users.insertOne(user.body, (err, succes) => {
-//         console.log(succes);
-//         console.log(err);
-//       });
-//     });
-//   });
-//   //Create tracklist and playlist for user of type array
-//   users.findOne({
-//     'id': user.body.id
-//   }, {
-//     $set: {
-//       'savedTracks': [],
-//       'playlists': [],
-//       'friends': [],
-//       'groups': [],
-//       'messages': [],
-//       'activity': []
-//     }
-//   });
-// });
+app.post('/signup', (user, res) => {
+  console.log(res);
+  //Find collection of users
+  const users = db.collection('Users');
+  //hash password
+  const pwToHash = user.body.password;
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(pwToHash, salt, function (err, hash) {
+      user.body.password = hash;
+      //Add userdata object provided by registration in frontend to database
+      users.insertOne(user.body, (err, succes) => {
+        console.log(succes);
+        console.log(err);
+      });
+    });
+  });
+});
 
-// //When user logs in, their username gets saved to find their data in the database
-// app.post('/api/login', function (loggedInUserData, res) {
-//   const users = db.collection('users');
-//   if (loggedInUserData.body == null) {
-//     loggedInUser = '';
-//     loggedInUsername = '';
-//   } else {
-//     users.findOne({
-//       'username': loggedInUserData.body.username
-//     }).then(result => {
-//       bcrypt.compare(loggedInUserData.body.password, result.password).then((res) => {
-//         if (res == true) {
-//           let user = result;
-//           loggedInUser = result.id;
-//           loggedInUsername = result.username;
-//           res.send(user);
-//         } else {
-//           let user = null;
-//           res.send(null);
-//         }
-//       });
-//     });
-//   }
-// });
+//When user logs in, their username gets saved to find their data in the database
+app.post('/api/login', function (loggedInUserData, res) {
+  const users = db.collection('users');
+  if (loggedInUserData.body == null) {
+    loggedInUser = '';
+    loggedInUsername = '';
+  } else {
+    users.findOne({
+      'username': loggedInUserData.body.username
+    }).then(result => {
+      bcrypt.compare(loggedInUserData.body.password, result.password).then((res) => {
+        if (res == true) {
+          let user = result;
+          loggedInUser = result.id;
+          loggedInUsername = result.username;
+          res.send(user);
+        } else {
+          let user = null;
+          res.send(null);
+        }
+      });
+    });
+  }
+});
 
 // //Make route for routes
 // app.get('/', (req, res) => {

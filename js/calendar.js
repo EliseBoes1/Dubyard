@@ -1,7 +1,17 @@
 'use strict';
 
-let calendarDiv = document.getElementById('workshop-calendar');
-calendarDiv.insertAdjacentHTML('beforeend', `
+fetch('../data/calendar.json')
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        showACalendarCards(data.calendar);
+    })
+    .catch(err => {})
+
+let showCalendarCards = calendarCards => {
+    let calendarDiv = document.getElementById('workshop-calendar');
+    calendarDiv.insertAdjacentHTML('beforeend', `
 <div id="month-controls">
                 <img src="img/icons/left_arrow.svg" alt="left arrow left-arrow">
                 <p>
@@ -118,3 +128,5 @@ calendarDiv.insertAdjacentHTML('beforeend', `
                 </figure>
                 </div>
 `)
+
+}
