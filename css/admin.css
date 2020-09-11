@@ -100,7 +100,7 @@
         margin-left: 5%;
     }
 
-    #signup-form, #login-form, #addpost-form {
+    #signup-form, #login-form, #addpost-form, #manage-acc-form {
         width: 50%;
         position: absolute;
         z-index: 999;
@@ -208,5 +208,22 @@
         font-weight: 800;
         margin: 20vh 0px 5vh 0 !important; 
         display: none;
+    }
+
+    #user-inf{
+        color: #fff;
+        z-index: 99999;
+        position: absolute;
+        right: 15px;
+        top: 50px;
+    }
+
+    #user-inf h4{
+        color: #fff;
+    }
+
+    #logout{
+        position: absolute;
+        z-index: 99999;
     }
 }

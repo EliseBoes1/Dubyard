@@ -1,19 +1,4 @@
 'use strict';
-// import bar from './bar';
-
-// bar();
-
-// import _ from 'lodash';
-
-// function component() {
-//   const element = document.createElement('div');
-
-//   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-//   return element;
-// }
-
-// document.body.appendChild(component());
 
 let signupForm = document.getElementById('signup-form');
 let loginForm = document.getElementById('login-form');
@@ -105,15 +90,15 @@ let loginUser = () => {
 
     postData('http://127.0.0.1:12345/login', loggedInUser)
         .then(data => {
-            if(data.resp == null) {
+            if (data.resp != null) {
                 document.getElementById('login-pw-warn').style.display = 'block';
+                console.log(data);
             } else {
+                console.log(data);
                 document.getElementById('login-pw-warn').style.display = 'none';
+                localStorage.setItem('loggedIn', true);
+                localStorage.setItem('userId', data._id);
                 window.location.href = 'addpost.html';
             }
         });
 }
-// else {
-// document.getElementById('login-warning').style.display = 'block';
-// }
-// }

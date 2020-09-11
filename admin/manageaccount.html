@@ -37,20 +37,16 @@
         </nav>
     </header>
     <main>
-        <section id="account-inf">
-            <p>Naam:</p>
-            <p> Elise Boes</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-        </section>
+        <form id="manage-acc-form">
+            <h2>Edit profile</h2>
+            <label for="firstname-manage">First name:</label><input id="firstname-manage" type="text">
+            <label for="lastname-manage">Last name:</label><input id="lastname-manage" type="text">
+            <label for="email-manage">Email</label><input id="email-manage" type="email">
+            <label for="password-manage">Password</label><input id="password-manage" type="password">
+            <label for="rptpassword-manage">Repeat password</label><input id="rptpassword-manage" type="password">
+            <p class="warning" id="manage-pw-warning">Password do not match</p>
+            <button type="submit" class="btn" id="manage-btn"><a>Save changes</a></button>
+        </form>
     </main>
 </body>
 <script type="module" src="./js/index.js"></script>

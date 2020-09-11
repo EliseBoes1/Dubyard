@@ -14,7 +14,9 @@ let loggedInUser;
 let loggedInUsername;
 var db;
 const appId = 'dubyard-jygvc';
-const cors = require('cors')
+const cors = require('cors');
+const ObjectId = require('mongodb').ObjectId; 
+
 
 app.use(cors())
 
@@ -48,43 +50,62 @@ app.post('/signup', (user, res) => {
         bcrypt.hash(pwToHash, salt, function (err, hash) {
           user.body.password = hash;
           users.insertOne(user.body, (err, succes) => {
-            console.log(succes);
-            console.log(err);
-            res.send(user);
+            // console.log(succes);
+            // console.log(err);
           });
         });
       });
+      res.send(user.body);
     }else{
-      res.send({'resp': null});
+      res.send({'resp': 'false'});
     }
   });
 });
 
 app.post('/login', function (loggedInUserData, res) {
   const users = db.collection('Users');
-  console.log(loggedInUserData)
   if (loggedInUserData.body != null) {
     users.findOne({
       'email': loggedInUserData.body.email
     }).then(result => {
       bcrypt.compare(loggedInUserData.body.password, result.password).then((check) => {
         if (check == true) {
-          let user = result;
           loggedInUser = result.id;
           loggedInEmail = result.email;
-          res.send(user);
+          res.send(result);
         } else {
-          res.send({'resp': null});
+          res.send({'resp': 'false'});
         }
       });
     });
   }
 });
 
-// //Make route for routes
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/routes.html')
-// });
+//Get changes that have to the use proflile
+app.post('/editprofile', function (req, res) {
+  const users = db.collection('Users');
+  //find data of online user
+  users.updateOne({
+    'id': loggedInUser
+  }, {
+    //Set current values (replace previous val)
+    $set: {
+      'firstname': req.body.editfirstname,
+      'lastname': req.body.editlastname,
+      'password': req.body.password,
+      'email': req.body.email
+    }
+  });
+});
+
+
+app.post('/getUser', (user, res) => {
+  const users = db.collection('Users');
+  var o_id = new ObjectId(user.body.id);
+  users.findOne({'_id': o_id}).then(result => {
+    res.send(result);
+  });
+});
 
 // app.post('/api/addsong', function (req, res) {
 //   const users = db.collection('users');
@@ -115,17 +136,6 @@ app.post('/login', function (loggedInUserData, res) {
 //   });
 // });
 
-// app.get('/api/login', (req, res) => {
-//   const users = db.collection('users');
-//   //search for the online user
-//   users.findOne({
-//     'id': loggedInUser
-//     //Send their data to the frontend
-//   }).then(result => {
-//     res.send(result);
-//  });
-// });
-
 // app.get('/api/userimg', (req, res) => {
 //   fs.readFile('userimg.json', function (err, data) {
 //     let allImg = JSON.parse(data);
@@ -135,17 +145,6 @@ app.post('/login', function (loggedInUserData, res) {
 //   });
 // })
 
-// app.post('/api/finduser', (user, res) => {
-//   const users = db.collection('users');
-//   //search for the  requested user
-//   users.findOne({
-//     'id': user.body.id
-//     //Send their data to the frontend
-//   }).then(result => {
-//     res.send(result);
-//   });
-// });
-
 // app.get('/api/allusers', (req, res) => {
 //   const users = db.collection('users');
 //   //search for the online user
@@ -154,25 +153,6 @@ app.post('/login', function (loggedInUserData, res) {
 //   });
 // });
 
-// //Get changes that have to the use proflile
-// app.post('/api/editprofile', function (req, res) {
-//   const users = db.collection('users');
-//   //find data of online user
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     //Set current values (replace previous val)
-//     $set: {
-//       'username': req.body.editusername,
-//       'firstname': req.body.editfirstname,
-//       'lastname': req.body.editlastname,
-//       'age': req.body.editage,
-//       'bio': req.body.editbio,
-//       'place': req.body.editplace,
-//       'profilepic': req.body.profilePic
-//     }
-//   });
-// });
 
 // app.post('/api/saveimg', function (req, res) {
 //   fs.readFile('userimg.json', function (err, data) {
