@@ -113,14 +113,6 @@ let goToBlogPost = allPosts => {
     });
 }
 
-console.log(document.getElementById('blogpost').length)
-
-// if(document.getElementById('blogpost').length == undefined){
-//     console.log(true);
-// }else{
-//     console.log(false)
-// }
-
 let calendarDivs = Array.from(document.getElementsByClassName('calendar'));
 calendarDivs.forEach(calendarDiv => {
     calendarDiv.innerHTML = `

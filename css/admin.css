@@ -195,4 +195,18 @@
     #sign-btns a{
         color: #fff;
     }
+
+    .warning{
+        width: 100%;
+        color: #ff0000;
+        margin: 20vh 0px 0px 0 !important; 
+        display: none;
+    }
+
+    .succes{
+        width: 100%;
+        font-weight: 800;
+        margin: 20vh 0px 5vh 0 !important; 
+        display: none;
+    }
 }

@@ -33,56 +33,48 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// app.get('/signup', (req, res) => {
-//       const users = db.collection('Users');
-//       //search for the online user
-//       users.find({}).toArray(function (err, docs) {
-//         res.send(docs);
-//       });
-// });
-
 // app.listen(port, () => {
 //   console.log(`Example app listening at http://localhost:${port}`)
 // })
 
-//when a user registers, a post request gets sended to adduser route
 app.post('/signup', (user, res) => {
-  console.log(res);
-  //Find collection of users
   const users = db.collection('Users');
-  //hash password
-  const pwToHash = user.body.password;
-  bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash(pwToHash, salt, function (err, hash) {
-      user.body.password = hash;
-      //Add userdata object provided by registration in frontend to database
-      users.insertOne(user.body, (err, succes) => {
-        console.log(succes);
-        console.log(err);
+  users.findOne({
+    'email': user.body.email
+  }).then(result => {
+    if (result == null) {
+      const pwToHash = user.body.password;
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(pwToHash, salt, function (err, hash) {
+          user.body.password = hash;
+          users.insertOne(user.body, (err, succes) => {
+            console.log(succes);
+            console.log(err);
+            res.send(user);
+          });
+        });
       });
-    });
+    }else{
+      res.send({'resp': null});
+    }
   });
 });
 
-//When user logs in, their username gets saved to find their data in the database
-app.post('/api/login', function (loggedInUserData, res) {
-  const users = db.collection('users');
-  if (loggedInUserData.body == null) {
-    loggedInUser = '';
-    loggedInUsername = '';
-  } else {
+app.post('/login', function (loggedInUserData, res) {
+  const users = db.collection('Users');
+  console.log(loggedInUserData)
+  if (loggedInUserData.body != null) {
     users.findOne({
-      'username': loggedInUserData.body.username
+      'email': loggedInUserData.body.email
     }).then(result => {
-      bcrypt.compare(loggedInUserData.body.password, result.password).then((res) => {
-        if (res == true) {
+      bcrypt.compare(loggedInUserData.body.password, result.password).then((check) => {
+        if (check == true) {
           let user = result;
           loggedInUser = result.id;
-          loggedInUsername = result.username;
+          loggedInEmail = result.email;
           res.send(user);
         } else {
-          let user = null;
-          res.send(null);
+          res.send({'resp': null});
         }
       });
     });
