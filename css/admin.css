@@ -247,4 +247,26 @@
     #voeding-input-opts input {
         width: 65% !important;
     }
+
+    #manage-posts{
+        margin-top: 20vh;
+    }
+
+    #manage-posts article {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 30px 0;
+    }
+
+    #manage-posts h2,
+    #manage-posts p {
+        width: 100%;
+    }
+
+    #manage-posts a {
+        border: 1px solid #1c1c1c;
+        padding: 10px;
+        font-weight: 500;
+    }
 }

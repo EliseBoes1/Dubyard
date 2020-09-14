@@ -16,7 +16,7 @@ let db;
 const appId = 'dubyard-jygvc';
 const cors = require('cors');
 const ObjectId = require('mongodb').ObjectId;
-
+var uniqid = require('uniqid');
 
 app.use(cors())
 
@@ -46,8 +46,8 @@ app.post('/signup', (user, res) => {
         bcrypt.hash(pwToHash, salt, function (err, hash) {
           user.body.password = hash;
           users.insertOne(user.body, (err, succes) => {
-            // console.log(succes);
-            // console.log(err);
+            console.log(succes);
+            console.log(err);
           });
         });
       });
@@ -71,12 +71,10 @@ app.post('/login', function (loggedInUserData, res) {
           loggedInUser = result.id;
           loggedInEmail = result.email;
           res.send(result);
-          console.log('true')
         } else {
           res.send({
             'resp': 'false'
           });
-          console.log('false');
         }
       });
     });
@@ -103,7 +101,6 @@ app.post('/editprofile', function (req, res) {
 
 app.post('/getUser', (user, res) => {
   const users = db.collection('Users');
-  console.log(user.body.id);
   var o_id = new ObjectId(user.body.id);
   users.findOne({
     '_id': o_id
@@ -112,19 +109,31 @@ app.post('/getUser', (user, res) => {
   });
 });
 
-app.post('/addpost', function (req, res) {
+app.post('/addpost', function (post, res) {
   const posts = db.collection('Posts');
   const users = db.collection('Users');
+  post.body.id = uniqid();
+  var o_id = new ObjectId( post.body.user);
   users.updateOne({
-    'id': loggedInUser
+    '_id': o_id
   }, {
-    //Set current values (replace previous val)
-    $set: {
-      'firstname': req.body.editfirstname
-    },
     $push: {
-      'blogposts': req.body.id
+      'blogposts': post.body.id
     }
+  });
+  posts.insertOne(post.body, (err, succes) => {
+    console.log(succes);
+    console.log(err);
+  });
+});
+
+app.post('/getposts', function (id, res) {
+  const posts = db.collection('Posts');
+  posts.find({
+    'user': id.body.id
+  }).toArray().then(result => {
+    console.log(result);
+    res.send(result);
   });
 });
 

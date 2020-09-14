@@ -1,3 +1,4 @@
+let user;
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
@@ -11,25 +12,33 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-
 let getUser = () => {
     postData('http://127.0.0.1:12345/getUser', {'id': localStorage.getItem('userId')})
         .then(data => {
-           return data;
+           user = data;
         });
+        showUser();
+}
+
+let showUser = (user) => {
+    let name = localStorage.getItem('name');
+    document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;
+
+    // let changeProfileInputs = Array.from(document.querySelector('#manage-acc-form input'));
+    // changeProfileInputs.forEach(input =>{
+    //     console.log(input);
+    // })
+    console.log(user)
+
 }
 
 let showLoggedInUser = () => {
     if (localStorage.getItem('loggedIn')) {
-        showUser('lala');
+        showUser();
     } else {
         document.getElementById('user-inf').innerHTML = '';
     }
 }
 
-let showUser = (user = '') => {
-    let name = localStorage.getItem('name');
-    document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;
-}
-
+getUser();
 showLoggedInUser();
