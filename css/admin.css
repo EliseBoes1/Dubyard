@@ -248,8 +248,11 @@
         width: 65% !important;
     }
 
-    #manage-posts{
+    #manage-posts {
         margin-top: 20vh;
+        position: absolute;
+        z-index: 5;
+        left: 15%;
     }
 
     #manage-posts article {
@@ -260,13 +263,38 @@
     }
 
     #manage-posts h2,
-    #manage-posts p {
+    #manage-posts p,
+    #manage-posts .post-tags {
         width: 100%;
+        margin-bottom: 5px;
     }
 
     #manage-posts a {
         border: 1px solid #1c1c1c;
         padding: 10px;
         font-weight: 500;
+    }
+
+
+    #edit-post {
+        background-color: #fff;
+        width: 100vw;
+        height: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        display: none;
+        flex-wrap: wrap;
+    }
+
+    #edit-post #tags>a {
+        width: 50%;
+        text-align: center;
+    }
+
+    #edit-post #tags>a>input {
+        width: 100%;
+        margin-top: 50px;
     }
 }

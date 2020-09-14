@@ -113,7 +113,7 @@ app.post('/addpost', function (post, res) {
   const posts = db.collection('Posts');
   const users = db.collection('Users');
   post.body.id = uniqid();
-  var o_id = new ObjectId( post.body.user);
+  var o_id = new ObjectId(post.body.user);
   users.updateOne({
     '_id': o_id
   }, {
@@ -132,39 +132,35 @@ app.post('/getposts', function (id, res) {
   posts.find({
     'user': id.body.id
   }).toArray().then(result => {
-    console.log(result);
     res.send(result);
   });
 });
 
-// app.post('/api/addsong', function (req, res) {
-//   const users = db.collection('users');
-//   //find saved tracks of user in database and push new track to this list
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $push: {
-//       'savedTracks': {
-//         'trackId': req.body.trackId
-//       },
-//       'activity': req.body.activity
-//     }
-//   });
-// });
+app.post('/removepost', function (req, res) {
+  const users = db.collection('Users');
+  const posts = db.collection('Posts');
+  var o_id = new ObjectId(req.body.user);
+  users.updateOne({
+    '__id': o_id
+  }, {
+    $pull: {
+      'blogposts': req.body.post
+    }
+  });
+  posts.deleteOne({
+    'id': req.body.post
+  })
+});
 
-// app.post('/api/removetrack', function (req, res) {
-//   const users = db.collection('users');
-//   //find saved tracks of user in database and push new track to this list
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $pull: {
-//       'savedTracks': {
-//         'trackId': req.body.trackId
-//       }
-//     }
-//   });
-// });
+app.post('/editpost', (req, res) => {
+  console.log(req.body)
+  const posts = db.collection('Posts');
+  posts.updateOne({
+    'id': req.body.id
+  }, {
+    $set: req.body
+  })
+});
 
 // app.get('/api/userimg', (req, res) => {
 //   fs.readFile('userimg.json', function (err, data) {
@@ -174,15 +170,6 @@ app.post('/getposts', function (id, res) {
 //     console.log(allImg);
 //   });
 // })
-
-// app.get('/api/allusers', (req, res) => {
-//   const users = db.collection('users');
-//   //search for the online user
-//   users.find({}).toArray(function (err, docs) {
-//     res.send(docs);
-//   });
-// });
-
 
 // app.post('/api/saveimg', function (req, res) {
 //   fs.readFile('userimg.json', function (err, data) {
@@ -202,193 +189,3 @@ app.post('/getposts', function (id, res) {
 //     'id': loggedInUser
 //   });
 // });
-
-// app.post('/api/createplaylist', (req, res) => {
-//   const playlists = db.collection('playlists');
-//   const users = db.collection('users');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $push: {
-//       'playlists': req.body.id
-//     }
-//   });
-//   playlists.insertOne(req.body, (err, succes) => {
-//     console.log(succes);
-//     console.log(err);
-//   });
-// });
-
-// app.post('/api/addtracktoplaylist', (req, res) => {
-//   const playlists = db.collection('playlists');
-//   playlists.updateOne({
-//     'id': req.body.playlistId
-//   }, {
-//     $push: {
-//       'tracks': req.body.trackId
-//     }
-//   });
-// });
-
-// app.get('/api/findallplaylists', (req, res) => {
-//   const playlists = db.collection('playlists');
-//   playlists.find({}).toArray(function (err, docs) {
-//     res.send(docs);
-//     console.log(err);
-//   });
-// });
-
-// app.get('/api/finduserplaylists', (req, res) => {
-//   const playlists = db.collection('playlists');
-//   playlists.find({
-//     'users': loggedInUsername
-//   }).toArray(function (err, docs) {
-//     res.send(docs);
-//     console.log(err);
-//   });
-// });
-
-// app.post('/api/tracksofplaylist', (req, res) => {
-//   const playlists = db.collection('playlists');
-//   playlists.findOne({
-//     'id': req.body.id
-//   }).then(result => {
-//     res.send(result);
-//   });;
-// });
-
-// app.post('/api/deleteplaylist', (playlistInf, res) => {
-//   const users = db.collection('users');
-//   const playlists = db.collection('playlists');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $pull: {
-//       'playlists': {
-//         'id': playlistInf.body.id
-//       }
-//     }
-//   });
-//   playlists.deleteOne({
-//     'id': playlistInf.body.id
-//   })
-// });
-
-// app.post('/api/creategroup', (req, res) => {
-//   const users = db.collection('users');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $push: {
-//       'groups': req.body
-//     }
-//   });
-// });
-
-// app.post('/api/deletegroup', (groupInf, res) => {
-//   const users = db.collection('users');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $pull: {
-//       'groups': {
-//         'id': groupInf.body.id
-//       }
-//     }
-//   });
-// });
-
-// app.post('/api/addconnect', (req, res) => {
-//   const users = db.collection('users');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $push: {
-//       'friends': req.body,
-//       'activity': req.body.activity
-//     }
-//   });
-// });
-
-// app.post('/api/removeconnect', (req, res) => {
-//   const users = db.collection('users');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $pull: {
-//       'friends': {
-//         'username': req.body.username
-//       }
-//     }
-//   });
-// });
-
-// app.post('/api/sendmessage', (req, res) => {
-//   const users = db.collection('users');
-//   const messages = db.collection('messages');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $push: {
-//       'messages': req.body.messageId
-//     }
-//   });
-//   users.updateOne({
-//     'id': req.body.receiverId
-//   }, {
-//     $push: {
-//       'messages': req.body.messageId
-//     }
-//   });
-//   messages.insertOne(req.body, (err, succes) => {
-//     console.log(err);
-//   });
-// });
-
-// app.post('/api/readmessage', (req, res) => {
-//   const messages = db.collection('messages');
-//   messages.updateOne({
-//     'messageId': req.body.messageId
-//   }, {
-//     $set: {
-//       'status': true
-//     }
-//   });
-// });
-
-// app.post('/api/removemessage', (req, res) => {
-//   const users = db.collection('users');
-//   const messages = db.collection('messages');
-//   users.updateOne({
-//     'id': loggedInUser
-//   }, {
-//     $pull: {
-//       'messages': req.body.messageId
-//     }
-//   });
-// });
-
-// app.get('/api/findmessages', (req, res) => {
-//   const messages = db.collection('messages');
-//   const users = db.collection('users');
-//   messages.find({}).toArray(function (err, docs) {
-//     res.send(docs);
-//     console.log(err);
-//   });
-// });
-/*app.post('/api/connecttogroup', function (req, res) {
-  const users = db.collection('users');
-  users.updateOne({
-    'username': loggedInUser
-  }, {
-    $pull: {
-      'groups': {'id':req.body.username}
-    }
-  });
-});*/
-
-//find saved tracks of user in database and push new track to this list
-
-// app.get('/otherprofile.', function (req, res) {
-//   console.log(req.query);
-//   });

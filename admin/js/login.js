@@ -24,11 +24,10 @@ let showUser = (user) => {
     let name = localStorage.getItem('name');
     document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;
 
-    // let changeProfileInputs = Array.from(document.querySelector('#manage-acc-form input'));
+    // let changeProfileInputs = document.querySelector('#manage-acc-form input');
     // changeProfileInputs.forEach(input =>{
     //     console.log(input);
     // })
-    console.log(user)
 
 }
 
@@ -40,5 +39,7 @@ let showLoggedInUser = () => {
     }
 }
 
-getUser();
+if(localStorage.getItem('loggedIn')){
+    getUser();
+}
 showLoggedInUser();
