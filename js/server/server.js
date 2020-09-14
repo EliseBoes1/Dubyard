@@ -12,10 +12,10 @@ const client = new MongoClient(url);
 const dbName = 'Dubyard';
 let loggedInUser;
 let loggedInUsername;
-var db;
+let db;
 const appId = 'dubyard-jygvc';
 const cors = require('cors');
-const ObjectId = require('mongodb').ObjectId; 
+const ObjectId = require('mongodb').ObjectId;
 
 
 app.use(cors())
@@ -35,10 +35,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-// app.listen(port, () => {
-//   console.log(`Example app listening at http://localhost:${port}`)
-// })
-
 app.post('/signup', (user, res) => {
   const users = db.collection('Users');
   users.findOne({
@@ -56,8 +52,10 @@ app.post('/signup', (user, res) => {
         });
       });
       res.send(user.body);
-    }else{
-      res.send({'resp': 'false'});
+    } else {
+      res.send({
+        'resp': 'false'
+      });
     }
   });
 });
@@ -73,8 +71,12 @@ app.post('/login', function (loggedInUserData, res) {
           loggedInUser = result.id;
           loggedInEmail = result.email;
           res.send(result);
+          console.log('true')
         } else {
-          res.send({'resp': 'false'});
+          res.send({
+            'resp': 'false'
+          });
+          console.log('false');
         }
       });
     });
@@ -101,9 +103,28 @@ app.post('/editprofile', function (req, res) {
 
 app.post('/getUser', (user, res) => {
   const users = db.collection('Users');
+  console.log(user.body.id);
   var o_id = new ObjectId(user.body.id);
-  users.findOne({'_id': o_id}).then(result => {
+  users.findOne({
+    '_id': o_id
+  }).then(result => {
     res.send(result);
+  });
+});
+
+app.post('/addpost', function (req, res) {
+  const posts = db.collection('Posts');
+  const users = db.collection('Users');
+  users.updateOne({
+    'id': loggedInUser
+  }, {
+    //Set current values (replace previous val)
+    $set: {
+      'firstname': req.body.editfirstname
+    },
+    $push: {
+      'blogposts': req.body.id
+    }
   });
 });
 

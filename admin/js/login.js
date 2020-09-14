@@ -13,7 +13,7 @@ async function postData(url = '', data = {}) {
 
 
 let getUser = () => {
-    const response = postData('http://127.0.0.1:12345/getUser', {'id': localStorage.getItem('userId')})
+    postData('http://127.0.0.1:12345/getUser', {'id': localStorage.getItem('userId')})
         .then(data => {
            return data;
         });
@@ -21,15 +21,15 @@ let getUser = () => {
 
 let showLoggedInUser = () => {
     if (localStorage.getItem('loggedIn')) {
-        let user = getUser();
-        showUser(user);
+        showUser('lala');
     } else {
         document.getElementById('user-inf').innerHTML = '';
     }
 }
 
-let showUser = (user) => {
-    console.log(user);
+let showUser = (user = '') => {
+    let name = localStorage.getItem('name');
+    document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;
 }
 
 showLoggedInUser();

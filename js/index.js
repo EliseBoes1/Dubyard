@@ -180,3 +180,59 @@ calendarDivs.forEach(calendarDiv => {
 //     email: 'elonmusk@gmail.com',
 //   })
 // })
+
+fetch('../data/blogposts.json')
+    .then(response => {
+        return response.json()
+    })
+    .then(data => {
+        data.calendar.forEach(calendarPost => {
+            if (data.calendar.indexOf(calendarPost) == 0) {
+                document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
+                <figure class="head-post">
+                <div class="num-calendar">${calendarPost.day}</div>
+                <div class="img-wrapper">
+                   <img src="${calendarPost.img}" alt="">
+                </div>
+                <figcaption>
+                    <h4>${calendarPost.title}</h4>
+                    <p>${calendarPost.description}</p>
+                    <div class="post-inf">
+                        <div class="date">
+                            <img src="img/icons/clock_white.svg" alt="clock time hour">
+                            <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
+                        </div>
+                        <div class="location">
+                            <img src="img/icons/pin_white.svg" alt="pin location maps">
+                            <p>${calendarPost.location}k</p>
+                        </div>
+                    </div>
+                </figcaption>
+            </figure>
+            `)
+            } else {
+                document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
+            <figure class="reg-post">
+            <div class="num-calendar">${calendarPost.day}</div>
+            <div class="img-wrapper">
+               <img src="${calendarPost.img}" alt="">
+            </div>
+            <figcaption>
+                <h4>${calendarPost.title}</h4>
+                <p>${calendarPost.description}</p>
+                <div class="post-inf">
+                    <div class="date">
+                        <img src="img/icons/clock_white.svg" alt="clock time hour">
+                        <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
+                    </div>
+                    <div class="location">
+                        <img src="img/icons/pin_white.svg" alt="pin location maps">
+                        <p>${calendarPost.location}k</p>
+                    </div>
+                </div>
+            </figcaption>
+        </figure>
+        `)
+            }
+        });
+    })

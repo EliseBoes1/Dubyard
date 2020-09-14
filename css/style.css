@@ -336,7 +336,6 @@ header nav ul li a {
     max-height: 100vh;
     top: 20vh;
     padding: 50px;
-    background-color: var(--l-green-op);
     color: #fff;
     left: 7.5%;
 }
@@ -1463,6 +1462,7 @@ footer #sitemap {
 
     #workshop-calendar .head-post .img-wrapper {
         max-height: 40vh;
+        max-width: 30%;
     }
 
     #workshop-calendar #posts figcaption h4,
@@ -1492,6 +1492,16 @@ footer #sitemap {
         margin-bottom: 20px;
         font-size: 2.8rem;
     }
+
+    #calendar-posts{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+#calendar-posts .reg-post{
+    width: calc(95%/3);
+}
 
     /*------------------------------------------------------------------------
  --------------------------------- DUURZAAMHEID ---------------------------------

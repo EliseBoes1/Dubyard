@@ -81,7 +81,7 @@
     width: 48%;
 }
 
-#account-inf p{
+#account-inf p {
     color: #1c1c1c;
 }
 
@@ -100,7 +100,10 @@
         margin-left: 5%;
     }
 
-    #signup-form, #login-form, #addpost-form, #manage-acc-form {
+    #signup-form,
+    #login-form,
+    #addpost-form,
+    #manage-acc-form {
         width: 50%;
         position: absolute;
         z-index: 999;
@@ -110,36 +113,35 @@
         flex-wrap: wrap;
     }
 
-    #addpost-form h4{
+    #addpost-form h4 {
         width: 100%;
         margin-top: 30px;
     }
 
-    #addpost-form #tags{
+    #addpost-form #tags {
         display: flex;
         flex-wrap: wrap;
         margin: 15px 0px;
         width: 100%;
     }
 
-    #addpost-form #tags label{
+    #addpost-form #tags label {
         width: 30%;
 
     }
 
-    #addpost-form #tags input{
+    #addpost-form #tags input {
         width: 10%;
         margin-right: 10%;
     }
 
-    #addpost-form #imgs{
+    #addpost-form #imgs {
         margin: 10px 0;
     }
 
-    #addpost-form #post-content{
+    #addpost-form #post-content {
         width: 100%;
-        height: 500px;
-        overflow-y: scroll;
+        min-height: 80vh;
     }
 
     form h2 {
@@ -147,7 +149,7 @@
 
     }
 
-   form label {
+    form label {
         width: 20%;
         max-width: 20%;
     }
@@ -163,11 +165,11 @@
     }
 
     form .btn,
-    form p{
+    form p {
         margin-top: 30px;
     }
 
-    form p{
+    form p {
         margin-left: 20px;
     }
 
@@ -192,25 +194,25 @@
         width: 48%;
     }
 
-    #sign-btns a{
+    #sign-btns a {
         color: #fff;
     }
 
-    .warning{
+    .warning {
         width: 100%;
         color: #ff0000;
-        margin: 20vh 0px 0px 0 !important; 
+        margin: 20vh 0px 0px 0 !important;
         display: none;
     }
 
-    .succes{
+    .succes {
         width: 100%;
         font-weight: 800;
-        margin: 20vh 0px 5vh 0 !important; 
+        margin: 20vh 0px 5vh 0 !important;
         display: none;
     }
 
-    #user-inf{
+    #user-inf {
         color: #fff;
         z-index: 99999;
         position: absolute;
@@ -218,12 +220,31 @@
         top: 50px;
     }
 
-    #user-inf h4{
+    #user-inf h4 {
         color: #fff;
     }
 
-    #logout{
+    #logout {
         position: absolute;
         z-index: 99999;
+    }
+
+    #calendar-input-opts,
+    #voeding-input-opts {
+        width: 100%;
+        display: none;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+    #calendar-input-opts label,
+    #voeding-input-opts label {
+        width: 25% !important;
+    }
+
+    #calendar-input-opts input,
+    #voeding-input-opts input {
+        width: 65% !important;
     }
 }
