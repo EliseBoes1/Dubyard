@@ -1,1 +1,2 @@
-const editor = new EditorJS('post-content');
+CKEDITOR.replace( 'post-content' );
+

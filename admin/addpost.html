@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="js/ckeditor_4.15.0_full/ckeditor/ckeditor.js"></script>
     <title>Dubyard</title>
 </head>
 
@@ -45,7 +46,9 @@
             <label for="title-post">Titel:</label><input id="title-post" type="text">
             <label for="description-post">Beschrijving:</label><input id="description-post" type="text">
 
-            <label for="post-content">Inhoud: </label><div id="post-content"></div>
+            <label for="post-content">Inhoud: </label><textarea name="post-content" id="post-content" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor 4.
+            </textarea>
 
             <div id="imgs">
                 <label for="images">Afbeeldingen: </label><input id="images" type="file">
