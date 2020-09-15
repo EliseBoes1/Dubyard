@@ -1,6 +1,9 @@
 if (document.querySelector('#addpost-form #submit-post') != null) {
     CKEDITOR.replace('posteditor');
-    CKEDITOR.replace('posteditor-edit');
+};
+
+if (document.querySelector('#edit-post #addpost-form') != null) {
+    CKEDITOR.replace('posteditoredit');
 };
 
 async function postData(url = '', data = {}) {
@@ -29,7 +32,7 @@ let showPosts = () => {
                             <h2>${post.title}</h2>
                             <p>${post.description}</p>
                             <ul class="post-tags"> </ul>
-                            <a class="edit-post" ${post.id}>Edit post</a><a class="remove-post ${post.id}">Remove post</a>
+                            <a class="edit-post ${post.id}">Edit post</a><a class="remove-post ${post.id}">Remove post</a>
                         </article>
                     `)
                     post.tags.forEach(tag => {
@@ -44,7 +47,10 @@ let showPosts = () => {
                             postData('http://127.0.0.1:12345/removepost', {
                                 user: localStorage.getItem('userId'),
                                 post: postId
-                            }).then(data => {});
+                            }).then(data => {
+                                window.location.href = "managepost.html";
+                                location.reload();
+                            });
                         });
                     })
                     let editBtns = document.querySelectorAll('.edit-post');
@@ -52,27 +58,45 @@ let showPosts = () => {
                         editBtn.addEventListener('click', function () {
                             document.getElementById('edit-post').style.display = "flex";
                             let postId = this.classList[1];
-                            postData('http://127.0.0.1:12345/getUser', {
-                                id: localStorage.getItem('userId')
+
+                            let setForm = (post) => {
+                                console.log(post.description)
+                                document.getElementById('title-post').value = post.title;
+                                document.getElementById('description-post').value = post.description;
+                                document.getElementById('content-post').value = post.content;
+
+                                //CHECKED BUTTONS CHECKEN
+                                // document.getElementById('title-post').value = data.title;
+                            }
+
+                            postData('http://127.0.0.1:12345/getpost', {
+                                id: postId
                             }).then(data => {
-                                // document.getElementById('cancel').addEventListener('click', function () {
-                                //     document.getElementById('edit-post').style.display = "none";
-                                // })
-                                // let postId = this.classList[1];
-                                // const editedPost = {
-                                //     title: document.getElementById('title-post').value,
-                                //     content: CKEDITOR.instances.posteditor2.getData(),
-                                //     description: document.getElementById('description-post').value,
-                                //     user: localStorage.getItem('userId'),
-                                //     tags: [],
-                                //     id: postId
-                                // }
-                                // let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
-                                // Array.from(checkedTags).forEach(tag => {
-                                //     let tagName = tag.id;
-                                //     editedPost.tags.push(tagName.replace('-input', ''));
-                                // });
-                                // postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
+                                // setForm(data);
+                                // sendForm(data);
+                                
+                                document.getElementById('cancel').addEventListener('click', function () {
+                                    document.getElementById('edit-post').style.display = "none";
+                                })
+                                document.getElementById('edit-post-btn').addEventListener('click', function () {
+                                    const editedPost = {
+                                        title: document.getElementById('title-post').value,
+                                        content: CKEDITOR.instances.posteditoredit.getData(),
+                                        description: document.getElementById('description-post').value,
+                                        tags: [],
+                                        id: postId
+                                    }
+                                    let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
+                                    Array.from(checkedTags).forEach(tag => {
+                                        let tagName = tag.id;
+                                        editedPost.tags.push(tagName.replace('-input', ''));
+                                    });
+                                    console.log(editedPost)
+                                    console.log('click');
+                                    postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {
+                                        console.log(data);
+                                    });
+                                });
                             });
                         });
                     })
@@ -88,10 +112,8 @@ if (document.getElementById('manage-posts') != null) {
 
 let submitPostBtn = document.getElementById('submit-post');
 
-if (document.getElementById('addpost-form') != null) {
+if (document.querySelector('#addpost-form #edit-post') != null) {
     submitPostBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-
         Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {
             console.log(checkbox.value);
         });
@@ -113,8 +135,6 @@ if (document.getElementById('addpost-form') != null) {
             .then(data => {
                 showPosts();
             });
-
-        e.preventDefault();
     });
 
 }

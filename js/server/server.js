@@ -118,7 +118,7 @@ app.post('/addpost', function (post, res) {
     '_id': o_id
   }, {
     $push: {
-      'blogposts': post.body.id
+      'blogposts': {'id': post.body.id}
     }
   });
   posts.insertOne(post.body, (err, succes) => {
@@ -140,11 +140,11 @@ app.post('/removepost', function (req, res) {
   const users = db.collection('Users');
   const posts = db.collection('Posts');
   var o_id = new ObjectId(req.body.user);
-  users.updateOne({
+  users.findOneAndUpdate({
     '__id': o_id
   }, {
     $pull: {
-      'blogposts': req.body.post
+      'blogposts': {'id': req.body.post}
     }
   });
   posts.deleteOne({
@@ -152,8 +152,18 @@ app.post('/removepost', function (req, res) {
   })
 });
 
+app.post('/getpost', function (id, res) {
+  const posts = db.collection('Posts');
+  posts.findOne({
+    'id': id.body.id
+  }).then(result => {
+    res.send(result);
+  });
+});
+
+
 app.post('/editpost', (req, res) => {
-  console.log(req.body)
+  console.log(req);
   const posts = db.collection('Posts');
   posts.updateOne({
     'id': req.body.id
