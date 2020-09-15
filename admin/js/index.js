@@ -59,8 +59,8 @@ async function postData(url = '', data = {}) {
 
 let signupUser = () => {
     const newUser = {
-        firstName: document.getElementById('firstname-signup').value,
-        lastName: document.getElementById('lastname-signup').value,
+        firstname: document.getElementById('firstname-signup').value,
+        lastname: document.getElementById('lastname-signup').value,
         email: document.getElementById('email-signup').value,
         password: document.getElementById('password-signup').value,
         blogposts: [],
@@ -92,21 +92,24 @@ let loginUser = () => {
         email: document.getElementById('email-login').value,
         password: document.getElementById('password-login').value
     }
-
-    postData('http://127.0.0.1:12345/login', loggedInUser)
-        .then(data => {
-            console.log(data);
-            if (data.resp != null) {
-                document.getElementById('login-pw-warn').style.display = 'block';
-            } else {
+    try {
+        postData('http://127.0.0.1:12345/login', loggedInUser)
+            .then(data => {
                 console.log(data);
-                document.getElementById('login-pw-warn').style.display = 'none';
-                localStorage.setItem('loggedIn', true);
-                localStorage.setItem('userId', data._id);
-                localStorage.setItem('name', data.firstName);
-                window.location.href = 'addpost.html';
-            }
-        });
+                if (data.resp != null) {
+                    document.getElementById('login-pw-warn').style.display = 'block';
+                } else {
+                    console.log(data);
+                    document.getElementById('login-pw-warn').style.display = 'none';
+                    localStorage.setItem('loggedIn', true);
+                    localStorage.setItem('userId', data._id);
+                    localStorage.setItem('name', data.firstname);
+                    window.location.href = 'addpost.html';
+                }
+            });
+    } catch (err) {
+        console.log(err);
+    }
 }
 
 function showCalendarInputs(type) {

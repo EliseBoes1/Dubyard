@@ -163,7 +163,7 @@ app.post('/getpost', function (id, res) {
 
 
 app.post('/editpost', (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const posts = db.collection('Posts');
   posts.updateOne({
     'id': req.body.id
