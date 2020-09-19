@@ -82,6 +82,7 @@ app.post('/login', function (loggedInUserData, res) {
 });
 
 app.post('/editprofile', function (req, res) {
+  console.log(req.body)
   const users = db.collection('Users');
   var o_id = new ObjectId(req.body.id);
   bcrypt.genSalt(10, function (err, salt) {
@@ -187,6 +188,15 @@ app.post('/editpost', (req, res) => {
 app.get('/allposts', function (req, res, next) {
   const posts = db.collection('Posts');
   posts.find({}).toArray().then(result => {
+    res.send(result);
+  });
+});
+
+app.post('/getpostperpage', (req, res) => {
+  const posts = db.collection('Posts');
+  posts.find({
+    tags: req.body.tag
+  }).toArray().then(result => {
     res.send(result);
   });
 });

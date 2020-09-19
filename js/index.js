@@ -2,6 +2,18 @@
 
 let mainNav = document.getElementById('main-nav');
 
+async function postData(url = '', data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    return response.json();
+}
+
 const hamburgerMenu = document.getElementById('hamburger-menu');
 hamburgerMenu.addEventListener('click', function () {
     if (mainNav.style.display === "none") {
@@ -17,13 +29,8 @@ fetch('http://127.0.0.1:12345/allposts')
         return response.json()
     })
     .then(data => {
-        console.log(data);
-        showBlogposts('posts', data);
+        showBlogposts('posts-wrapper', data);
         showAllRecipes(data.recipes);
-
-        // console.log(typeOf(document.getElementById('recipes')));
-        // if (document.getElementById('recipes').length == null) {
-        // }
     })
     .catch(err => {})
 
@@ -32,14 +39,14 @@ let showBlogposts = (divToAppend, blogposts) => {
 
     blogposts.forEach(blogpost => {
         allPostsEl.insertAdjacentHTML('afterend', `
-    <figure class="reg-post">
+    <figure class="reg-post" id="${blogpost.id}">
         <img src="img/placeholders/DSC_0565.JPG" alt="">
         <figcaption>
         <h3>${blogpost.title}</h3>
         <div class="post-inf">
-            <p class="added-on">Geplaatst op: ${blogpost.date}</p>
+            <p class="added-on">Geplaatst op: ${blogpost.day}/${blogpost.month}/${blogpost.year}</p>
             <p class="line"></p>
-            <p class="post-tag">${blogpost.type}</p>
+            <p class="post-tags"></p>
         </div>
             <a href="blogpost.html" class="read-more ${blogpost.id}">
                     Lees blogpost >>
@@ -47,6 +54,12 @@ let showBlogposts = (divToAppend, blogposts) => {
         </figcaption>
     </figure>
         `)
+        blogpost.tags.forEach(tag => {
+            const tagToUppercase = tag.charAt(0).toUpperCase() + tag.slice(1);
+            document.querySelector(`.reg-post#${blogpost.id} .post-tags`).insertAdjacentHTML("beforeend", `
+            <li>${tagToUppercase}</li>
+        `)
+        });
     });
 
 
@@ -171,15 +184,6 @@ calendarDivs.forEach(calendarDiv => {
 </ul>`
 });
 
-// fetch('https://jsonplaceholder.typicode.com/users', {
-//   headers: { "Content-Type": "application/json; charset=utf-8" },
-//   method: 'POST',
-//   body: JSON.stringify({
-//     username: 'Elon Musk',
-//     email: 'elonmusk@gmail.com',
-//   })
-// })
-
 fetch('../data/blogposts.json')
     .then(response => {
         return response.json()
@@ -234,4 +238,18 @@ fetch('../data/blogposts.json')
         `)
             }
         });
-    })
+    });
+
+let findByPage = () => {
+    const selectedPage = document.getElementsByClassName('selected')[0].innerHTML;
+    postData('http://127.0.0.1:12345/getpostperpage', {
+            'tag': selectedPage
+        })
+        .then(data => {
+            console.log(data);
+        })
+}
+
+if (document.getElementById('updates') == null) {
+    findByPage();
+}

@@ -42,9 +42,9 @@ let getUser = (route) => {
 
 let updateUser = profileData => {
     postData(`http://127.0.0.1:12345/editprofile`, profileData).then(data => {
-        console.log(data);
         localStorage.setItem('userId', data._id);
         localStorage.setItem('name', data.firstname);
+        window.location.href = 'manageaccount.html';
     });
 }
 
@@ -57,7 +57,12 @@ let editUserInf = () => {
         password: document.getElementById('password-manage').value,
         id: localStorage.getItem('userId')
     }
-    updateUser(editedProfile);
+    if(document.getElementById('oldpassword-manage').value == document.getElementById('password-manage').value){
+            updateUser(editedProfile);
+            document.getElementById('manage-pw-warning').style.display = "none";
+    }else{
+        document.getElementById('manage-pw-warning').style.display = "block";
+    }
 }
 
 let showLoggedInUser = () => {

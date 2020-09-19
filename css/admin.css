@@ -297,4 +297,40 @@
         width: 100%;
         margin-top: 50px;
     }
+
+    #manage-posts p {
+        width: 40%;
+    }
+
+    #manage-posts article {
+        width: 70%;
+        border-bottom: 2px solid var(--d-green);
+        padding-bottom: 30px;
+    }
+
+    #manage-posts .post-tags {
+        font-size: .8rem;
+        margin: 10px auto 0 auto;
+    }
+
+    #manage-posts .post-date{
+        width: 100%;
+        font-size: .8rem;
+        margin: 1px auto 20px auto;
+    }
+    
+    #manage-posts .post-tags{
+        width: 100%;
+        display: flex;
+    }
+
+    #manage-posts .post-tags li{
+        margin-right: 5px;
+    }
+
+    #manage-posts .post-tags li:first-of-type{
+       font-weight: 700;
+    }
+
+
 }

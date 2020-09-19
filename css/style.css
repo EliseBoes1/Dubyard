@@ -232,6 +232,7 @@ li,
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: 500;
+    height: 7vh;
 }
 
 .line {

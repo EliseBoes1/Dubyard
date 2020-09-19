@@ -1,9 +1,13 @@
+const date = new Date();
+
 if (document.querySelector('#addpost-form #submit-post') != null) {
     CKEDITOR.replace('posteditor');
 
     let submitPostBtn = document.getElementById('submit-post');
 
     submitPostBtn.addEventListener('click', function (e) {
+        console.log('click');
+        e.preventDefault();
         Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {
             console.log(checkbox.value);
         });
@@ -13,13 +17,18 @@ if (document.querySelector('#addpost-form #submit-post') != null) {
             content: CKEDITOR.instances.posteditor.getData(),
             description: document.getElementById('description-post').value,
             user: localStorage.getItem('userId'),
-            tags: []
+            tags: [],
+            day: date.getDay(),
+            month: date.getMonth() + 1,
+            year: date.getFullYear()
         }
         let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
         Array.from(checkedTags).forEach(tag => {
-            let tagName = tag.id;
-            newPost.tags.push(tagName.replace('-input', ''));
+            const tagName = tag.id;
+            const tagToUppercase = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+            newPost.tags.push(tagToUppercase.replace('-input', ''));
         })
+        console.log(newPost);
 
         postData('http://127.0.0.1:12345/addpost', newPost)
             .then(data => {
@@ -54,11 +63,12 @@ let showPosts = () => {
             if (data != null) {
                 document.getElementById('noposts-warn').style.display = 'none';
                 data.forEach(post => {
-                    document.getElementById('manage-posts').insertAdjacentHTML('beforeend', `
+                    document.getElementById('manage-posts').insertAdjacentHTML('afterbegin', `
                         <article id="${post.id}">
                             <h2>${post.title}</h2>
                             <p>${post.description}</p>
-                            <ul class="post-tags"> </ul>
+                            <ul class="post-tags"><li>Tags: </li></ul>
+                            <ul class="post-date">Geplaatst op: ${post.day}/${post.month}/${post.year}</ul>
                             <a class="edit-post ${post.id}">Edit post</a><a class="remove-post ${post.id}">Remove post</a>
                         </article>
                     `)
@@ -75,8 +85,7 @@ let showPosts = () => {
                                 user: localStorage.getItem('userId'),
                                 post: postId
                             }).then(data => {
-                                window.location.href = "managepost.html";
-                                location.reload();
+                                window.location.href = "manageposts.html";
                             });
                         });
                     })
@@ -86,7 +95,6 @@ let showPosts = () => {
                             document.getElementById('edit-post').style.display = "flex";
                             let postId = this.classList[1];
                             let setForm = (post) => {
-                                console.log(post.description)
                                 document.getElementById('title-post').value = post.title;
                                 document.getElementById('description-post').value = post.description;
                                 CKEDITOR.instances.posteditoredit.setData(post.content);
@@ -113,33 +121,38 @@ if (document.getElementById('manage-posts') != null) {
 }
 
 let postForm = (data, postId) => {
-    console.log(postId, data);
-    document.getElementById('cancel').addEventListener('click', function () {
-        document.getElementById('edit-post').style.display = "none";
-    })
+        console.log(postId, data);
+        document.getElementById('cancel').addEventListener('click', function () {
+            document.getElementById('edit-post').style.display = "none";
+        })
 
-    let sendForm = (data, postId) => {
-        const editedPost = {
-            title: document.getElementById('title-post').value,
-            content: CKEDITOR.instances.posteditoredit.getData(),
-            description: document.getElementById('description-post').value,
-            tags: [],
-            id: postId
+        let sendForm = (data, postId) => {
+            const editedPost = {
+                title: document.getElementById('title-post').value,
+                content: CKEDITOR.instances.posteditoredit.getData(),
+                description: document.getElementById('description-post').value,
+                tags: [],
+                id: postId,
+                lastedited: {
+                    day: date.getDay(),
+                    month: date.getMonth() + 1,
+                    year: date.getFullYear()
+                }
+            }
+            let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
+            Array.from(checkedTags).forEach(tag => {
+                let tagName = tag.id;
+                editedPost.tags.push(tagName.replace('-input', ''));
+            });
+            postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
         }
-        let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
-        Array.from(checkedTags).forEach(tag => {
-            let tagName = tag.id;
-            editedPost.tags.push(tagName.replace('-input', ''));
-        });
-        postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
-    }
 
-    document.getElementById('edit-post-btn').addEventListener('click', function (e) {
-        e.preventDefault();
-        postData('http://127.0.0.1:12345/getpost', {
-            id: postId
-        }).then(data => {
-            sendForm(data, postId);
+        document.getElementById('edit-post-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            postData('http://127.0.0.1:12345/getpost', {
+                id: postId
+            }).then(data => {
+                sendForm(data, postId);
+            });
         });
-    })
-}
+    }
