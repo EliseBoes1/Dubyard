@@ -194,6 +194,7 @@ app.get('/allposts', function (req, res, next) {
 
 app.post('/getpostperpage', (req, res) => {
   const posts = db.collection('Posts');
+  console.log(req.body)
   posts.find({
     tags: req.body.tag
   }).toArray().then(result => {

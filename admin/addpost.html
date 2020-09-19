@@ -42,10 +42,9 @@
     </header>
     <main>
         <form id="addpost-form">
-            <h2>Add post</h2> 
+            <h2>Add post</h2>
             <label for="title-post">Titel:</label><input id="title-post" type="text">
             <label for="description-post">Beschrijving:</label><input id="description-post" type="text">
-
             <label for="posteditor">Inhoud: </label><textarea name="posteditor" id="posteditor" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor 4.
             </textarea>
@@ -56,19 +55,31 @@
                 <label for="tag">Vrijwilligers</label><input id="vrijwilligers-input" type="checkbox"
                     name="vrijwilligers">
                 <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox" name="duurzaamheid">
-                <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding" onclick="showCalendarInputs(`voeding`)">
+                <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding"
+                    onclick="showVoedingInputs(`voeding`)">
                 <div id="voeding-input-opts">
-                    <label for="tag">Ingrediënten:</label><input id="ingredients-input" type="text" name="ingredients-input">
+                    <label for="tag">Ingrediënten:</label><input id="ingredients-input" type="text"
+                        name="ingredients-input">
                 </div>
                 <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
                 <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
+                <div id="workshops-more">
                     <label for="tag">Start uur:</label><input id="starthour-input" type="text" name="starthour">
+                    <p class="inf-small">
+                        In de vorm: hh:mm
+                    </p>
                     <label for="tag">Eind uur:</label><input id="endhour-input" type="text" name="endhour">
+                    <p class="inf-small">
+                        In de vorm: hh:mm
+                    </p>
                     <label for="tag">Locatie:</label><input id="location-input" type="text" name="location">
-                    <label for="tag">Day:</label><input id="day-input" type="text" name="day">
-                    <label for="tag">Month:</label><input id="month-input" type="text" name="month">
-                    <label for="tag">Year:</label><input id="year-input" type="text" name="year">
+                    <div id="date">
+                        <label for="tag">Day:</label><input id="day-input" type="text" name="day">
+                        <label for="tag">Month:</label><input id="month-input" type="text" name="month">
+                        <label for="tag">Year:</label><input id="year-input" type="text" name="year">
+                    </div>
                 </div>
+            </div>
             </div>
 
             <input type="submit" id="submit-post">

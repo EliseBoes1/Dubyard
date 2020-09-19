@@ -59,7 +59,6 @@ let showPosts = () => {
             'id': localStorage.getItem("userId")
         })
         .then(data => {
-            console.log(data)
             if (data != null) {
                 document.getElementById('noposts-warn').style.display = 'none';
                 data.forEach(post => {

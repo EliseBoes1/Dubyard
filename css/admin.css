@@ -111,6 +111,7 @@
         left: 15vw;
         display: flex;
         flex-wrap: wrap;
+        padding-bottom: 5%;
     }
 
     #addpost-form h4 {
@@ -126,8 +127,8 @@
     }
 
     #addpost-form #tags label {
-        width: 30%;
-
+        width: 90%;
+        padding: 0 10% 0 0;
     }
 
     #addpost-form #tags input {
@@ -142,6 +143,36 @@
     #addpost-form #post-content {
         width: 100%;
         min-height: 80vh;
+    }
+    
+    #addpost-form #workshops-more {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    #addpost-form #workshops-more label{
+        width: 20%;
+        max-width: 100%;
+    }
+
+    #addpost-form #workshops-more input{
+        width: 30%;
+        margin-right: 0;
+    }
+
+    #submit-post{
+        width: 20%;
+    }
+
+    .inf-small{
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        font-style: italic;
+        margin-left: 20% !important;
+        margin-top: 5px !important;
     }
 
     form h2 {
@@ -313,24 +344,23 @@
         margin: 10px auto 0 auto;
     }
 
-    #manage-posts .post-date{
+    #manage-posts .post-date {
         width: 100%;
         font-size: .8rem;
         margin: 1px auto 20px auto;
     }
-    
-    #manage-posts .post-tags{
+
+    #manage-posts .post-tags {
         width: 100%;
         display: flex;
     }
 
-    #manage-posts .post-tags li{
+    #manage-posts .post-tags li {
         margin-right: 5px;
     }
 
-    #manage-posts .post-tags li:first-of-type{
-       font-weight: 700;
+    #manage-posts .post-tags li:first-of-type {
+        font-weight: 700;
     }
-
 
 }

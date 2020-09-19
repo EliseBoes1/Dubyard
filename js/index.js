@@ -48,7 +48,7 @@ let showBlogposts = (divToAppend, blogposts) => {
             <p class="line"></p>
             <p class="post-tags"></p>
         </div>
-            <a href="blogpost.html" class="read-more ${blogpost.id}">
+            <a href="blogpost.html?id=${blogpost.id}" class="read-more ${blogpost.id}">
                     Lees blogpost >>
                 </a>
         </figcaption>
@@ -184,61 +184,61 @@ calendarDivs.forEach(calendarDiv => {
 </ul>`
 });
 
-fetch('../data/blogposts.json')
-    .then(response => {
-        return response.json()
-    })
-    .then(data => {
-        data.calendar.forEach(calendarPost => {
-            if (data.calendar.indexOf(calendarPost) == 0) {
-                document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
-                <figure class="head-post">
-                <div class="num-calendar">${calendarPost.day}</div>
-                <div class="img-wrapper">
-                   <img src="${calendarPost.img}" alt="">
-                </div>
-                <figcaption>
-                    <h4>${calendarPost.title}</h4>
-                    <p>${calendarPost.description}</p>
-                    <div class="post-inf">
-                        <div class="date">
-                            <img src="img/icons/clock_white.svg" alt="clock time hour">
-                            <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
-                        </div>
-                        <div class="location">
-                            <img src="img/icons/pin_white.svg" alt="pin location maps">
-                            <p>${calendarPost.location}k</p>
-                        </div>
-                    </div>
-                </figcaption>
-            </figure>
-            `)
-            } else {
-                document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
-            <figure class="reg-post">
-            <div class="num-calendar">${calendarPost.day}</div>
-            <div class="img-wrapper">
-               <img src="${calendarPost.img}" alt="">
-            </div>
-            <figcaption>
-                <h4>${calendarPost.title}</h4>
-                <p>${calendarPost.description}</p>
-                <div class="post-inf">
-                    <div class="date">
-                        <img src="img/icons/clock_white.svg" alt="clock time hour">
-                        <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
-                    </div>
-                    <div class="location">
-                        <img src="img/icons/pin_white.svg" alt="pin location maps">
-                        <p>${calendarPost.location}k</p>
-                    </div>
-                </div>
-            </figcaption>
-        </figure>
-        `)
-            }
-        });
-    });
+// fetch('../data/blogposts.json')
+//     .then(response => {
+//         return response.json()
+//     })
+//     .then(data => {
+//         data.calendar.forEach(calendarPost => {
+//             if (data.calendar.indexOf(calendarPost) == 0) {
+//                 document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
+//                 <figure class="head-post">
+//                 <div class="num-calendar">${calendarPost.day}</div>
+//                 <div class="img-wrapper">
+//                    <img src="${calendarPost.img}" alt="">
+//                 </div>
+//                 <figcaption>
+//                     <h4>${calendarPost.title}</h4>
+//                     <p>${calendarPost.description}</p>
+//                     <div class="post-inf">
+//                         <div class="date">
+//                             <img src="img/icons/clock_white.svg" alt="clock time hour">
+//                             <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
+//                         </div>
+//                         <div class="location">
+//                             <img src="img/icons/pin_white.svg" alt="pin location maps">
+//                             <p>${calendarPost.location}k</p>
+//                         </div>
+//                     </div>
+//                 </figcaption>
+//             </figure>
+//             `)
+//             } else {
+//                 document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
+//             <figure class="reg-post">
+//             <div class="num-calendar">${calendarPost.day}</div>
+//             <div class="img-wrapper">
+//                <img src="${calendarPost.img}" alt="">
+//             </div>
+//             <figcaption>
+//                 <h4>${calendarPost.title}</h4>
+//                 <p>${calendarPost.description}</p>
+//                 <div class="post-inf">
+//                     <div class="date">
+//                         <img src="img/icons/clock_white.svg" alt="clock time hour">
+//                         <p>${calendarPost.timeFrom} - ${calendarPost.timeTo}</p>
+//                     </div>
+//                     <div class="location">
+//                         <img src="img/icons/pin_white.svg" alt="pin location maps">
+//                         <p>${calendarPost.location}k</p>
+//                     </div>
+//                 </div>
+//             </figcaption>
+//         </figure>
+//         `)
+//             }
+//         });
+//     });
 
 let findByPage = () => {
     const selectedPage = document.getElementsByClassName('selected')[0].innerHTML;
@@ -250,6 +250,46 @@ let findByPage = () => {
         })
 }
 
-if (document.getElementById('updates') == null) {
+if (document.getElementById('updates') == null || document.getElementById('blogpost') == null) {} else {
     findByPage();
+}
+
+let findPost = (selectedId) => {
+    postData('http://127.0.0.1:12345/getPost', {
+            'id': selectedId
+        })
+        .then(data => {
+            showPost(data);
+        })
+}
+
+let showPost = post => {
+const blogpostDiv = document.querySelector('#blogpost');
+    blogpostDiv.innerHTML =`<h1>${post.title}</h1>
+    <div id="blog-inf">
+        <p id="blog-tags"></p>
+        <p id="added-on">Geplaats op: ${post.day}/${post.month}/${post.year} om ${post.hour}</p>
+    </div>
+    <div id="article">
+        <div id="inl">
+            <p>
+                ${post.description}
+            </p>
+        </div>
+    
+        <div id="content">
+            ${post.content}
+        </div>
+    </div>`;
+    
+    post.tags.forEach(tag=>{
+        let tagDiv = document.getElementById('#blog-tags');
+        tagDiv.insertAdjacentHTML('beforeend', `${tag}`);
+    })
+}
+
+if (blogpost != null) {
+    const url = window.location.href;
+    const selectedPage = url.split('id=');
+    findPost(selectedPage[1]);
 }
