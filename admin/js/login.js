@@ -12,19 +12,6 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-let getUser = () => {
-    postData('http://127.0.0.1:12345/getUser', {'id': localStorage.getItem('userId')})
-        .then(data => {
-           user = data;
-           if(document.getElementById('manage-acc-form') != null){
-               document.getElementById('firstname-manage').value = data.firstname,
-               document.getElementById('lastname-manage').value = data.lastname
-               document.getElementById('email-manage').value = data.email
-               document.getElementById('password-manage').value = data.password
-           }
-        });
-        showUser();
-}
 
 let showUser = (user) => {
     let name = localStorage.getItem('name');
@@ -36,6 +23,42 @@ let showUser = (user) => {
     // })
 
 }
+let getUser = (route) => {
+    postData(`http://127.0.0.1:12345/${route}`, {
+            'id': localStorage.getItem('userId')
+        })
+        .then(data => {
+            user = data;
+            if (document.getElementById('manage-acc-form') != null) {
+                document.getElementById('firstname-manage').value = data.firstname,
+                    document.getElementById('lastname-manage').value = data.lastname
+                document.getElementById('email-manage').value = data.email
+                document.getElementById('oldpassword-manage').value = ''
+                document.getElementById('password-manage').value = ''
+            }
+            showUser();
+        });
+}
+
+let updateUser = profileData => {
+    postData(`http://127.0.0.1:12345/editprofile`, profileData).then(data => {
+        console.log(data);
+        localStorage.setItem('userId', data._id);
+        localStorage.setItem('name', data.firstname);
+    });
+}
+
+let editUserInf = () => {
+    const editedProfile = {
+        firstname: document.getElementById('firstname-manage').value,
+        lastname: document.getElementById('lastname-manage').value,
+        email: document.getElementById('email-manage').value,
+        oldpassword: document.getElementById('oldpassword-manage').value,
+        password: document.getElementById('password-manage').value,
+        id: localStorage.getItem('userId')
+    }
+    updateUser(editedProfile);
+}
 
 let showLoggedInUser = () => {
     if (localStorage.getItem('loggedIn')) {
@@ -45,7 +68,15 @@ let showLoggedInUser = () => {
     }
 }
 
-if(localStorage.getItem('loggedIn')){
-    getUser();
+if (localStorage.getItem('loggedIn')) {
+    getUser('getUser');
 }
+
 showLoggedInUser();
+
+if (document.getElementById('manage-btn') != null) {
+    document.getElementById('manage-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        editUserInf();
+    });
+}

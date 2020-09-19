@@ -81,20 +81,27 @@ app.post('/login', function (loggedInUserData, res) {
   }
 });
 
-//Get changes that have to the use proflile
 app.post('/editprofile', function (req, res) {
   const users = db.collection('Users');
-  //find data of online user
-  users.updateOne({
-    'id': loggedInUser
-  }, {
-    //Set current values (replace previous val)
-    $set: {
-      'firstname': req.body.editfirstname,
-      'lastname': req.body.editlastname,
-      'password': req.body.password,
-      'email': req.body.email
-    }
+  var o_id = new ObjectId(req.body.id);
+  bcrypt.genSalt(10, function (err, salt) {
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
+      users.updateOne({
+        '_id': o_id
+      }, {
+        $set: {
+          'firstname': req.body.firstname,
+          'lastname': req.body.lastname,
+          'password': hash,
+          'email': req.body.email
+        }
+      })
+      users.findOne({
+        '_id': o_id
+      }).then(result =>{
+        res.send(result);
+      })
+    });
   });
 });
 
@@ -113,17 +120,20 @@ app.post('/addpost', function (post, res) {
   const posts = db.collection('Posts');
   const users = db.collection('Users');
   post.body.id = uniqid();
+  // console.log(post.body);
   var o_id = new ObjectId(post.body.user);
   users.updateOne({
     '_id': o_id
   }, {
     $push: {
-      'blogposts': {'id': post.body.id}
+      'blogposts': {
+        'id': post.body.id
+      }
     }
   });
   posts.insertOne(post.body, (err, succes) => {
-    console.log(succes);
-    console.log(err);
+    // console.log(succes);
+    // console.log(err);
   });
 });
 
@@ -144,7 +154,9 @@ app.post('/removepost', function (req, res) {
     '__id': o_id
   }, {
     $pull: {
-      'blogposts': {'id': req.body.post}
+      'blogposts': {
+        'id': req.body.post
+      }
     }
   });
   posts.deleteOne({
@@ -170,6 +182,13 @@ app.post('/editpost', (req, res) => {
   }, {
     $set: req.body
   })
+});
+
+app.get('/allposts', function (req, res, next) {
+  const posts = db.collection('Posts');
+  posts.find({}).toArray().then(result => {
+    res.send(result);
+  });
 });
 
 // app.get('/api/userimg', (req, res) => {

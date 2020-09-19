@@ -12,12 +12,13 @@ hamburgerMenu.addEventListener('click', function () {
     this.src = '';
 });
 
-fetch('../data/blogposts.json')
+fetch('http://127.0.0.1:12345/allposts')
     .then(response => {
         return response.json()
     })
     .then(data => {
-        // showBlogposts('allposts', data.blogposts);
+        console.log(data);
+        showBlogposts('posts', data);
         showAllRecipes(data.recipes);
 
         // console.log(typeOf(document.getElementById('recipes')));
@@ -32,16 +33,14 @@ let showBlogposts = (divToAppend, blogposts) => {
     blogposts.forEach(blogpost => {
         allPostsEl.insertAdjacentHTML('afterend', `
     <figure class="reg-post">
+        <img src="img/placeholders/DSC_0565.JPG" alt="">
+        <figcaption>
         <h3>${blogpost.title}</h3>
         <div class="post-inf">
             <p class="added-on">Geplaatst op: ${blogpost.date}</p>
             <p class="line"></p>
             <p class="post-tag">${blogpost.type}</p>
         </div>
-        <img src="img/placeholders/DSC_0565.JPG" alt="">
-        <figcaption>
-            <p>${blogpost.description}</p>
-            <div class="line"></div>
             <a href="blogpost.html" class="read-more ${blogpost.id}">
                     Lees blogpost >>
                 </a>
