@@ -121,3 +121,39 @@ function showCalendarInputs(type) {
         inputDiv.style.display = 'none';
     }
 }
+
+let voedingOptsBtn = document.getElementById('voeding-input');
+if (voedingOptsBtn != null) {
+    voedingOptsBtn.addEventListener('click', function () {
+        const voedingOptsDiv = document.getElementById('voeding-input-opts');
+        if (voedingOptsBtn.checked) {
+            voedingOptsDiv.style.display = 'block';
+        } else {
+            voedingOptsDiv.style.display = 'none';
+        }
+    });
+}
+
+let toggleExtraPostOpts = (type) => {
+    let optsBtn = document.getElementById(`${type}-input`);
+    optsBtn.addEventListener('click', function () {
+        const optsDiv = document.getElementById(`${type}-input-opts`);
+        if (optsBtn.checked) {
+            optsDiv.style.display = 'flex';
+        } else {
+            optsDiv.style.display = 'none';
+        }
+    })
+}
+
+
+if (document.getElementById('addpost-form') != null && document.querySelector('#manage-posts #addpost-form') == null) {
+    toggleExtraPostOpts('voeding');
+    toggleExtraPostOpts('workshops');
+    let addInputBtn = document.getElementById('add-input');
+    addInputBtn.addEventListener('click', function () {
+        this.parentNode.insertAdjacentHTML('beforeend', `
+        <input class="ingredients-input" type="text" name="ingredients-input">
+        `)
+    });
+}

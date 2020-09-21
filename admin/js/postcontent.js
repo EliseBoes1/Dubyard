@@ -6,35 +6,50 @@ if (document.querySelector('#addpost-form #submit-post') != null) {
     let submitPostBtn = document.getElementById('submit-post');
 
     submitPostBtn.addEventListener('click', function (e) {
-        console.log('click');
         e.preventDefault();
         Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {
             console.log(checkbox.value);
         });
 
-        const newPost = {
-            title: document.getElementById('title-post').value,
-            content: CKEDITOR.instances.posteditor.getData(),
-            description: document.getElementById('description-post').value,
-            user: localStorage.getItem('userId'),
-            tags: [],
-            day: date.getDay(),
-            month: date.getMonth() + 1,
-            year: date.getFullYear()
-        }
+        const newPost = {}
         let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
         Array.from(checkedTags).forEach(tag => {
             const tagName = tag.id;
             const tagToUppercase = tagName.charAt(0).toUpperCase() + tagName.slice(1);
             newPost.tags.push(tagToUppercase.replace('-input', ''));
         })
-        console.log(newPost);
+        if (newPost.tags.includes('Voeding')) {
+            newPost.ingredients = [];
+            let ingredientInputs = Array.from(document.querySelectorAll('#ingredients-inputs input'));
+            ingredientInputs.forEach(input => {
+                newPost.ingredients.push(input.value);
+            })
+        }
+        if (newPost.tags.includes('Workshops')) {
+            newPost.workshop = {};
+            newPost.workshop.timeFrom = document.getElementById('starthour-input').value;
+            newPost.workshop.timeTo = document.getElementById('endhour-input').value;
+            newPost.workshop.location = document.getElementById('location-input').value;
+            newPost.workshop.day = document.getElementById('day-input').value;
+            newPost.workshop.month = document.getElementById('month-input').value;
+            newPost.workshop.year = document.getElementById('year-input').value;
+        }
 
         postData('http://127.0.0.1:12345/addpost', newPost)
             .then(data => {
+                window.location.href = "addpost.html";
                 showPosts();
             });
 
+    });
+}
+
+let ingredientsInput = Array.from(document.getElementsByTagName('.ingredients-input'));
+if (ingredientsInput != null) {
+    ingredientsInput.forEach(input => {
+        ingredientsInput.addEventListener('keyup', function () {
+            let ingredientInputs = Array.from(document.querySelectorAll('#ingredients-inputs input'));
+        });
     });
 }
 
@@ -69,6 +84,7 @@ let showPosts = () => {
                             <ul class="post-tags"><li>Tags: </li></ul>
                             <ul class="post-date">Geplaatst op: ${post.day}/${post.month}/${post.year}</ul>
                             <a class="edit-post ${post.id}">Edit post</a><a class="remove-post ${post.id}">Remove post</a>
+                            <img src ="${post.img}" alt="">
                         </article>
                     `)
                     post.tags.forEach(tag => {
@@ -97,7 +113,7 @@ let showPosts = () => {
                                 document.getElementById('title-post').value = post.title;
                                 document.getElementById('description-post').value = post.description;
                                 CKEDITOR.instances.posteditoredit.setData(post.content);
-
+                                document.getElementById('img-post').value = post.img;
                                 //CHECKED BUTTONS CHECKEN
                                 // document.getElementById('title-post').value = data.title;
                             }
@@ -120,38 +136,39 @@ if (document.getElementById('manage-posts') != null) {
 }
 
 let postForm = (data, postId) => {
-        console.log(postId, data);
-        document.getElementById('cancel').addEventListener('click', function () {
-            document.getElementById('edit-post').style.display = "none";
-        })
+    console.log(postId, data);
+    document.getElementById('cancel').addEventListener('click', function () {
+        document.getElementById('edit-post').style.display = "none";
+    })
 
-        let sendForm = (data, postId) => {
-            const editedPost = {
-                title: document.getElementById('title-post').value,
-                content: CKEDITOR.instances.posteditoredit.getData(),
-                description: document.getElementById('description-post').value,
-                tags: [],
-                id: postId,
-                lastedited: {
-                    day: date.getDay(),
-                    month: date.getMonth() + 1,
-                    year: date.getFullYear()
-                }
+    let sendForm = (data, postId) => {
+        const editedPost = {
+            title: document.getElementById('title-post').value,
+            content: CKEDITOR.instances.posteditoredit.getData(),
+            description: document.getElementById('description-post').value,
+            img: document.getElementById('img-post'),
+            tags: [],
+            id: postId,
+            lastedited: {
+                day: date.getDay(),
+                month: date.getMonth() + 1,
+                year: date.getFullYear()
             }
-            let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
-            Array.from(checkedTags).forEach(tag => {
-                let tagName = tag.id;
-                editedPost.tags.push(tagName.replace('-input', ''));
-            });
-            postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
         }
-
-        document.getElementById('edit-post-btn').addEventListener('click', function (e) {
-            e.preventDefault();
-            postData('http://127.0.0.1:12345/getpost', {
-                id: postId
-            }).then(data => {
-                sendForm(data, postId);
-            });
+        let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
+        Array.from(checkedTags).forEach(tag => {
+            let tagName = tag.id;
+            editedPost.tags.push(tagName.replace('-input', ''));
         });
+        postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
     }
+
+    document.getElementById('edit-post-btn').addEventListener('click', function (e) {
+        e.preventDefault();
+        postData('http://127.0.0.1:12345/getpost', {
+            id: postId
+        }).then(data => {
+            sendForm(data, postId);
+        });
+    });
+}

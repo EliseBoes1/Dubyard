@@ -11,6 +11,11 @@
     margin-left: 5%;
 }
 
+#admin-header {
+    background-color: var(--d-green);
+}
+
+
 #signup-form,
 #login-form {
     width: 90%;
@@ -126,12 +131,12 @@
         width: 100%;
     }
 
-    #addpost-form #tags label {
+    #addpost-form #tags>label {
         width: 90%;
         padding: 0 10% 0 0;
     }
 
-    #addpost-form #tags input {
+    #addpost-form #tags>input {
         width: 10%;
         margin-right: 10%;
     }
@@ -144,7 +149,7 @@
         width: 100%;
         min-height: 80vh;
     }
-    
+
     #addpost-form #workshops-more {
         width: 100%;
         display: flex;
@@ -152,21 +157,21 @@
         margin-top: 20px;
     }
 
-    #addpost-form #workshops-more label{
+    #addpost-form #workshops-more label {
         width: 20%;
         max-width: 100%;
     }
 
-    #addpost-form #workshops-more input{
+    #addpost-form #workshops-more input {
         width: 30%;
         margin-right: 0;
     }
 
-    #submit-post{
+    #submit-post {
         width: 20%;
     }
 
-    .inf-small{
+    .inf-small {
         width: 100%;
         margin-bottom: 15px;
         font-size: 0.9rem;
@@ -271,12 +276,66 @@
 
     #calendar-input-opts label,
     #voeding-input-opts label {
-        width: 25% !important;
+        width: 25%;
     }
 
     #calendar-input-opts input,
     #voeding-input-opts input {
-        width: 65% !important;
+        width: 65%;
+    }
+
+
+    #voeding-input-opts,
+    #workshops-input-opts {
+        background-color: var(--l-green);
+        color: white;
+        border-radius: 10px;
+        padding: 15px 30px 30px 30px;
+        display: none;
+        flex-wrap: wrap;
+    }
+
+    #voeding-input-opts img {
+        width: 100%;
+    }
+
+    #voeding-input-opts a {
+        width: 5%;
+        margin-top: 3%;
+    }
+
+    #voeding-input-opts:nth-child(0) {
+        width: 100% !important;
+    }
+
+    #voeding-input-opts>label:first-of-type {
+        width: 100%;
+        padding-right: 15px;
+    }
+
+    #workshops-input-opts #date {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    #workshops-input-opts #date input {
+        width: 13.5%;
+        margin-right: 20px;
+    }
+
+    #workshops-input-opts #date label {
+        width: 10%;
+    }
+
+    #voeding-input-opts>input,
+    #workshops-input-opts>input {
+        width: 65%;
+        margin-right: 20px;
+    }
+
+    #ingredients-inputs {
+        width: 100%;
     }
 
     #manage-posts {
@@ -334,9 +393,10 @@
     }
 
     #manage-posts article {
-        width: 70%;
+        width: 60%;
         border-bottom: 2px solid var(--d-green);
         padding-bottom: 30px;
+        position: relative;
     }
 
     #manage-posts .post-tags {
@@ -363,4 +423,22 @@
         font-weight: 700;
     }
 
+    #manage-posts img {
+        height: 100%;
+        position: absolute;
+        right: 0;
+    }
+
+    #admin-header ul {
+        width: 40vw !important;
+        top: 0 !important;
+        left: 40% !important;
+        color: #fff;
+        display: flex !important;
+        max-height: 6vh;
+    }
+
+    #admin-header ul li {
+        width: 10 vw !important;
+    }
 }

@@ -1,6 +1,4 @@
 @import "admin.css";
-@import "/css/fonts/Segoe/segoe.css";
-
 /*------------------------------------------------------------------------
  --------------------------------- RESET ---------------------------------
  ------------------------------------------------------------------------ */
@@ -181,7 +179,7 @@ html {
 body,
 input {
     color: var(--l-grey);
-    font-family: 'Segoe UI';
+    font-family: 'Lora', serif;
 }
 
 .color-white {
@@ -199,23 +197,19 @@ input {
 h1 {
     font-size: 2.2rem;
     font-weight: 580;
-    font-family: 'Segoe UI Bold';
 }
 
 h2 {
     font-size: 2rem;
     font-weight: 600;
-    font-family: 'Segoe UI Bold';
 }
 
 h3 {
     font-size: 1.6rem;
-    font-family: 'Segoe UI Bold';
 }
 
 h4 {
     font-size: 1.4rem;
-    font-family: 'Segoe UI Bold';
 }
 
 a,
@@ -246,7 +240,6 @@ li,
 }
 
 .selected {
-    font-family: 'Segoe UI Bold';
     font-weight: 1000;
 }
 
@@ -314,7 +307,7 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    color: white;
+    color: var(--d-green);
     padding: 5px;
 }
 
@@ -323,7 +316,6 @@ header nav ul li a {
  ------------------------------------------------------------------------ */
 
 #intro {
-    position: relative;
     width: 100%;
     height: 100vh;
     z-index: -999;
@@ -389,7 +381,6 @@ main #updates {
 }
 
 .calendar {
-    background-color: var(--l-green);
     color: #fff;
     display: flex;
     flex-wrap: wrap;
@@ -877,6 +868,16 @@ h3 {
     font-weight:700;
 }
 
+#recipe{
+    margin-top: 10vh;
+}
+
+#recipe-inf{
+    border: 2px solid var(--d-green);
+    padding: 15px;
+    color: var(--d-green);    
+}
+
 /*------------------------------------------------------------------------
  ------------------------------- ALL POSTS -------------------------------
  ------------------------------------------------------------------------ */
@@ -892,7 +893,6 @@ h3 {
 footer {
     position: relative;
     bottom: 0;
-    background-color: var(--l-green);
     color: #fff;
     padding: 15px;
     margin-top: 5%;
@@ -1304,10 +1304,15 @@ footer #sitemap {
     /*------------------------------------------------------------------------
  --------------------------------- HEADER ---------------------------------
  ------------------------------------------------------------------------ */
-    header {
+    
+#intro{
+     height: 100vh;
+ }
+ header {
         height: 13vh;
         position: absolute;
         z-index: 9999;
+        background-color: transparent;
     }
 
     header nav {
@@ -1339,6 +1344,22 @@ footer #sitemap {
     header #logo img {
         width: 100%;
         max-height: 11vh;
+    }
+
+    #main-nav{
+        background-color: transparent;
+    }
+
+    #main-nav ul{
+        width: 100%;
+    }
+
+    #main-nav ul li{
+        text-align: right;
+    }
+
+    #main-nav ul li a{
+        color: #000;
     }
 
     /*------------------------------------------------------------------------
@@ -1383,13 +1404,16 @@ footer #sitemap {
     }
 
     #updates #posts {
-        width: calc(90%/3*2);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        /* width: calc(90%/3*2); */
     }
 
-    #updates aside {
+    /* #updates aside {
         width: calc(90%/3);
         margin-left: 5%;
-    }
+    } */
 
     #posts {
         display: flex;
@@ -1410,6 +1434,10 @@ footer #sitemap {
 
     #updates .reg-post {
         width: 47.5% !important;
+    }
+
+    #updates #posts{
+        width: 80%;
     }
 
     #posts .head-post .img-wrapper {
@@ -1697,11 +1725,6 @@ footer #sitemap {
         width: 100% !important;
         height: 100% !important;
     }
-
-    /* .col-1, .col-2{
-        width: 50%; 
-    } */
-
     /*------------------------------------------------------------------------
  ------------------------------- ALL POSTS -------------------------------
  ------------------------------------------------------------------------ */
@@ -1716,7 +1739,6 @@ footer #sitemap {
     footer {
         position: relative;
         bottom: 0;
-        background-color: var(--l-green);
         color: #fff;
         padding: 50px 15%;
         margin-top: 5%;
@@ -1764,5 +1786,23 @@ footer #sitemap {
 
     footer #sitemap ul li{
         margin-bottom: 5px;
+    }
+
+    #footer-bg{
+        width: 100vw;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -99;
+    }
+
+    #footer-bg img{
+        width: 100%;
+    }
+
+    #manage-btn{
+        width: 20%;
+        height: 5%;
     }
 }

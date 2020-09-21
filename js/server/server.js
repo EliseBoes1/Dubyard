@@ -123,6 +123,7 @@ app.post('/addpost', function (post, res) {
   post.body.id = uniqid();
   // console.log(post.body);
   var o_id = new ObjectId(post.body.user);
+  try{
   users.updateOne({
     '_id': o_id
   }, {
@@ -132,11 +133,14 @@ app.post('/addpost', function (post, res) {
       }
     }
   });
-  posts.insertOne(post.body, (err, succes) => {
-    // console.log(succes);
-    // console.log(err);
-  });
-});
+}catch(e){
+  console.log(e);
+}
+ try{ 
+  posts.insertOne(post.body).then(result=> res.send(result));
+}catch(e){
+  console.log(e);
+}});
 
 app.post('/getposts', function (id, res) {
   const posts = db.collection('Posts');
@@ -162,7 +166,9 @@ app.post('/removepost', function (req, res) {
   });
   posts.deleteOne({
     'id': req.body.post
-  })
+  }).then(result =>{
+    res.send(result);
+  });
 });
 
 app.post('/getpost', function (id, res) {
@@ -182,7 +188,9 @@ app.post('/editpost', (req, res) => {
     'id': req.body.id
   }, {
     $set: req.body
-  })
+  }).then(result =>{
+    res.send(result);
+  });
 });
 
 app.get('/allposts', function (req, res, next) {
@@ -194,38 +202,9 @@ app.get('/allposts', function (req, res, next) {
 
 app.post('/getpostperpage', (req, res) => {
   const posts = db.collection('Posts');
-  console.log(req.body)
   posts.find({
     tags: req.body.tag
   }).toArray().then(result => {
     res.send(result);
   });
 });
-
-// app.get('/api/userimg', (req, res) => {
-//   fs.readFile('userimg.json', function (err, data) {
-//     let allImg = JSON.parse(data);
-//     res.send(allImg);
-//     console.log(data);
-//     console.log(allImg);
-//   });
-// })
-
-// app.post('/api/saveimg', function (req, res) {
-//   fs.readFile('userimg.json', function (err, data) {
-//     var allImg = JSON.parse(data);
-//     allImg.push(req.body);
-//     fs.writeFile('userimg.json', JSON.stringify(allImg), function (err) {
-//       if (err) throw err;
-//     });
-//   });
-// });
-
-// //Get loggedin user data
-// app.post('/api/deleteprofile', (req, res) => {
-//   const users = db.collection('users');
-//   //search for the online user and delete user
-//   users.deleteOne({
-//     'id': loggedInUser
-//   });
-// });
