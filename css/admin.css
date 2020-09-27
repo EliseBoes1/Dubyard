@@ -59,6 +59,10 @@
     margin-top: 30px;
 }
 
+input.btn{
+    width: 25% !important;
+}
+
 #signup-form p,
 #login-form p {
     margin-left: 20px;

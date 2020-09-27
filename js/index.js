@@ -28,7 +28,7 @@ let showBlogposts = (divToAppend, blogposts) => {
     blogposts.forEach(post => {
         const postImg = encodeURI(post.img);
         console.log(post);
-             allPostsEl.insertAdjacentHTML('beforeend', `
+        allPostsEl.insertAdjacentHTML('beforeend', `
     <figure class="reg-post" id="${post.id}">
     <img src ="${postImg}" alt="">
         <figcaption>
@@ -57,22 +57,22 @@ fetch('http://127.0.0.1:12345/allposts')
     })
     .catch(err => {})
 
-    // let readmore = Array.from(document.getElementsByClassName('read-more'));
-    // readmore.forEach(readmoreBtn => {
-    //     console.log(readmoreBtn)
-    //         readmoreBtn.addEventListener('click', function () {
-    //             console.log('hello');
-    //         });
-    //     });
+// let readmore = Array.from(document.getElementsByClassName('read-more'));
+// readmore.forEach(readmoreBtn => {
+//     console.log(readmoreBtn)
+//         readmoreBtn.addEventListener('click', function () {
+//             console.log('hello');
+//         });
+//     });
 
-    //     let searchEl = document.getElementById('search-recipe');
-    //     searchEl.addEventListener('keyup', function(){
-    //         searchRecipes(this.value);
-    //     });
+//     let searchEl = document.getElementById('search-recipe');
+//     searchEl.addEventListener('keyup', function(){
+//         searchRecipes(this.value);
+//     });
 
-    //    let searchRecipes = (searchInput) =>{
+//    let searchRecipes = (searchInput) =>{
 
-    //     }
+//     }
 
 let showAllRecipes = recipes => {
     recipes.forEach(recipe => {
@@ -200,8 +200,7 @@ let showWorkshops = posts => {
                                     </div>
                                 </div>
                             </figcaption>
-                        </figure>`
-        );
+                        </figure>`);
     });
 };
 
@@ -211,12 +210,16 @@ let findByPage = () => {
             'tag': selectedPage
         })
         .then(data => {
-            showWorkshops(data);
+            if (document.getElementById('workshop-calendar') != null) {
+                showWorkshops(data);
+            } else {
+                const selectedToLower = selectedPage.toLocaleLowerCase();
+                showBlogposts(`#${selectedToLower}`, data);
+            }
         })
 }
 
-if (document.getElementById('updates') != null || document.getElementById('blogpost') != null) {
-} else {
+if (document.getElementById('updates') != null || document.getElementById('blogpost') != null) {} else {
     findByPage();
 }
 

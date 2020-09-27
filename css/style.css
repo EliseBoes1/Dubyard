@@ -243,7 +243,7 @@ li,
     font-weight: 1000;
 }
 
-strong{
+strong {
     font-weight: 700;
 }
 
@@ -385,7 +385,7 @@ main #updates {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
 .calendar .weekdays {
@@ -802,7 +802,7 @@ h3 {
     margin-bottom: 40px;
 }
 
-#recipes #search{
+#recipes #search {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -863,19 +863,64 @@ h3 {
     margin: 0 0 7.5% 0;
 }
 
-#recipes a{
-    color: var(--l-grey);
-    font-weight:700;
+#recipe-description {}
+
+#recipe-tags {
+    background-color: var(--d-green);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#recipe{
+#recipe-tags p {
+    width: 30%;
+    padding: 10px;
+}
+
+#recipe-tags img {
+    width: 15%;
+    margin-right: 10px;
+}
+
+#ingredients {
+    background-color: var(--d-green);
+    color: #fff;
+    padding: 15px;
+}
+
+#article {
+    margin-top: 20px;
+}
+
+#article div {
+    margin-bottom: 25px;
+}
+
+#article img {
+    width: 100%;
+    margin: 15px 0;
+}
+
+#recipe h1 {
+    margin: 15px 0 10px 0;
+}
+
+#recipes img {
+    width: 100%;
+}
+
+#recipes a {
+    color: var(--l-grey);
+    font-weight: 700;
+}
+
+#recipe {
     margin-top: 10vh;
 }
 
-#recipe-inf{
+#recipe-inf {
     border: 2px solid var(--d-green);
-    padding: 15px;
-    color: var(--d-green);    
+    color: var(--d-green);
 }
 
 /*------------------------------------------------------------------------
@@ -1020,11 +1065,6 @@ footer #sitemap {
         display: flex;
         flex-wrap: wrap;
     }
-
-    #updates .reg-post {
-        width: 47.5% !important;
-    }
-
     #workshop-calendar #posts,
     #duurzaamheid #posts {
         width: 100%;
@@ -1236,8 +1276,6 @@ footer #sitemap {
         grid-area: seemore;
     }
 
-
-
     /*------------------------------------------------------------------------
  ---------------------------------- VOEDING ----------------------------------
  ------------------------------------------------------------------------ */
@@ -1261,36 +1299,41 @@ footer #sitemap {
         margin: 0 0 7.5% 0;
     }
 
-    #recipes #search{
+    #recipes #search {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
     }
-    
+
     #recipes input {
         width: 83%;
         border: 2px solid var(--l-green);
         padding: 5px;
     }
-    
+
     #recipes #search a {
         width: 11%;
         background-color: var(--l-green);
         padding: 7px;
         max-height: 7vh;
     }
-    
+
     #recipes #search-icon img {
         width: 100%;
+    }
+
+    #recipe-inf {
+        width: 25% !important;
+    }
+    
+    #posts-wrapper{
+        display: flex !important;
+        flex-wrap: wrap;
     }
 
     /*------------------------------------------------------------------------
  ------------------------------- ALL POSTS -------------------------------
  ------------------------------------------------------------------------ */
-
-    #allposts {
-        margin-top: 15vh;
-    }
 
     /*------------------------------------------------------------------------
  --------------------------------- FOOTER ---------------------------------
@@ -1304,11 +1347,12 @@ footer #sitemap {
     /*------------------------------------------------------------------------
  --------------------------------- HEADER ---------------------------------
  ------------------------------------------------------------------------ */
-    
-#intro{
-     height: 100vh;
- }
- header {
+
+    #intro {
+        height: 100vh;
+    }
+
+    header {
         height: 13vh;
         position: absolute;
         z-index: 9999;
@@ -1346,19 +1390,19 @@ footer #sitemap {
         max-height: 11vh;
     }
 
-    #main-nav{
+    #main-nav {
         background-color: transparent;
     }
 
-    #main-nav ul{
+    #main-nav ul {
         width: 100%;
     }
 
-    #main-nav ul li{
+    #main-nav ul li {
         text-align: right;
     }
 
-    #main-nav ul li a{
+    #main-nav ul li a {
         color: #000;
     }
 
@@ -1432,12 +1476,13 @@ footer #sitemap {
         width: 100%;
     }
 
-    #updates .reg-post {
-        width: 47.5% !important;
+    #updates #posts {
+        width: 80%;
     }
 
-    #updates #posts{
-        width: 80%;
+    #updates #post-wrapper{
+        display: flex;
+        flex-wrap: wrap;
     }
 
     #posts .head-post .img-wrapper {
@@ -1478,8 +1523,8 @@ footer #sitemap {
         margin-top: 5%;
     }
 
-    #posts .reg-post {
-        width: calc(90%/3);
+    #posts-wrapper .reg-post {
+        width: calc(90%/3) !important;
     }
 
     #workshop-calendar #posts,
@@ -1526,15 +1571,15 @@ footer #sitemap {
         font-size: 2.8rem;
     }
 
-    #calendar-posts{
+    #calendar-posts {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
 
-#calendar-posts .reg-post{
-    width: calc(95%/3);
-}
+    #calendar-posts .reg-post {
+        width: calc(95%/3);
+    }
 
     /*------------------------------------------------------------------------
  --------------------------------- DUURZAAMHEID ---------------------------------
@@ -1684,7 +1729,7 @@ footer #sitemap {
     #recipes figure {
         margin: 0 0 7.5% 0;
     }
-    
+
 
     /*------------------------------------------------------------------------
  --------------------------------- BLOGPOST ---------------------------------
@@ -1725,12 +1770,19 @@ footer #sitemap {
         width: 100% !important;
         height: 100% !important;
     }
+
     /*------------------------------------------------------------------------
  ------------------------------- ALL POSTS -------------------------------
  ------------------------------------------------------------------------ */
 
     #allposts {
         margin-top: 20vh;
+    }
+    
+    #posts-wrapper{
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     /*------------------------------------------------------------------------
@@ -1780,15 +1832,15 @@ footer #sitemap {
         width: calc(100%/3);
     }
 
-    footer h4{
+    footer h4 {
         margin-bottom: 15px;
     }
 
-    footer #sitemap ul li{
+    footer #sitemap ul li {
         margin-bottom: 5px;
     }
 
-    #footer-bg{
+    #footer-bg {
         width: 100vw;
         position: absolute;
         bottom: 0;
@@ -1797,12 +1849,30 @@ footer #sitemap {
         z-index: -99;
     }
 
-    #footer-bg img{
+    #footer-bg img {
         width: 100%;
     }
 
-    #manage-btn{
+    #manage-btn {
         width: 20%;
         height: 5%;
+    }
+
+    #recipe-inf {
+        width: 30%;
+    }
+
+    #recipe{
+        column-count: 2;
+        column-gap: 3em;
+        margin-top: 20vh;
+    }
+
+    #recipe-inf{
+        width: 100%;
+    }
+
+    #posts .btn{
+        width: 14vw;
     }
 }

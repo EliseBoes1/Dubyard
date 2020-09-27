@@ -3,52 +3,13 @@ const date = new Date();
 if (document.querySelector('#addpost-form #submit-post') != null) {
     CKEDITOR.replace('posteditor');
 
-    let submitPostBtn = document.getElementById('submit-post');
-
-    submitPostBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {
-            console.log(checkbox.value);
-        });
-
-        const newPost = {}
-        let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
-        Array.from(checkedTags).forEach(tag => {
-            const tagName = tag.id;
-            const tagToUppercase = tagName.charAt(0).toUpperCase() + tagName.slice(1);
-            newPost.tags.push(tagToUppercase.replace('-input', ''));
-        })
-        if (newPost.tags.includes('Voeding')) {
-            newPost.ingredients = [];
-            let ingredientInputs = Array.from(document.querySelectorAll('#ingredients-inputs input'));
-            ingredientInputs.forEach(input => {
-                newPost.ingredients.push(input.value);
-            })
-        }
-        if (newPost.tags.includes('Workshops')) {
-            newPost.workshop = {};
-            newPost.workshop.timeFrom = document.getElementById('starthour-input').value;
-            newPost.workshop.timeTo = document.getElementById('endhour-input').value;
-            newPost.workshop.location = document.getElementById('location-input').value;
-            newPost.workshop.day = document.getElementById('day-input').value;
-            newPost.workshop.month = document.getElementById('month-input').value;
-            newPost.workshop.year = document.getElementById('year-input').value;
-        }
-
-        postData('http://127.0.0.1:12345/addpost', newPost)
-            .then(data => {
-                window.location.href = "addpost.html";
-                showPosts();
-            });
-
-    });
 }
 
-let ingredientsInput = Array.from(document.getElementsByTagName('.ingredients-input'));
-if (ingredientsInput != null) {
+let getIngredients = () => {
     ingredientsInput.forEach(input => {
         ingredientsInput.addEventListener('keyup', function () {
             let ingredientInputs = Array.from(document.querySelectorAll('#ingredients-inputs input'));
+            console.log(input)
         });
     });
 }
