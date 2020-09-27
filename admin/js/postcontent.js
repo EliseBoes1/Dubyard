@@ -5,15 +5,6 @@ if (document.querySelector('#addpost-form #submit-post') != null) {
 
 }
 
-let getIngredients = () => {
-    ingredientsInput.forEach(input => {
-        ingredientsInput.addEventListener('keyup', function () {
-            let ingredientInputs = Array.from(document.querySelectorAll('#ingredients-inputs input'));
-            console.log(input)
-        });
-    });
-}
-
 if (document.querySelector('#edit-post #addpost-form') != null) {
     CKEDITOR.replace('posteditoredit');
 };
@@ -97,23 +88,27 @@ if (document.getElementById('manage-posts') != null) {
 }
 
 let postForm = (data, postId) => {
-    console.log(postId, data);
     document.getElementById('cancel').addEventListener('click', function () {
         document.getElementById('edit-post').style.display = "none";
     })
 
     let sendForm = (data, postId) => {
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+
         const editedPost = {
             title: document.getElementById('title-post').value,
             content: CKEDITOR.instances.posteditoredit.getData(),
             description: document.getElementById('description-post').value,
             img: document.getElementById('img-post'),
             tags: [],
+            user: localStorage.getItem('userId'),
             id: postId,
             lastedited: {
-                day: date.getDay(),
-                month: date.getMonth() + 1,
-                year: date.getFullYear()
+                day: day,
+                month: month,
+                year: year
             }
         }
         let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');

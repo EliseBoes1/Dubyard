@@ -1,4 +1,6 @@
 'use strict';
+const date = new Date();
+
 let signupForm = document.getElementById('signup-form');
 let loginForm = document.getElementById('login-form');
 
@@ -95,11 +97,11 @@ let loginUser = () => {
     try {
         postData('http://127.0.0.1:12345/login', loggedInUser)
             .then(data => {
-                console.log(data);
-                if (data.resp != null) {
+                if(data.resp == 'falsepw'){
                     document.getElementById('login-pw-warn').style.display = 'block';
-                } else {
-                    console.log(data);
+                }else if(data.resp == 'falseusername'){
+                    document.getElementById('login-username-warn').style.display = 'block';
+                }else {
                     document.getElementById('login-pw-warn').style.display = 'none';
                     localStorage.setItem('loggedIn', true);
                     localStorage.setItem('userId', data._id);
@@ -151,19 +153,30 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
     toggleExtraPostOpts('voeding');
     toggleExtraPostOpts('workshops');
 
-    let addPost = () =>{
+    let addPost = () => {
         let submitPostBtn = document.getElementById('submit-post');
-    
+
         submitPostBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {
-                console.log(checkbox.value);
-            });
-    
-            const newPost = {}
+            Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {});
+
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+
+            const newPost = {
+                title: document.getElementById('title-post').value,
+                content: CKEDITOR.instances.posteditor.getData(),
+                description: document.getElementById('description-post').value,
+                img: document.getElementById('img-post'),
+                tags: [],
+                user: localStorage.getItem('userId'),
+                day: day,
+                month: month,
+                year: year
+            }
             let checkedTags = document.querySelectorAll('#tags input[type="checkbox"]:checked');
             Array.from(checkedTags).forEach(tag => {
-                newPost.tags = [];
                 const tagName = tag.id;
                 const tagToUppercase = tagName.charAt(0).toUpperCase() + tagName.slice(1);
                 newPost.tags.push(tagToUppercase.replace('-input', ''));
@@ -173,7 +186,6 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
                 let ingredientInputs = Array.from(document.querySelectorAll('.ingredients-input'));
                 ingredientInputs.forEach(input => {
                     newPost.ingredients.push(input.value);
-                    console.log(input);
                 });
             }
             if (newPost.tags.includes('Workshops')) {
@@ -185,24 +197,22 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
                 newPost.workshop.month = document.getElementById('month-input').value;
                 newPost.workshop.year = document.getElementById('year-input').value;
             }
-    
+
             postData('http://127.0.0.1:12345/addpost', newPost)
                 .then(data => {
                     window.location.href = "addpost.html";
                     showPosts();
                 });
-    
         });
-
     }
-
     let addInputBtn = document.getElementById('add-input');
-    addInputBtn.addEventListener('click', function () {
-        this.parentNode.insertAdjacentHTML('beforeend', `
+
+    if (addInputBtn != null) {
+        addInputBtn.addEventListener('click', function () {
+            this.parentNode.insertAdjacentHTML('beforeend', `
         <input class="ingredients-input" type="text" name="ingredients-input">
         `)
-    });
-    addPost();
-  
+        });
+        addPost();
+    }
 }
-

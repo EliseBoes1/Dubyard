@@ -16,27 +16,22 @@ async function postData(url = '', data = {}) {
 let showUser = (user) => {
     let name = localStorage.getItem('name');
     document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;
-
-    // let changeProfileInputs = document.querySelector('#manage-acc-form input');
-    // changeProfileInputs.forEach(input =>{
-    //     console.log(input);
-    // })
-
 }
+
 let getUser = (route) => {
     postData(`http://127.0.0.1:12345/${route}`, {
             'id': localStorage.getItem('userId')
         })
         .then(data => {
-            user = data;
-            if (document.getElementById('manage-acc-form') != null) {
-                document.getElementById('firstname-manage').value = data.firstname,
-                    document.getElementById('lastname-manage').value = data.lastname
-                document.getElementById('email-manage').value = data.email
-                document.getElementById('oldpassword-manage').value = ''
-                document.getElementById('password-manage').value = ''
-            }
-            showUser();
+                user = data;
+                if (document.getElementById('manage-acc-form') != null) {
+                    document.getElementById('firstname-manage').value = data.firstname,
+                        document.getElementById('lastname-manage').value = data.lastname
+                    document.getElementById('email-manage').value = data.email
+                    document.getElementById('oldpassword-manage').value = ''
+                    document.getElementById('password-manage').value = ''
+             }
+                showUser();
         });
 }
 

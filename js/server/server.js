@@ -66,6 +66,7 @@ app.post('/login', function (loggedInUserData, res) {
     users.findOne({
       'email': loggedInUserData.body.email
     }).then(result => {
+      if(result != null){
       bcrypt.compare(loggedInUserData.body.password, result.password).then((check) => {
         if (check == true) {
           loggedInUser = result.id;
@@ -73,16 +74,20 @@ app.post('/login', function (loggedInUserData, res) {
           res.send(result);
         } else {
           res.send({
-            'resp': 'false'
+            'resp': 'falsepw'
           });
         }
       });
+    }else{
+      res.send({
+        'resp': 'falseusername'
+      });
+    }
     });
   }
 });
 
 app.post('/editprofile', function (req, res) {
-  console.log(req.body)
   const users = db.collection('Users');
   var o_id = new ObjectId(req.body.id);
   bcrypt.genSalt(10, function (err, salt) {
@@ -121,7 +126,6 @@ app.post('/addpost', function (post, res) {
   const posts = db.collection('Posts');
   const users = db.collection('Users');
   post.body.id = uniqid();
-  // console.log(post.body);
   var o_id = new ObjectId(post.body.user);
   try{
   users.updateOne({
