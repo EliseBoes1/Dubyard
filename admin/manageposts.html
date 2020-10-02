@@ -55,13 +55,14 @@
                     <label for="tag">Workshops</label><input id="workshops-input" type="checkbox" name="workshops">
                     <label for="tag">Vrijwilligers</label><input id="vrijwilligers-input" type="checkbox"
                         name="vrijwilligers">
-                    <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox"
-                        name="duurzaamheid">
-                    <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding"
-                        onclick="showCalendarInputs(`voeding`)">
+                    <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox" name="duurzaamheid">
+                    <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding">
                     <div id="voeding-input-opts">
-                        <label for="tag">Ingrediënten:</label><input id="ingredients-input" type="text"
-                            name="ingredients-input">
+                        <label for="tag">Ingrediënten:</label>
+                        <a id="add-input"><img src="../img/icons/plus.svg"></a>
+                        <div id="ingredients-inputs">
+                            <input class="ingredients-input" type="text" name="ingredients-input">
+                        </div>
                     </div>
                     <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
                     <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
@@ -76,11 +77,12 @@
                         </p>
                         <label for="tag">Locatie:</label><input id="location-input" type="text" name="location">
                         <div id="date">
-                            <label for="tag">Day:</label><input id="day-input" type="text" name="day">
-                            <label for="tag">Month:</label><input id="month-input" type="text" name="month">
-                            <label for="tag">Year:</label><input id="year-input" type="text" name="year">
+                            <label for="tag">DD:</label><input id="day-input" type="text" name="day">
+                            <label for="tag">MM:</label><input id="month-input" type="text" name="month">
+                            <label for="tag">YYYY:</label><input id="year-input" type="text" name="year">
                         </div>
                     </div>
+                </div>
 
                     <a id="edit-post-btn"><input type="submit"></a>
                     <a id="cancel">Cancel</a>

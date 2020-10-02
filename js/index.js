@@ -27,22 +27,22 @@ let showBlogposts = (divToAppend, blogposts) => {
     let allPostsEl = document.getElementById(divToAppend);
     blogposts.forEach(post => {
         const postImg = encodeURI(post.img);
-        console.log(post);
         allPostsEl.insertAdjacentHTML('beforeend', `
-    <figure class="reg-post" id="${post.id}">
-    <img src ="${postImg}" alt="">
-        <figcaption>
-        <h3>${post.title}</h3>
-        <div class="post-inf">
-            <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
-            <p class="line"></p>
-            <p class="post-tags"></p>
-        </div>
-            <a href="blogpost.html?id=${post.id}" class="read-more ${post.id}">
-                    Lees blogpost >>
-                </a>
-        </figcaption>
-    </figure>
+        <figure class="reg-post" id="${post.id}">
+            <div class="img-wrapper">
+                <img src ="${postImg}" alt="">
+            </div>
+                <figcaption>
+                <h3>${post.title}</h3>
+                <div class="post-inf">
+                    <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
+                    <p class="post-tags"></p>
+                </div>
+                    <a href="blogpost.html?id=${post.id}" class="read-more ${post.id}">
+                            Lees blogpost >>
+                        </a>
+                </figcaption>
+            </figure>
         `)
     });
 };
@@ -52,8 +52,12 @@ fetch('http://127.0.0.1:12345/allposts')
         return response.json()
     })
     .then(data => {
-        showBlogposts('posts-wrapper', data);
-        showAllRecipes(data.recipes);
+        if (document.querySelector('#search input') == null) {
+            showBlogposts('posts-wrapper', data);   
+        } else if(post.tags.includes('Voeding')) {
+            const recipes = data.filter(post => post.tags.includes('Voeding'));
+            showAllRecipes(recipes);
+        }
     })
     .catch(err => {})
 
@@ -76,35 +80,36 @@ fetch('http://127.0.0.1:12345/allposts')
 
 let showAllRecipes = recipes => {
     recipes.forEach(recipe => {
-        let recipesEl = document.getElementById('recipes');
-        recipesEl.insertAdjacentHTML('beforeend', `
-        <figure id="${recipe.id}" class="reg-post ${recipe.tags[0]} ${recipe.tags[1]} ${recipe.tags[2]}">
+        let recipesEl = document.getElementById('posts');
+        recipesEl.insertAdjacentHTML('beforeend',`
+        <figure id="${recipe.id}" class="reg-post ${recipe.tags[0]}">
         <h3>${recipe.title}</h3>
         <div class="post-inf">
-            <p class="added-on">Geplaatst op: ${recipe.date}</p>
+            <p class="added-on">Geplaatst op: ${recipe.day}/${recipe.month}/${recipe.year}</p>
             <p class="line"></p>
-            <p class="post-tag">${recipe.type}</p>
+            <p class="post-tag">${recipe.tags[0]}</p>
         </div>
-        <img src="${recipe.placeholder}" alt="${recipe.alt[0]}">
+        <img src="${recipe.img}">
         <figcaption>
             <p>${recipe.description}</p>
             <div class="line"></div>
-            <a href="recept.html" class="read-more ${recipe.id}">
-                Lees blogpost >>
+            <a href="blogpost.html" class="read-more ${recipe.id}">
+                Bekijk recept >>
             </a>
         </figcaption>
     </figure>
         `);
-    })
+    });
 
     goToBlogPost(recipes);
     let searchEl = document.getElementById('search-recipe');
+    console.log(searchEl)
     searchEl.addEventListener('keyup', function () {
         searchRecipes(this.value);
     });
 
     let searchRecipes = (searchInput) => {
-
+        console.log(searchInput);
     }
 }
 
@@ -181,10 +186,10 @@ let showWorkshops = posts => {
     posts.forEach(calendarPost => {
         const calendarpostsDiv = document.getElementById('calendar-posts');
         document.getElementById('calendar-posts').insertAdjacentHTML('beforeend', `
-                            <figure class="reg-post">
-                            <div class="num-calendar">${calendarPost.workshop.day}</div>
-                            <div class="img-wrapper">
-                               <img src="${calendarPost.img}" alt="">
+            <figure class="reg-post">
+                <div class="num-calendar">${calendarPost.workshop.day}</div>
+                     <div class="img-wrapper">
+                         <img src="${calendarPost.img}" alt="">
                             </div>
                             <figcaption>
                                 <h4>${calendarPost.title}</h4>
@@ -194,13 +199,13 @@ let showWorkshops = posts => {
                                         <img src="img/icons/clock_white.svg" alt="clock time hour">
                                         <p>${calendarPost.workshop.timeFrom} - ${calendarPost.workshop.timeTo}</p>
                                     </div>
-                                    <div class="location">
-                                        <img src="img/icons/pin_white.svg" alt="pin location maps">
-                                        <p>${calendarPost.workshop.location}k</p>
-                                    </div>
-                                </div>
-                            </figcaption>
-                        </figure>`);
+                                <div class="location">
+                            <img src="img/icons/pin_white.svg" alt="pin location maps">
+                        <p>${calendarPost.workshop.location}k</p>
+                    </div>
+                 </div>
+             </figcaption>
+        </figure>`);
     });
 };
 
@@ -210,16 +215,17 @@ let findByPage = () => {
             'tag': selectedPage
         })
         .then(data => {
+            console.log(data, selectedPage);
             if (document.getElementById('workshop-calendar') != null) {
                 showWorkshops(data);
             } else {
                 const selectedToLower = selectedPage.toLocaleLowerCase();
-                showBlogposts(`#${selectedToLower}`, data);
+                showBlogposts(`posts`, data);
             }
         })
 }
 
-if (document.getElementById('updates') != null || document.getElementById('blogpost') != null) {} else {
+if (document.getElementById('updates') != null || document.getElementById('blogpost') != null || document.querySelector('#search input') != null) {} else {
     findByPage();
 }
 
@@ -239,13 +245,14 @@ let showPost = post => {
     blogpostDiv.innerHTML = `<h1>${post.title}</h1>
         <div id="blog-inf">
             <p id="blog-tags" ></p>
-            <p id="added-on"> Geplaats op: ${post.day}/${post.month}/${post.year} om ${post.hour} </p>
+            <p id="added-on"> Geplaats op: ${post.day}/${post.month}/${post.year}</p>
         </div>
     <div id="article">
         <div id="inl">
          <p>${post.description}</p></div>
+         <img src="${post.img}">
         <div id="content">${ post.content}</div>
-    < /div>`;
+    </div>`;
 
     post.tags.forEach(tag => {
         let tagDiv = document.getElementById('#blog-tags');

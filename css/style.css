@@ -220,13 +220,18 @@ li,
 }
 
 .btn {
-    border: 3px solid var(--d-grey);
+    background-color: var(--d-grey);
+    color: #fff;
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
     font-size: 0.9rem;
     font-weight: 500;
-    height: 7vh;
+    margin-top: 5vh;
+}
+
+a{
+    color: #000;
 }
 
 .line {
@@ -494,11 +499,6 @@ figure .post-inf .line {
 
 #insta figure {
     margin-top: 5px;
-}
-
-#insta .btn {
-    width: 50%;
-    margin: 10px auto;
 }
 
 /*------------------------------------------------------------------------
@@ -1135,7 +1135,7 @@ footer #sitemap {
         right: 0;
     }
 
-    #workshop-calendar #posts figcaption>p {
+    #workshop-calendar figcaption p {
         padding-bottom: 15px;
     }
 
@@ -1216,11 +1216,6 @@ footer #sitemap {
     #insta figure {
         margin-top: 10px;
     }
-
-    #insta .btn {
-        width: 20%;
-    }
-
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
@@ -1329,6 +1324,7 @@ footer #sitemap {
     #posts-wrapper{
         display: flex !important;
         flex-wrap: wrap;
+        flex-flow: row wrap;
     }
 
     /*------------------------------------------------------------------------
@@ -1428,6 +1424,7 @@ footer #sitemap {
     main {
         width: 70%;
         margin: auto;
+        padding-bottom: 30vh;
     }
 
     main h2 {
@@ -1444,7 +1441,7 @@ footer #sitemap {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        margin-top: 10vh;
+        margin: 25vh 0;
     }
 
     #updates #posts {
@@ -1525,6 +1522,7 @@ footer #sitemap {
 
     #posts-wrapper .reg-post {
         width: calc(90%/3) !important;
+        margin-right: 3%;
     }
 
     #workshop-calendar #posts,
@@ -1569,6 +1567,10 @@ footer #sitemap {
     #workshop-calendar h2 {
         margin-bottom: 20px;
         font-size: 2.8rem;
+    }
+
+    #workshop-calendar figcaption>p{
+        padding-bottom: 20px;
     }
 
     #calendar-posts {
@@ -1644,12 +1646,6 @@ footer #sitemap {
         max-width: 120%;
         max-height: 100%;
     }
-
-    #insta .btn {
-        width: 20%;
-        margin: 10px 0 0 0;
-    }
-
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
@@ -1736,7 +1732,7 @@ footer #sitemap {
  ------------------------------------------------------------------------ */
 
     #blogpost {
-        margin-top: 25vh;
+        margin-top: 20vh;
     }
 
     #blogpost h1 {
@@ -1762,8 +1758,10 @@ footer #sitemap {
     }
 
     #blogpost #article {
-        column-count: 2;
+        width: 60%;
+        column-count: 1;
         column-gap: 3em;
+        margin-top: 4%;
     }
 
     #blogpost img {
@@ -1782,7 +1780,6 @@ footer #sitemap {
     #posts-wrapper{
         display: flex !important;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     /*------------------------------------------------------------------------
@@ -1872,7 +1869,17 @@ footer #sitemap {
         width: 100%;
     }
 
-    #posts .btn{
-        width: 14vw;
+    .btn{
+        max-width: 10vw;
+        padding: 15px;
+    }
+
+    #recipes #posts-wrapper{
+        width: 60%;
+        margin: 5% 0 0 5%;
+    }
+
+    #vrijwilligers{
+        margin-top: 15vh;
     }
 }

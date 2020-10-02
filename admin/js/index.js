@@ -168,7 +168,7 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
                 title: document.getElementById('title-post').value,
                 content: CKEDITOR.instances.posteditor.getData(),
                 description: document.getElementById('description-post').value,
-                img: document.getElementById('img-post'),
+                img: document.getElementById('img-post').value,
                 tags: [],
                 user: localStorage.getItem('userId'),
                 day: day,

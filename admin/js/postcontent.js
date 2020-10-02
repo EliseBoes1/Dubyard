@@ -1,12 +1,18 @@
 const date = new Date();
 
 if (document.querySelector('#addpost-form #submit-post') != null) {
-    CKEDITOR.replace('posteditor');
+    CKEDITOR.replace('posteditor', {
+        extraPlugins: 'editorplaceholder',
+        editorplaceholder: 'Start typing here...'
+      });
 
 }
 
 if (document.querySelector('#edit-post #addpost-form') != null) {
-    CKEDITOR.replace('posteditoredit');
+    CKEDITOR.replace('posteditoredit', {
+        extraPlugins: 'editorplaceholder',
+        editorplaceholder: 'Start typing here...'
+      });
 };
 
 async function postData(url = '', data = {}) {
@@ -66,8 +72,6 @@ let showPosts = () => {
                                 document.getElementById('description-post').value = post.description;
                                 CKEDITOR.instances.posteditoredit.setData(post.content);
                                 document.getElementById('img-post').value = post.img;
-                                //CHECKED BUTTONS CHECKEN
-                                // document.getElementById('title-post').value = data.title;
                             }
                             postData('http://127.0.0.1:12345/getpost', {
                                 id: postId

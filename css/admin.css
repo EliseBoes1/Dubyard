@@ -15,6 +15,9 @@
     background-color: var(--d-green);
 }
 
+#admin-header a{
+    color: #fff !important;
+}
 
 #signup-form,
 #login-form {
