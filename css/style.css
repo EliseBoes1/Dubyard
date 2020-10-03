@@ -1886,4 +1886,8 @@ footer #sitemap {
     #vrijwilligers{
         margin-top: 15vh;
     }
+
+    #instafeed .Header{
+        display: none !important;
+    }
 }
