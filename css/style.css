@@ -1459,7 +1459,7 @@ footer #sitemap {
     #posts {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        margin-top: 15vh;
     }
 
     .head-post {
@@ -1576,7 +1576,6 @@ footer #sitemap {
     #calendar-posts {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
     }
 
     #calendar-posts .reg-post {
@@ -1718,14 +1717,19 @@ footer #sitemap {
     }
 
     #recipes .reg-post {
-        width: calc(90%/3);
-        margin-left: 3%;
+        width: calc(90%/2);
+        margin-left: 5%;
     }
 
     #recipes figure {
         margin: 0 0 7.5% 0;
     }
 
+    #recipes #posts{
+        width: 55%;
+        margin-left: 5%;
+        margin-top: 6px;
+    }
 
     /*------------------------------------------------------------------------
  --------------------------------- BLOGPOST ---------------------------------

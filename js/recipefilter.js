@@ -13,17 +13,16 @@ const selectedFilters = {
 }
 
 const addSelected = (selectedType, value) => {
-    console.log(selectedType, value)
     selectedFilters.selectedType = value;
 }
 
 const evalSelected = element => {
     element.addEventListener('click', function () {
-        console.log('click')
         Array.from(document.getElementsByClassName('reg-post')).forEach(post => {
             post.style.display = "none";
         })
         const valueToFilter = this.innerHTML.split(' ')[0].toLocaleLowerCase();
+        console.log(valueToFilter);
         Array.from(
             document.getElementsByClassName(valueToFilter)).forEach(post => {
             post.style.display = "block";
