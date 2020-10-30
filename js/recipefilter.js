@@ -7,32 +7,37 @@ const selectedEdition = Array.from(document.getElementById('filter-edition').get
 const selectedTime = Array.from(document.getElementById('filter-time').getElementsByTagName('li'));
 
 const selectedFilters = {
-    type: '',
     edition: '',
     time: ''
 }
 
+let results;
+
+
+
 const addSelected = (selectedType, value) => {
-    selectedFilters.selectedType = value;
+    console.log(selectedType)
+    selectedFilters[selectedType] = value;
 }
 
 const evalSelected = element => {
     element.addEventListener('click', function () {
         Array.from(document.getElementsByClassName('reg-post')).forEach(post => {
             post.style.display = "none";
-        })
+        });
         const valueToFilter = this.innerHTML.split(' ')[0].toLocaleLowerCase();
-        console.log(valueToFilter);
         Array.from(
             document.getElementsByClassName(valueToFilter)).forEach(post => {
             post.style.display = "block";
-        })
+        });
         toggleSelected(element);
-        addSelected(element.parent.id, valueToFilter);
+
+        const type = element.parentElement.id.split('-').pop();
+        addSelected(type, valueToFilter);
     });
 }
 
-const toggleSelected = (element) => {
+const toggleSelected = element => {
     const siblings = Array.from(element.parentElement.children);
     siblings.forEach(sibling => {
         sibling.classList -= 'selected';

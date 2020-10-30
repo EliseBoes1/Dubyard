@@ -35,6 +35,7 @@ let showPosts = () => {
             if (data != null) {
                 document.getElementById('noposts-warn').style.display = 'none';
                 data.forEach(post => {
+                    console.log(post)
                     document.getElementById('manage-posts').insertAdjacentHTML('afterbegin', `
                         <article id="${post.id}">
                             <h2>${post.title}</h2>

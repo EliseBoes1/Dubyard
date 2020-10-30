@@ -49,6 +49,7 @@ let showBlogposts = (divToAppend, blogposts) => {
                     <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
                     <p class="post-tags"></p>
                 </div>
+                <p class="line"></p>  
                     <a href="blogpost.html?id=${post.id}" class="read-more ${post.id}">
                             Lees blogpost >>
                         </a>
@@ -86,7 +87,8 @@ let showAllRecipes = recipes => {
         </div>
         <img src="${recipe.img}">
         <figcaption>
-            <a href="blogpost.html" class="read-more ${recipe.id}">
+        <p class="line"></p>   
+        <a href="recept.html" class="read-more ${recipe.id}">
                 Bekijk recept >>
             </a>
         </figcaption>
@@ -100,7 +102,31 @@ let showAllRecipes = recipes => {
         searchRecipes(this.value);
     });
 
-    let searchRecipes = (searchInput) => {}
+    let searchRecipes = (searchInput) => {
+        let recipesEl = document.getElementById('posts');
+        recipesEl.innerHTML = '';
+        recipes.forEach(recipe =>{
+            const recipeTitle = recipe['title'].toLocaleLowerCase();
+            if(recipeTitle.includes(searchInput.toLocaleLowerCase())){
+        recipesEl.insertAdjacentHTML('beforeend', `
+        <figure id="${recipe.id}" class="reg-post ${recipe.tags[0]}">
+        <h3>${recipe.title}</h3>
+        <div class="post-inf">
+            <p class="added-on">Geplaatst op: ${recipe.day}/${recipe.month}/${recipe.year}</p>
+            <p class="post-tag">${recipe.tags[0]}</p>
+        </div>
+        <img src="${recipe.img}">
+        <figcaption>
+        <p class="line"></p>   
+        <a href="recept.html" class="read-more ${recipe.id}">
+                Bekijk recept >>
+            </a>
+        </figcaption>
+    </figure>
+        `);
+            }
+        });
+    }
 }
 
 let goToBlogPost = allPosts => {

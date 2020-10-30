@@ -26,7 +26,7 @@ let getUser = (route) => {
                 user = data;
                 if (document.getElementById('manage-acc-form') != null) {
                     document.getElementById('firstname-manage').value = data.firstname,
-                        document.getElementById('lastname-manage').value = data.lastname
+                    document.getElementById('lastname-manage').value = data.lastname
                     document.getElementById('email-manage').value = data.email
                     document.getElementById('oldpassword-manage').value = ''
                     document.getElementById('password-manage').value = ''

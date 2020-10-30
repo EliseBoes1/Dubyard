@@ -224,13 +224,13 @@ input.btn{
     #sign-btns {
         width: 10vw;
         position: fixed;
-        z-index: 99999;
         color: #fff;
         right: 15px;
         top: 15px;
         display: flex;
         flex-wrap: wrap;
         text-align: right;
+        flex-direction: row-reverse;
     }
 
     #sign-btns li {
@@ -448,4 +448,9 @@ input.btn{
     #admin-header ul li {
         width: 10 vw !important;
     }
+
+    #time-opts input[type="radio"], #edition-opts input[type="radio"]{
+        width: 5%;
+    }
+    
 }

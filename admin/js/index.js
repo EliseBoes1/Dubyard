@@ -182,11 +182,15 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
                 newPost.tags.push(tagToUppercase.replace('-input', ''));
             })
             if (newPost.tags.includes('Voeding')) {
-                newPost.ingredients = [];
+                newPost.recept = {};
+                newPost.recept.ingredients = [];
                 let ingredientInputs = Array.from(document.querySelectorAll('.ingredients-input'));
                 ingredientInputs.forEach(input => {
-                    newPost.ingredients.push(input.value);
+                    newPost.recept.ingredients.push(input.value);
                 });
+                newPost.recept.edition =  document.querySelectorAll('input[name="edition"]');
+                newPost.recept.time =  document.querySelectorAll('input[name="time"]');
+                console.log(newPost);
             }
             if (newPost.tags.includes('Workshops')) {
                 newPost.workshop = {};

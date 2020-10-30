@@ -161,7 +161,7 @@ li {
  ------------------------------------------------------------------------ */
 
 :root {
-    font-size: 14px;
+    font-size: 16px;
     --l-green: #33481F;
     --l-green-op: rgba(51, 72, 31, 0.6);
     --d-green: #004D0F;
@@ -179,7 +179,7 @@ html {
 body,
 input {
     color: var(--l-grey);
-    font-family: 'Lora', serif;
+    font-family: 'Segoe UI Regular';
 }
 
 .color-white {
@@ -230,7 +230,7 @@ li,
     margin-top: 5vh;
 }
 
-a{
+a {
     color: #000;
 }
 
@@ -258,7 +258,7 @@ strong {
 
 header {
     padding: 10px;
-    background-color: var(--l-green);
+    background-color: var(--d-green);
     position: fixed;
     z-index: 9999;
     width: 100%;
@@ -312,7 +312,7 @@ header nav ul li {
 
 header nav ul li a {
     text-decoration: none;
-    color: var(--d-green);
+    color: #fff;
     padding: 5px;
 }
 
@@ -751,7 +751,7 @@ h3 {
  ------------------------------------------------------------------------ */
 
 #blogpost {
-    margin-top: 15vh;
+    margin-top: 0vh;
 }
 
 #blogpost h1 {
@@ -785,6 +785,16 @@ h3 {
     width: 100%;
 }
 
+#recipe-header {
+    width: 100%;
+    max-height: 40vh;
+    overflow: hidden;
+    margin-top: 5vh;
+}
+
+#recipe-header img {
+    width: 100%;
+}
 
 /*------------------------------------------------------------------------
  ---------------------------------- VOEDING ----------------------------------
@@ -942,6 +952,7 @@ footer {
     padding: 15px;
     margin-top: 5%;
     font-size: 0.9rem;
+    background-color: var(--d-green);
 }
 
 footer>img {
@@ -1065,6 +1076,7 @@ footer #sitemap {
         display: flex;
         flex-wrap: wrap;
     }
+
     #workshop-calendar #posts,
     #duurzaamheid #posts {
         width: 100%;
@@ -1216,6 +1228,7 @@ footer #sitemap {
     #insta figure {
         margin-top: 10px;
     }
+
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
@@ -1320,8 +1333,8 @@ footer #sitemap {
     #recipe-inf {
         width: 25% !important;
     }
-    
-    #posts-wrapper{
+
+    #posts-wrapper {
         display: flex !important;
         flex-wrap: wrap;
         flex-flow: row wrap;
@@ -1349,18 +1362,18 @@ footer #sitemap {
     }
 
     header {
-        height: 13vh;
-        position: absolute;
-        z-index: 9999;
-        background-color: transparent;
+        height: 14vh;
+        position: unset;
+        display: flex;
+        flex-wrap: wrap;
+       padding-left: 15vw;
     }
 
     header nav {
         max-width: 50%;
         max-height: 10vh;
         display: block;
-        position: absolute;
-        left: 40%;
+        position: unset;
         padding: 0;
         font-size: 0.9rem;
     }
@@ -1375,10 +1388,10 @@ footer #sitemap {
     }
 
     header #logo {
-        width: 5%;
-        position: absolute;
-        left: 10%;
-        top: 10px;
+        width: 10vh;
+        min-height: 10vh;
+        position: unset;
+        margin-top: 10px;
     }
 
     header #logo img {
@@ -1387,7 +1400,9 @@ footer #sitemap {
     }
 
     #main-nav {
+        max-width: 40%;
         background-color: transparent;
+        margin-left: 40%;
     }
 
     #main-nav ul {
@@ -1399,7 +1414,7 @@ footer #sitemap {
     }
 
     #main-nav ul li a {
-        color: #000;
+        color: #fff;
     }
 
     /*------------------------------------------------------------------------
@@ -1422,8 +1437,7 @@ footer #sitemap {
  ------------------------------------------------------------------------ */
 
     main {
-        width: 70%;
-        margin: auto;
+        width: 100%;
         padding-bottom: 30vh;
     }
 
@@ -1459,7 +1473,6 @@ footer #sitemap {
     #posts {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 15vh;
     }
 
     .head-post {
@@ -1477,7 +1490,7 @@ footer #sitemap {
         width: 80%;
     }
 
-    #updates #post-wrapper{
+    #updates #post-wrapper {
         display: flex;
         flex-wrap: wrap;
     }
@@ -1569,7 +1582,7 @@ footer #sitemap {
         font-size: 2.8rem;
     }
 
-    #workshop-calendar figcaption>p{
+    #workshop-calendar figcaption>p {
         padding-bottom: 20px;
     }
 
@@ -1588,6 +1601,7 @@ footer #sitemap {
 
     #duurzaamheid {
         width: 100%;
+        margin-top: 0;
     }
 
     #duurzaamheid #inf {
@@ -1645,6 +1659,7 @@ footer #sitemap {
         max-width: 120%;
         max-height: 100%;
     }
+
     /*------------------------------------------------------------------------
  --------------------------------- WORKSHOPS ---------------------------------
  ------------------------------------------------------------------------ */
@@ -1655,7 +1670,6 @@ footer #sitemap {
         grid-template-areas: "em1 post1 post2 em2"
             "inf inf post3 post4"
             "em3 post5 post6 seemore";
-        margin-top: 20vh;
     }
 
     #workshops>article {
@@ -1706,10 +1720,14 @@ footer #sitemap {
  ---------------------------------- VOEDING ----------------------------------
  ------------------------------------------------------------------------ */
 
+
+    #ingredients li{
+        width: 50% !important;
+    }
+
     #recipes {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 25vh;
     }
 
     #recipes #filter-recipes {
@@ -1725,7 +1743,7 @@ footer #sitemap {
         margin: 0 0 7.5% 0;
     }
 
-    #recipes #posts{
+    #recipes #posts {
         width: 55%;
         margin-left: 5%;
         margin-top: 6px;
@@ -1736,7 +1754,7 @@ footer #sitemap {
  ------------------------------------------------------------------------ */
 
     #blogpost {
-        margin-top: 20vh;
+        margin-top: 10vh;
     }
 
     #blogpost h1 {
@@ -1762,8 +1780,8 @@ footer #sitemap {
     }
 
     #blogpost #article {
-        width: 60%;
-        column-count: 1;
+        width: 100%;
+        column-count: 2;
         column-gap: 3em;
         margin-top: 4%;
     }
@@ -1780,8 +1798,8 @@ footer #sitemap {
     #allposts {
         margin-top: 20vh;
     }
-    
-    #posts-wrapper{
+
+    #posts-wrapper {
         display: flex !important;
         flex-wrap: wrap;
     }
@@ -1841,19 +1859,6 @@ footer #sitemap {
         margin-bottom: 5px;
     }
 
-    #footer-bg {
-        width: 100vw;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        overflow: hidden;
-        z-index: -99;
-    }
-
-    #footer-bg img {
-        width: 100%;
-    }
-
     #manage-btn {
         width: 20%;
         height: 5%;
@@ -1863,31 +1868,80 @@ footer #sitemap {
         width: 30%;
     }
 
-    #recipe{
+    #recipe {
         column-count: 2;
         column-gap: 3em;
         margin-top: 20vh;
     }
 
-    #recipe-inf{
+    #recipe-inf {
         width: 100%;
     }
 
-    .btn{
+    .btn {
         max-width: 10vw;
         padding: 15px;
     }
 
-    #recipes #posts-wrapper{
+    #recipes #posts-wrapper {
         width: 60%;
         margin: 5% 0 0 5%;
     }
 
-    #vrijwilligers{
+    #vrijwilligers {
         margin-top: 15vh;
     }
 
-    #instafeed .Header{
+    #instafeed .Header {
         display: none !important;
+    }
+
+    .container {
+        width: 70%;
+        margin: auto;
+    }
+
+    #recipe-header {
+        position: absolute;
+        left: 0;
+        z-index: -10;
+    }
+
+    #recipe-inf {
+        width: 40%;
+        margin-top: 10vh;
+        border: none;
+    }
+
+    #recipe-inf ul {
+        background-color: var(--d-green);
+        color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #recipe-inf article:first-of-type{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+     #recipe-inf article:first-of-type h1{
+        width: 65%;
+    }
+    
+    #recipe-inf article:first-of-type ul{
+        width: 30%;
+    }
+    
+    #recipe-inf ul li {
+        width: 20%;
+    }
+
+    #recipe-tags img {
+        width: 100%;
+    }
+
+    #recipe-inf article:nth-of-type(1) {
+        background-color: #fff;
+        padding: 20px;
     }
 }
