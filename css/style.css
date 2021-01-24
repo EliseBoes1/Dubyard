@@ -1,0 +1,2076 @@
+@import "admin.css";
+/*------------------------------------------------------------------------
+ --------------------------------- RESET ---------------------------------
+ ------------------------------------------------------------------------ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    /* line-height: 1; */
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+#recipe-inf ul {
+    border: 2px solid var(--d-green);
+    background-color: var(--d-green);
+    color: #fff;
+}
+
+#recipe-inf article:first-of-type h1 {
+    width: 100%;
+}
+
+#recipe-inf article:first-of-type ul {
+    width: 100%;
+}
+
+#recipe-inf ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+#recipe-inf ul li {
+    width: 50%;
+    display: flex;
+}
+
+#recipe-inf ul li img {
+    width: 15%;
+    margin-left: 5px;
+}
+
+
+#recipe-inf ul li p {
+    width: 40%;
+    margin: 0px 0 0 10px;
+}
+
+#ingredients{
+    margin: 10px auto;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+*,
+li,
+a,
+img,
+video,
+div,
+article,
+section {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+li {
+    list-style: none;
+}
+
+input{
+    padding:10px;
+}
+/*------------------------------------------------------------------------
+ --------------------------------- COLOR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+:root {
+    font-size: 16px;
+    --l-green: #33481F;
+    --l-green-op: rgba(51, 72, 31, 0.6);
+    --d-green: #004D0F;
+    --d-grey: #1c1c1c;
+    --l-grey: #333333;
+    --red: #DD4B48;
+    --yellow: #FFDB26;
+    --reggae-grad: -webkit-linear-gradient(left, var(--d-green), var(--yellow), var(--red));
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+input {
+    color: var(--l-grey);
+    font-family: 'Segoe UI Regular';
+}
+
+.color-white {
+    color: #fff;
+}
+
+.bgcolor-white {
+    background-color: #fff;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- GENERAL ---------------------------------
+ ------------------------------------------------------------------------ */
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 580;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+a,
+li,
+.btn {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn {
+    background-color: var(--d-grey);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 5vh;
+}
+
+a {
+    color: #000;
+}
+
+.line {
+    background-image: var(--reggae-grad);
+    height: 3px;
+    width: 20%;
+    margin-top: 7.5px;
+}
+
+.read-more {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-left: 15px;
+}
+
+.selected {
+    font-weight: 1000;
+}
+
+strong {
+    font-weight: 700;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+header {
+    padding: 10px;
+    background-color: var(--d-green);
+    position: fixed;
+    z-index: 9999;
+    width: 100vw;
+    min-height: 11vh;
+    top: 0;
+}
+
+header #logo {
+    width: 15%;
+    position: fixed;
+    left: 10px;
+    top: 10px;
+}
+
+header #logo img {
+    max-width: 100%;
+    max-height: 8vh;
+}
+
+header #hamburger-menu {
+    width: 10%;
+    text-align: right;
+    cursor: pointer;
+    position: fixed;
+    z-index: 9999;
+    right: 10px;
+}
+
+header nav {
+    background-color: var(--d-green);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    padding: 30vh 0;
+    left: 0;
+    display: none;
+}
+
+header nav ul {
+    width: 100%;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#sign-btns li a {
+    color: #fff;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- INTRO ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#intro {
+    width: 100%;
+    height: 100vh;
+    z-index: -999;
+    top: 0;
+    overflow: hidden;
+}
+
+#intro video {
+    max-height: 100vh;
+}
+
+#intro article {
+    width: 85%;
+    position: absolute;
+    max-height: 100vh;
+    top: 20vh;
+    color: #fff;
+    left: 7.5%;
+}
+
+#article #content img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#article p {
+    margin-bottom: 20px;
+}
+
+figure,
+figcaption,
+article,
+section {
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- MAIN ---------------------------------
+ ------------------------------------------------------------------------ */
+
+main {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+main #updates {
+    top: 100vh;
+}
+
+#posts a {
+    color: var(--d-grey);
+    font-weight: 600;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#updates aside {
+    margin-top: 15%;
+}
+
+#updates a {
+    color: var(--l-green);
+    font-weight: 500;
+}
+
+.calendar {
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.calendar header {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+    height: 2vh;
+}
+
+.calendar #calendar {
+    width: 100%;
+    margin-top: -5vh;
+}
+
+#calendar #calendar-days span {
+    overflow: hidden;
+    margin-right: 5%;
+}
+
+#calendar #calendar-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 120% !important;
+}
+
+#calendar #calendar-grid time {
+    overflow: hidden;
+    width: calc(100%/7);
+    margin-top: 10px;
+}
+
+/* 
+.calendar .weekdays {
+    width: 100%;
+}
+
+.calendar .month {
+    width: 100%;
+}
+
+.calendar .month ul {
+    margin-left: 7vw;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar .next,
+.calendar .prev {
+    width: 10%;
+}
+
+.calendar .days,
+.calendar .weekdays {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar .days li,
+.calendar .weekdays li {
+    width: calc(100%/7);
+    padding: 10px;
+} */
+
+#posts {
+    margin-top: 15%;
+}
+
+.calendar-posts li {
+    border: 3px solid var(--d-grey);
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -3px;
+}
+
+.calendar-posts li .calendar-date,
+.calendar-posts li .calendar-time {
+    width: 50%;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.calendar-posts li .calendar-date {
+    text-align: left;
+}
+
+.calendar-posts li .calendar-time {
+    text-align: right;
+}
+
+.calendar-posts li .calendar-time {
+    text-align: right;
+}
+
+#updates aside .btn {
+    max-width: 75vw;
+    margin: auto;
+    margin-top: -3px;
+    background-color: #fff;
+}
+
+figure .post-inf {
+    font-size: 0.8rem;
+    width: 100%;
+    display: flex;
+}
+
+#workshop-calendar #posts .post-inf {
+    margin: 15px 0 0 0;
+}
+
+figure .post-inf .line {
+    width: 20%;
+    height: 2px;
+    margin: 7.5px 20px 0 20px;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#insta {
+    width: 100%;
+    margin: 10% 0;
+    text-align: center;
+}
+
+#insta #insta-slider {
+    width: 100%;
+}
+
+#insta #insta-slider article {
+    width: 25%;
+    overflow: hidden;
+    max-height: 10%;
+}
+
+#insta img {
+    max-width: 100%;
+}
+
+#insta figure {
+    margin-top: 5px;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- GRID ---------------------------------
+ ------------------------------------------------------------------------ */
+
+figure {
+    width: 100%;
+    margin-top: 10%;
+}
+
+figure img {
+    width: 100%;
+}
+
+figure div.line {
+    margin-top: 20px;
+}
+
+figure figcaption {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+figure figcaption p {
+    width: 100%;
+}
+
+figure div.line,
+figure .read-more {
+    width: 45%;
+}
+
+figure .post-tag {
+    text-transform: uppercase;
+}
+
+figure .post-inf {
+    margin: 2px 0 10px 0;
+}
+
+#updates .btn a{
+    color: #fff;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- LATEST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#updates figure {
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+#updates .post-inf {
+    font-size: 0.8rem;
+    display: flex;
+}
+
+h2,
+h3 {
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#workshops {
+    margin-top: 10vh;
+}
+
+#workshops article {
+    margin-bottom: 30px;
+}
+
+#workshops figure {
+    width: 100%;
+    max-height: 25vh;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    margin-top: 5px;
+}
+
+#workshops figure img {
+    width: 120%;
+    max-height: 100%;
+}
+
+#workshops figure figcaption {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    padding-top: 10vh;
+    top: 0;
+    height: 99%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#workshops figure figcaption h3 {
+    font-size: 1.2rem;
+}
+
+#workshops #to-calendar {
+    width: 100%;
+    display: flex;
+    position: relative;
+    margin-top: 30px;
+}
+
+#workshops #to-calendar a,
+#workshops #to-calendar .line {
+    position: absolute;
+    bottom: 0;
+}
+
+#workshops #to-calendar .line {
+    width: 20%;
+    margin: 20px 20px 5px 5px;
+    left: 0;
+}
+
+#workshops #to-calendar a {
+    width: 80%;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--l-grey);
+    left: 30%;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- LARGE CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#workshop-calendar {
+    width: 100%;
+    margin-top: 20%;
+}
+
+#workshop-calendar h2 {
+    text-align: center;
+}
+
+#workshop-calendar figure {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5%;
+}
+
+.img-wrapper {
+    max-height: 20vh;
+    overflow: hidden;
+}
+
+#workshop-calendar figcaption p {
+    padding: 0 0 5px 10px;
+}
+
+#workshop-calendar figcaption h4 {
+    padding: 20px 0 0 10px;
+}
+
+#workshop-calendar .num-calendar {
+    position: absolute;
+    z-index: 10;
+    max-width: 25vw;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    color: var(--red);
+    font-weight: 1000;
+    font-size: 2rem;
+    padding: 10px;
+    max-height: 10vh;
+}
+
+#workshop-calendar figure img {
+    width: 120%;
+    max-height: 100%;
+}
+
+#workshop-calendar .post-inf {
+    background-color: var(--l-green);
+    color: #fff;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+#workshop-calendar .post-inf img {
+    width: 10%;
+}
+
+#workshop-calendar #month-controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-top: 15px;
+}
+
+#workshop-calendar #month-controls img {
+    width: 7vw;
+}
+
+#workshop-calendar #month-controls p {
+    text-align: center;
+    width: 40vw;
+}
+
+#workshop-calendar #month-controls .bold {
+    font-weight: 700;
+}
+
+#workshop-calendar .post-inf .location,
+#workshop-calendar .post-inf .date {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#workshop-calendar .post-inf p {
+    width: 90%;
+    margin-top: 7.5px;
+}
+
+#workshop-calendar .post-inf img {
+    width: 10%;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- DUURZAAMHEID ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#duurzaamheid {
+    margin-top: 15%;
+}
+
+#duurzaamheid #inf {
+    padding: 30px;
+    background-color: var(--l-green);
+    color: #fff;
+}
+
+/*------------------------------------------------------------------------
+ --------------------------------- BLOGPOST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+#blogpost {
+    margin-top: 10vh;
+}
+
+#blogpost h1 {
+    font-size: 3rem;
+}
+
+#blogpost #post-head {
+    width: 100%;
+}
+
+#blogpost #post-head h1 {
+    max-width: 100%;
+}
+
+#blogpost #post-head #blog-inf {
+    max-width: 100%;
+    position: absolute;
+    right: 10vw;
+    top: 14vh;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+#blogpost #article {}
+
+#blogpost div {
+    margin: 5px 0 20px 0;
+}
+
+#blogpost img {
+    width: 100%;
+}
+
+#recipe-header {
+    width: 100%;
+    max-height: 40vh;
+    overflow: hidden;
+    margin-top: 10vh;
+}
+
+#recipe-header img {
+    width: 100%;
+}
+
+/*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+#recipes {
+    margin-top: 12vh;
+}
+
+#recipes h2 {
+    margin-bottom: 20px;
+}
+
+#recipes #filter-recipes {
+    margin-bottom: 40px;
+}
+
+#recipes #search {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recipes input {
+    width: 84%;
+    border: 2px solid var(--l-green);
+    padding: 5px;
+}
+
+#recipes #search a {
+    width: 11%;
+    background-color: var(--l-green);
+    padding: 10px;
+    max-height: 7vh;
+}
+
+#recipes #search-icon img {
+    width: 100%;
+    max-height: 7vh;
+}
+
+#recipes ul {
+    margin-top: 10px;
+}
+
+#recipes #filter-type {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recipes .post-tag{
+    margin-left: 15px;
+}
+
+#recipes #filter-type li {
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    color: var(--l-green);
+    border: 2px solid var(--l-green);
+}
+
+#recipes #filter-type li:hover {
+    background-color: var(--l-green);
+    color: #fff;
+}
+
+#recipes li:hover {
+    font-weight: 1000;
+}
+
+#recipes #filter-type .selected {
+    color: #fff;
+    background-color: var(--l-green);
+    font-weight: 500 !important;
+}
+
+#recipes figure {
+    margin: 0 0 7.5% 0;
+}
+
+#recipe-description {}
+
+#recipe-tags {
+    background-color: var(--d-green);
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#recipe-tags p {
+    width: 30%;
+    padding: 10px;
+}
+
+#recipe-tags img {
+    width: 15%;
+    margin-right: 10px;
+}
+
+#ingredients {
+    background-color: var(--d-green);
+    color: #fff;
+    padding: 15px;
+}
+
+#article {
+    margin-top: 20px;
+}
+
+#article div {
+    margin-bottom: 25px;
+}
+
+#article img {
+    width: 100%;
+    margin: 15px 0;
+}
+
+#recipe h1 {
+    margin: 15px 0 10px 0;
+}
+
+#recipes img {
+    width: 100%;
+}
+
+#recipes a {
+    color: var(--l-grey);
+    font-weight: 700;
+}
+
+#recipe {
+    margin-top: 10vh;
+}
+
+/*------------------------------------------------------------------------
+ ------------------------------- ALL POSTS -------------------------------
+ ------------------------------------------------------------------------ */
+
+/*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    color: #fff;
+    padding: 15px;
+    margin-top: 5%;
+    font-size: 0.9rem;
+    background-color: var(--d-green);
+}
+
+footer>img {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    z-index: -50;
+    bottom: 0;
+}
+
+footer #contact a {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+footer #contact a img {
+    max-width: 5vw;
+}
+
+footer #contact p {
+    width: 80%;
+    max-width: 80%;
+    margin-left: 5%;
+}
+
+footer #calendar,
+footer #sitemap {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    /*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    header {
+        min-height: 15vh;
+        position: relative;
+    }
+
+    header nav {
+        width: 70%;
+        height: 10%;
+        display: block;
+        position: absolute;
+        left: 30%;
+        padding: 0;
+    }
+
+    header nav ul {
+        position: absolute;
+        display: flex;
+        margin-top: 4vh;
+        right: 7.5%;
+    }
+
+    header #hamburger-menu {
+        display: none;
+    }
+
+    header #logo {
+        position: absolute;
+        max-width: 6vw;
+        left: 7.5%;
+    }
+
+    #intro {
+        height: auto;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- MAIN ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    main {
+        width: 85%;
+        margin: auto;
+    }
+
+    /*------------------------------------------------------------------------
+------------------------------------ GRID ------------------------------------
+ ---------------------- LATEST UPDATES/LARGE CALENDAR ------------------------
+  ---------------------- DUURZAAMHEID ------------------------
+ ------------------------------------------------------------------------ */
+
+    #updates {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10vh;
+    }
+
+    #updates #posts {
+        width: calc(90%/3*2);
+        margin-right: 3.3%;
+    }
+
+    #updates aside {
+        width: calc(90%/3);
+    }
+
+    #posts {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .head-post {
+        width: calc(95%/3*2);
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 40vh;
+    }
+
+    #updates .head-post {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #workshop-calendar #posts,
+    #duurzaamheid #posts {
+        width: 100%;
+        margin-top: 5vh;
+    }
+
+    #workshop-calendar #posts .head-post figcaption {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    #workshop-calendar #posts figcaption h3,
+    #workshop-calendar #posts figcaption p {
+        padding-left: 15px;
+    }
+
+    #posts figcaption>p {
+        padding-bottom: 15px;
+        padding-left: 15px;
+    }
+
+    #posts .head-post .img-wrapper {
+        overflow: hidden;
+        width: calc(100%/3);
+    }
+
+    #posts .head-post img {
+        max-width: 400%;
+        max-height: 100%;
+        width: auto;
+    }
+
+    #posts .head-post figcaption {
+        width: calc(100%/3*2);
+        margin-left: 15px;
+    }
+
+    #posts figure img {
+        max-height: 100vh;
+    }
+
+    #posts figure {
+        overflow: hidden;
+    }
+
+    #posts .reg-post>img,
+    #posts .reg-post figcaption {
+        width: 100%;
+    }
+
+    .reg-post {
+        width: 47.5%;
+        margin-top: 5%;
+    }
+
+    #posts .reg-post {
+        width: calc(90%/3);
+    }
+
+    /*------------------------------------------------------------------------
+ ------------------------------ WORKSHOP CALENDAR -------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshop-calendar #posts .head-post figcaption {
+        bottom: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    #workshop-calendar figcaption p {
+        padding-bottom: 15px;
+    }
+
+    #workshop-calendar .post-inf img {
+        width: 1.5vw;
+    }
+
+    #workshop-calendar .post-inf .location,
+    #workshop-calendar .post-inf .date {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #workshop-calendar .post-inf p {
+        width: 90%;
+        margin-top: 7.5px;
+    }
+
+    #workshop-calendar .post-inf img {
+        width: 10%;
+    }
+
+
+    /*------------------------------------------------------------------------
+ --------------------------------- DUURZAAMHEID ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #duurzaamheid {
+        width: 100%;
+        margin-top: 5%;
+    }
+
+    #duurzaamheid #inf {
+        width: 47.5%;
+        background-color: var(--l-green);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        margin-top: 10px;
+    }
+
+    #duurzaamheid #inf p,
+    #duurzaamheid #inf h2 {
+        width: 80%;
+        margin-left: 20%;
+    }
+
+    #duurzaamheid .head-post {
+        width: 50%;
+        margin-left: 50%;
+        margin-top: 0;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #insta {
+        width: 100%;
+        margin: 10% 0;
+        text-align: left;
+    }
+
+    #insta #insta-slider {
+        width: 100%;
+        display: flex;
+    }
+
+    #insta #insta-slider article {
+        width: 25%;
+        overflow: hidden;
+        max-height: 10%;
+    }
+
+    #insta img {
+        max-width: 100%;
+    }
+
+    #insta figure {
+        margin-top: 10px;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshops {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-areas: "em1 post1 post2 em2"
+            "inf inf post3 post4"
+            "em3 post5 post6 seemore";
+    }
+
+    #workshops>article {
+        width: 90%;
+        margin-top: 25px;
+        grid-area: inf;
+    }
+
+    #workshops>article h2 {
+        text-align: left;
+    }
+
+    #workshops figure {
+        width: 95%;
+        margin-top: 3%;
+    }
+
+    #workshops #sjorren {
+        grid-area: post1;
+    }
+
+    #workshops #yoga {
+        grid-area: post2;
+    }
+
+    #workshops #henna {
+        grid-area: post3;
+    }
+
+    #workshops #beekeeping {
+        grid-area: post4;
+    }
+
+    #workshops #cyclegardening {
+        grid-area: post5;
+    }
+
+    #workshops #juggling {
+        grid-area: post6;
+    }
+
+    #workshops #to-calendar {
+        grid-area: seemore;
+    }
+
+    /*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+    #recipes {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15vh;
+    }
+
+    #recipes #filter-recipes {
+        width: calc(100%/3);
+    }
+
+    #recipes .reg-post {
+        width: calc(90%/3);
+        margin-left: 3%;
+    }
+
+    #recipes figure {
+        margin: 0 0 7.5% 0;
+    }
+
+    #recipes #search {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #recipes input {
+        width: 83%;
+        border: 2px solid var(--l-green);
+        padding: 5px;
+    }
+
+    #recipes #search a {
+        width: 11%;
+        background-color: var(--l-green);
+        padding: 7px;
+        max-height: 7vh;
+    }
+
+    #recipes #search-icon img {
+        width: 100%;
+    }
+
+    #recipe-inf {
+        width: 25% !important;
+    }
+
+    #posts-wrapper {
+        display: flex !important;
+        flex-wrap: wrap;
+        flex-flow: row wrap;
+    }
+
+    /*------------------------------------------------------------------------
+ ------------------------------- ALL POSTS -------------------------------
+ ------------------------------------------------------------------------ */
+
+    /*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+
+}
+
+@media (min-width: 1024px) {
+
+    /*------------------------------------------------------------------------
+ --------------------------------- HEADER ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #intro {
+        height: 100vh;
+    }
+
+    header {
+        max-width: 100vw;
+        height: 14vh;
+        position: unset;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 15vw;
+    }
+
+    header nav {
+        max-width: 50%;
+        max-height: 10vh;
+        display: block;
+        position: unset;
+        padding: 0;
+        font-size: 0.9rem;
+    }
+
+    header nav ul {
+        display: flex;
+        margin-top: 4vh;
+    }
+
+    header #hamburger-menu {
+        display: none;
+    }
+
+    header #logo {
+        width: 10vh;
+        min-height: 10vh;
+        position: unset;
+        margin-top: 10px;
+    }
+
+    header #logo img {
+        width: 100%;
+        max-height: 11vh;
+    }
+
+    #main-nav {
+        max-width: 55%;
+        background-color: transparent;
+        margin-left: 25%;
+    }
+
+    #main-nav ul {
+        width: 100%;
+    }
+
+    #main-nav ul li {
+        text-align: right;
+    }
+
+    #main-nav ul li a {
+        color: #fff;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- INTRO ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #intro video {
+        min-width: 100vw;
+        object-fit: cover;
+    }
+
+    #intro article {
+        width: 50%;
+        left: 10%;
+        top: 40vh;
+    }
+
+    /*------------------------------------------------------------------------
+ ---------------------------------- MAIN ------------------------------------
+ ------------------------------------------------------------------------ */
+
+    main {
+        width: 100%;
+        padding-bottom: 30vh;
+    }
+
+    main h2 {
+        text-align: left;
+    }
+
+    /*------------------------------------------------------------------------
+------------------------------------ GRID ------------------------------------
+ ---------------------- LATEST UPDATES/LARGE CALENDAR ------------------------
+  ---------------------- DUURZAAMHEID ------------------------
+ ------------------------------------------------------------------------ */
+
+    #updates{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10vh 0 20vh 0;
+    }
+
+    #updates #posts {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    #posts {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .head-post {
+        width: calc(95%/3*2);
+        display: flex;
+        flex-wrap: wrap;
+        max-height: 40vh;
+    }
+
+    #updates .head-post {
+        width: 100%;
+    }
+
+    #updates #post-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #posts .head-post .img-wrapper {
+        overflow: hidden;
+        width: calc(100%/3);
+    }
+
+    #posts .head-post .img-wrapper img {
+        min-width: 100%;
+        min-height: 100%;
+    }
+
+    #posts .head-post figcaption {
+        width: calc(100%/3*2);
+    }
+
+    #posts figure img {
+        max-height: 100vh;
+    }
+
+    #posts figure {
+        overflow: hidden;
+        margin-right: 3%;
+    }
+
+    #posts .head-post figcaption>p {
+        padding-bottom: 15px;
+        padding-left: 15px;
+        margin-top: 15%;
+    }
+
+    #posts .reg-post>img,
+    #posts .reg-post figcaption {
+        width: 100%;
+    }
+
+    .reg-post {
+        width: calc(90%/3) !important;
+        margin-top: 5%;
+
+    }
+
+    #posts-wrapper .reg-post {
+        width: calc(90%/3) !important;
+        margin-right: 3%;
+    }
+
+    #workshop-calendar #posts,
+    #duurzaamheid #posts {
+        width: 100%;
+        margin-top: 5vh;
+    }
+
+    /*------------------------------------------------------------------------
+ ------------------------------ WORKSHOP CALENDAR -------------------------------
+ ------------------------------------------------------------------------ */
+
+
+    #workshop-calendar .head-post .img-wrapper {
+        max-height: 40vh;
+        max-width: 30%;
+    }
+
+    #workshop-calendar #posts figcaption h4,
+    #workshop-calendar #posts figcaption p {
+        padding-left: 15px;
+    }
+
+    #workshop-calendar #posts figcaption h4 {
+        margin-top: 25px;
+    }
+
+    #workshop-calendar #posts figcaption>p {
+        padding-bottom: 15px;
+    }
+
+    #workshop-calendar #month-controls img {
+        width: 2vw;
+    }
+
+    #workshop-calendar #month-controls p {
+        max-width: 13vw;
+        font-size: 1.8rem;
+        margin-top: 0;
+    }
+
+    #workshop-calendar h2 {
+        margin-bottom: 20px;
+        font-size: 2.8rem;
+    }
+
+    #workshop-calendar figcaption>p {
+        padding-bottom: 20px;
+    }
+
+    #calendar-posts {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #calendar-posts .reg-post {
+        width: calc(95%/3);
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- DUURZAAMHEID ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #duurzaamheid {
+        width: 100%;
+        margin-top: 0;
+    }
+
+    #duurzaamheid #inf {
+        width: 47.5%;
+        background-color: var(--l-green);
+        color: #fff;
+        position: absolute;
+        left: 0;
+        margin-top: 10px;
+    }
+
+    #duurzaamheid #inf p,
+    #duurzaamheid #inf h2 {
+        width: 80%;
+        margin-left: 20%;
+    }
+
+    #duurzaamheid .head-post {
+        width: 50%;
+        margin-left: 50%;
+        margin-top: 0;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- CALENDAR ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    /*------------------------------------------------------------------------
+ --------------------------------- INSTA ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #insta {
+        width: 100%;
+        margin-top: 10vh;
+        text-align: left;
+    }
+
+    #insta #insta-slider {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-height: 30vh;
+        overflow: hidden;
+    }
+
+    #insta #insta-slider figure {
+        max-width: 24%;
+        overflow: hidden;
+        margin-top: 0;
+    }
+    #insta iframe {
+        max-width: 24%;
+        overflow: hidden;
+        margin-top: 0;
+    }
+
+    #insta img {
+        width: auto;
+        min-width: 100%;
+        max-width: 120%;
+        max-height: 100%;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- WORKSHOPS ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #workshops {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-areas: "em1 post1 post2 em2"
+            "inf inf post3 post4"
+            "em3 post5 post6 seemore";
+    }
+
+    #workshops>article {
+        width: 90%;
+        margin-top: 25px;
+        grid-area: inf;
+    }
+
+    #workshops>article h2 {
+        text-align: left;
+    }
+
+    #workshops figure {
+        width: 95%;
+        margin-top: 3%;
+        max-height: 22vh;
+    }
+
+    #workshops #sjorren {
+        grid-area: post1;
+    }
+
+    #workshops #yoga {
+        grid-area: post2;
+    }
+
+    #workshops #henna {
+        grid-area: post3;
+    }
+
+    #workshops #beekeeping {
+        grid-area: post4;
+    }
+
+    #workshops #cyclegardening {
+        grid-area: post5;
+    }
+
+    #workshops #juggling {
+        grid-area: post6;
+    }
+
+    #workshops #to-calendar {
+        grid-area: seemore;
+    }
+
+    /*------------------------------------------------------------------------
+ ---------------------------------- VOEDING ----------------------------------
+ ------------------------------------------------------------------------ */
+
+
+    #ingredients li {
+        width: 50% !important;
+    }
+
+    #recipes {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #recipes #filter-recipes {
+        width: calc(100%/4);
+    }
+
+    #recipes .reg-post {
+        width: calc(90%/3);
+        margin-left: 3%;
+    }
+
+    #recipes figure {
+        margin: 0 0 7.5% 0;
+    }
+
+    #recipes #posts {
+        width: calc((100%/3)*2);
+        margin-left: 5%;
+        margin-top: 6px;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- BLOGPOST ---------------------------------
+ ------------------------------------------------------------------------ */
+
+    #blogpost {
+        margin-top: 10vh;
+    }
+
+    #blogpost h1 {
+        font-size: 3rem;
+    }
+
+    #blogpost #post-head {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    #blogpost #post-head h1 {
+        max-width: 70%;
+    }
+
+    #blogpost #post-head #blog-inf {
+        max-width: 30%;
+        text-align: right;
+        font-size: 0.9rem;
+        top: 27.5vh;
+        right: 15vw;
+    }
+
+    #blogpost #article {
+        width: 100%;
+        column-count: 2;
+        column-gap: 3em;
+        margin-top: 4%;
+    }
+
+    #blogpost img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /*------------------------------------------------------------------------
+ ------------------------------- ALL POSTS -------------------------------
+ ------------------------------------------------------------------------ */
+
+    #allposts {
+        margin-top: 5vh;
+    }
+
+    #posts-wrapper {
+        display: flex !important;
+        flex-wrap: wrap;
+    }
+
+    /*------------------------------------------------------------------------
+ --------------------------------- FOOTER ---------------------------------
+ ------------------------------------------------------------------------ */
+    footer {
+        position: relative;
+        bottom: 0;
+        color: #fff;
+        padding: 50px 15%;
+        margin-top: 5%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    footer>img {
+        width: 100%;
+        left: 0;
+        position: absolute;
+        z-index: -50;
+        bottom: 0;
+    }
+
+    footer #contact {
+        width: calc(100%/3);
+    }
+
+    footer a {
+        width: 100%;
+        color: #fff;
+        margin-top: 15px;
+    }
+
+    footer #contact a img {
+        width: 4%;
+    }
+
+    footer #contact p {
+        width: 80%;
+        max-width: 80%;
+        margin-left: 15px;
+    }
+
+    footer #calendar,
+    footer #sitemap {
+        display: block;
+        width: calc(100%/2);
+    }
+
+footer #sitemap{
+    margin-left: 15%;
+}
+
+    footer h4 {
+        margin-bottom: 15px;
+    }
+
+    footer #sitemap ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    footer #sitemap ul li {
+        width: 50%;
+        margin-bottom: 5px;
+    }
+
+    #manage-btn {
+        width: 20%;
+        height: 5%;
+    }
+
+    #recipe-inf {
+        width: 30%;
+    }
+
+    #recipe {
+        column-count: 2;
+        column-gap: 3em;
+        margin-top: 20vh;
+    }
+
+    #recipe-inf {
+        width: 100%;
+    }
+
+    .btn {
+        max-width: 10vw;
+        padding: 15px;
+    }
+
+    #recipes #posts-wrapper {
+        width: 60%;
+        margin: 5% 0 0 5%;
+    }
+
+    #vrijwilligers {
+    }
+
+    #instafeed .Header {
+        display: none !important;
+    }
+
+    .container {
+        width: 75%;
+        margin: auto;
+    }
+
+    #recipe-header {
+        position: absolute;
+        left: 0;
+        z-index: -10;
+        margin-top: -2vh;
+    }
+
+    #recipe-inf {
+        width: 40%;
+        margin-top: 10vh;
+        border: none;
+    }
+
+    #recipe-inf ul {
+        background-color: var(--d-green);
+        color: #fff;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #recipe-inf article:first-of-type {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #recipe-inf article:first-of-type h1 {
+        width: 65%;
+    }
+
+    #recipe-inf article:first-of-type ul {
+        width: 100%;
+    }
+
+    #recipe-inf ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #recipe-inf ul li {
+        width: 50%;
+        display: flex;
+    }
+
+    #recipe-inf ul li img {
+        width: 15%;
+        margin-left: 5px;
+    }
+
+
+    #recipe-inf ul li p {
+        width: 40%;
+    }
+
+    #recipe-tags img {
+        width: 100%;
+    }
+
+    #recipe-inf article:nth-of-type(1) {
+        background-color: #fff;
+        padding: 20px;
+    }
+    
+
+    #posts {
+        margin-top: 0vh;
+    }
+
+    #workshops{
+        width: 70%;
+        margin: auto;
+    }
+
+    #edit-post #addpost-form{
+        margin-top: 0;
+    }
+}

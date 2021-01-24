@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/ckeditor_4.15.0_full/ckeditor/ckeditor.js"></script>
+    <title>Dubyard</title>
+</head>
+
+<body>
+
+    <li id="user-inf">
+        <h4>Profile</h4>
+    </li>
+    <nav id="sign-btns">
+        <li>
+            <a id="log-out">Log out</a>
+        </li>
+    </nav>
+    <header id="admin-header">
+        <a href="index.html" id="logo">
+            <img src="../../img/logo_dubyard.png" alt="logo dubyard">
+        </a>
+        <a id="hamburger-menu">
+            <img src="../../img/icons/menu.svg" alt="menu metro hamburger">
+        </a>
+        <nav id="main-nav" class="admin-nav">
+            <ul>
+                <li>
+                    <a href="addpost.html">Creeër post</a>
+                </li>
+                <li>
+                    <a href="manageposts.html">Beheer posts</a>
+                </li>
+                <li>
+                    <a href="manageaccount.html">Beheer account</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form id="addpost-form">
+            <div id="addpost-warn"></div>
+            <h2>Add post</h2>
+            <label for="title-post">Titel:</label><input id="title-post" type="text">
+            <label for="description-post">Beschrijving:</label><input id="description-post" type="text">
+            <label for="img-post">URL algemene afbeelding:</label><input id="img-post" type="url">
+            <label for="posteditor">Inhoud: </label><textarea name="posteditor" id="posteditor" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor 4.
+            </textarea>
+
+            <div id="tags">
+                <h4>Tags</h4>
+                <label for="tag">Workshops</label><input id="workshops-input" type="checkbox" name="workshops">
+                <label for="tag">Vrijwilligers</label><input id="vrijwilligers-input" type="checkbox"
+                    name="vrijwilligers">
+                <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox" name="duurzaamheid">
+                <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding">
+                <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
+                <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
+
+                <div id="voeding-input-opts">
+                    <label for="amtpeople">Voor x aantal personen:</label>
+                    <input type="text" id="amtpeople" name="amtpeople">
+                    <label for="cookdur">Kookduur:</label>
+                    <input type="cookdur" id="cookdur" name="amtpeople">
+                    <div id="edition-opts">
+                        <label for="editie">Editie:</label>
+                        <input type="radio" id="2016" name="edition" value="2016"><label for="2016">2016</label>
+                        <input type="radio" id="2017" name="edition" value="2017"><label for="2017">2017</label>
+                        <input type="radio" id="2018" name="edition" value="2018"><label for="2018">2018</label>
+                        <input type="radio" id="2019" name="edition" value="2019"><label for="2019">2019</label>
+                        <input type="radio" id="2020" name="edition" value="2020"><label for="2020">2020</label>
+                    </div>
+                    <div id="time-opts">
+                        <label for="tijdstip">Tijdstip:</label>
+                        <input type="radio" id="voorgerecht" name="time" value="voorgerecht"><label
+                            for="voorgerecht">Voorgerecht</label>
+                        <input type="radio" id="hoofdgerecht" name="time" value="hoofdgerecht"><label
+                            for="hoofdgerecht">Hoofdgerecht</label>
+                        <input type="radio" id="nagerecht" name="time" value="nagerecht"><label
+                            for="nagerecht">Nagerecht</label>
+                        <input type="radio" id="snack" name="time" value="snack"><label for="snack">Snack</label>
+                    </div>
+                    <label for="tag">Ingrediënten:</label>
+                    <a id="add-input"><img src="../img/icons/plus.svg"></a>
+                    <div id="ingredients-inputs">
+                        <input class="ingredients-input" type="text" name="ingredients-input">
+                    </div>
+                </div>
+                <div id="workshops-input-opts">
+                    <label for="tag">Start uur:</label><input id="starthour-input" type="text" name="starthour">
+                    <p class="inf-small">
+                        In de vorm: hh:mm
+                    </p>
+                    <label for="tag">Eind uur:</label><input id="endhour-input" type="text" name="endhour">
+                    <p class="inf-small">
+                        In de vorm: hh:mm
+                    </p>
+                    <label for="tag">Locatie:</label><input id="location-input" type="text" name="location">
+                    <div id="date">
+                        <label for="tag">Dag:</label><input id="day-input" type="text" name="day">
+                        <label for="tag">Maand:</label><input id="month-input" type="text" name="month">
+                        <label for="tag">Jaar:</label><input id="year-input" type="text" name="year">
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <input type="submit" id="submit-post">
+        </form>
+    </main>
+</body>
+
+<script type="module" src="js/logout.js"></script>
+<script type="module" src="js/login.js"></script>
+<script type="module" src="js/postcontent.js"></script>
+<script type="module" src="js/index.js"></script>
+
+</html>

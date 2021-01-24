@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <title>Dubyard</title>
+</head>
+
+<body>
+
+    <nav id="sign-btns">
+        <li>
+            <a class="signup">Sign up</a>
+        </li>
+        <li>
+            <a class="login">Log in</a>
+        </li>
+    </nav>
+    <header id="admin-header">
+        <a href="index.html" id="logo">
+            <img src="../../img/logo_dubyard.png" alt="logo dubyard">
+        </a>
+        <a id="hamburger-menu">
+            <img src="../../img/icons/menu.svg" alt="menu metro hamburger">
+        </a>
+        <nav id="main-nav" class="admin-nav">
+            <ul>
+                <li>
+                    <a href="addpost.html">Creeër post</a>
+                </li>
+                <li>
+                    <a href="manageposts.html">Beheer posts</a>
+                </li>
+                <li>
+                    <a href="manageaccount.html">Beheer account</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="warns">
+            <p class="succes" id="signup-succes">You were succesfully registered!</p>
+            <p class="warning" id="signup-warn">E-mail adress already in use</p>
+            <p class="warning" id="login-username-warn">Incorrect E-mail</p>
+        </div>
+        <form id="signup-form">
+            <h2>Sign up</h2>
+            <label for="firstname-signup">First name:</label><input id="firstname-signup" type="text">
+            <label for="lastname-signup">Last name:</label><input id="lastname-signup" type="text">
+            <label for="email-signup">Email</label><input id="email-signup" type="email">
+            <label for="password-signup">Password</label><input id="password-signup" type="password">
+            <label for="rptpassword-signup">Repeat password</label><input id="rptpassword-signup" type="password">
+            <p class="warning" id="signup-pw-warning">Passwords do not match</p>
+            <input type="submit" class="btn" id="signup-btn"><a></a>
+            <p class="login">Already have an account? <a>Log in</a></p>
+        </form>
+        <form id="login-form">
+            <h2>Log in</h2>
+            <label for="email-login">Email</label><input id="email-login" type="email">
+            <label for="password-login">Password</label><input id="password-login" type="password">
+            <p class="warning pw-warning" id="login-warn">Password and/or e-mail are incorrect</p>
+            <input type="submit" class="btn" id="login-btn"><a></a>
+            <p class="signup" id="login-btn">Don't have an account yet? <a>Sign up</a></p>
+        </form>
+    </main>
+</body>
+<script type="module" src="js/index.js"></script>
+<script type="module" src="js/logout.js"></script>
+<!-- <script src="../../js/server/dist/bundle.js"></script> -->
+
+</html>

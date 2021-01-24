@@ -1,0 +1,678 @@
+#signup-succes,
+#login-pw-warn,
+#login-username-warn,
+#signup-warn,
+#signup-pw-warning,
+.pw-warning {
+    display: none;
+}
+
+#admin-header {
+    background-color: var(--d-green);
+}
+
+#admin-header a {
+    color: #fff !important;
+}
+
+#signup-succes {
+    margin-top: 10vh;
+}
+
+#warns {
+    margin-top: 50px;
+}
+
+#signup-form,
+#login-form {
+    width: 90%;
+    left: 5vw;
+    position: absolute;
+    z-index: 999;
+    top: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#admin-header #main-nav ul li a,
+#admin-header #main-nav ul li,
+#admin-header #main-nav ul {
+    z-index: 9999;
+    color: #fff !important;
+}
+
+#signup-form h2,
+#login-form h2 {
+    width: 100%;
+}
+
+#signup-form label,
+#login-form label {
+    width: 100%;
+}
+
+#signup-form input,
+#login-form input {
+    width: 100%;
+    padding: 5px;
+}
+
+#signup-form label,
+#login-form label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+
+#signup-form .btn,
+#signup-form p,
+#login-form .btn,
+#login-form p {
+    margin-top: 30px;
+}
+
+#signup-form p,
+#login-form p {
+    margin-left: 20px;
+}
+
+#login-form a,
+#signup-form a {
+    color: #1c1c1c;
+    font-weight: bolder;
+}
+
+#sign-btns {
+    width: 40vw;
+    position: fixed;
+    z-index: 99999;
+    color: #fff;
+    right: 30vw;
+    top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: right;
+}
+
+#sign-btns li {
+    width: 48%;
+}
+
+label {
+    font-weight: bold;
+}
+
+#account-inf p {
+    color: #1c1c1c;
+}
+
+#addpost-form {}
+
+#addpost-form>label {
+    width: 100%;
+}
+
+#addpost-form>input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#addpost-form #tags {
+    margin-top: 15px;
+}
+
+#addpost-form #tags h4 {
+    margin-bottom: 10px;
+}
+
+#voeding-input-opts {
+    margin-top: 20px;
+}
+
+#voeding-input-opts label {
+    margin-right: 15px;
+}
+
+#voeding-input-opts input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#voeding-input-opts #edition-opts,
+#voeding-input-opts #time-opts {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#signup-pw-warning {
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+}
+
+#signup-btn #login-btn {
+    width: 50% !important;
+    margin: 10px auto !important;
+}
+
+.login,
+.signup {
+    width: 100%;
+    margin-left: 0 !important;
+    text-align: center;
+}
+
+.succes,
+.warning {
+    display: hidden !important;
+}
+
+#manage-acc-form {
+    margin-top: 10vh;
+}
+
+#manage-acc-form input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#edit-post {
+    background-color: #fff;
+    width: 100vw;
+    min-height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    flex-wrap: wrap;
+}
+
+#edit-post a {
+    margin-top: 10px;
+}
+
+#edit-post #tags>a {
+    width: 50%;
+    text-align: center;
+}
+
+#edit-post #tags>a>input {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#manage-posts img {
+    width: 100%;
+}
+
+#manage-posts {
+    margin-top: 10vh;
+}
+
+#manage-posts .img-wrapper {
+    max-height: 20vh;
+    margin-top: 3vh;
+    margin-bottom: 7vh;
+}
+
+#edit-post {
+    margin-top: 15vh;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#manage-posts article h2 {
+    text-align: left;
+}
+
+#manage-posts article {
+    margin-top: 20px;
+    border-bottom: 2px solid var(--l-green);
+}
+
+#manage-posts article .post-date {
+    margin-bottom: 2vh;
+}
+
+#manage-posts a {
+    border: 1px solid #1c1c1c;
+    padding: 5px;
+    font-weight: 500;
+    margin-top: 10%;
+}
+
+#workshops-input-opts {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+#workshops-input-opts input {
+    width: 100%;
+}
+
+#addpost-form input {
+    margin-bottom: 10px;
+}
+
+#calendar-input-opts,
+#voeding-input-opts,
+#workshops-input-opts {
+    width: 100%;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+    background-color: var(--l-green);
+    color: #fff;
+    padding: 20px 10px;
+}
+
+#voeding-input-opts {}
+
+#ingredient-inputs {
+    padding-bottom: 5vh;
+}
+
+@media screen and (min-width: 1000px) {
+
+    .admin-nav ul,
+    .admin-nav ul li {
+        opacity: 1;
+    }
+
+    .admin-main {
+        opacity: 0;
+    }
+
+    #admin-header #logo {
+        margin-left: 5%;
+    }
+
+    #signup-form,
+    #login-form,
+    #addpost-form,
+    #manage-acc-form {
+        width: 50%;
+        position: absolute;
+        z-index: 999;
+        top: 15vh;
+        left: 15vw;
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 5%;
+    }
+
+    #addpost-form{
+        margin-top: 7.5vh;
+    }
+    
+    #signup-form,
+    #login-form {
+        margin-top: 10vh;
+    }
+
+    #addpost-form h4 {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #addpost-form #tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 15px 0px;
+        width: 100%;
+    }
+
+    #addpost-form #tags>label {
+        width: 90%;
+        padding: 0 10% 0 0;
+    }
+
+    #addpost-form #tags>input {
+        width: 10%;
+        margin-right: 10%;
+    }
+
+    #addpost-form #imgs {
+        margin: 10px 0;
+    }
+
+    #addpost-form #post-content {
+        width: 100%;
+        min-height: 80vh;
+    }
+
+    #addpost-form #workshops-more {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    #addpost-form #workshops-more label {
+        width: 20%;
+        max-width: 100%;
+    }
+
+    #addpost-form #workshops-more input {
+        width: 30%;
+        margin-right: 0;
+    }
+
+    #submit-post {
+        width: 20%;
+    }
+
+    .inf-small {
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        font-style: italic;
+        margin-left: 20% !important;
+        margin-top: 5px !important;
+    }
+
+    form h2 {
+        width: 100%;
+
+    }
+
+    form label {
+        width: 20%;
+        max-width: 20%;
+    }
+
+    input {
+        width: 75%;
+        padding: 5px;
+    }
+
+    form input,
+    form label {
+        margin-top: 10px;
+    }
+
+    form .btn,
+    form p {
+        margin-top: 30px;
+    }
+
+    form p {
+        margin-left: 20px;
+    }
+
+    form a {
+        color: #1c1c1c;
+        font-weight: bolder;
+    }
+
+    #sign-btns {
+        width: 10vw;
+        position: fixed;
+        color: #fff;
+        right: 15px;
+        top: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        text-align: right;
+        flex-direction: row-reverse;
+    }
+
+
+    #time-opts,
+    #edition-opts {
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    #sign-btns li {
+        width: 48%;
+    }
+
+    #sign-btns a {
+        color: #fff;
+    }
+
+    .warning {
+        width: 100%;
+        color: #ff0000;
+        margin-left: 14.4vw;
+        margin-top: 15px;
+        display: none;
+    }
+
+    .succes {
+        width: 100%;
+        font-weight: 800;
+        margin: 20vh 0px 5vh 0 !important;
+        display: none;
+    }
+
+    #user-inf {
+        color: #fff;
+        z-index: 99999;
+        position: absolute;
+        right: 15px;
+        top: 50px;
+    }
+
+    #user-inf h4 {
+        color: #fff;
+    }
+
+    #logout {
+        position: absolute;
+        z-index: 99999;
+    }
+
+    #calendar-input-opts label,
+    #voeding-input-opts label {
+        width: 25%;
+    }
+
+    #calendar-input-opts input,
+    #voeding-input-opts input {
+        width: 65%;
+    }
+
+
+    #voeding-input-opts,
+    #workshops-input-opts {
+        background-color: var(--l-green);
+        color: white;
+        border-radius: 10px;
+        padding: 15px 30px 30px 30px;
+        display: none;
+        flex-wrap: wrap;
+    }
+
+    #voeding-input-opts img {
+        width: 100%;
+    }
+
+    #voeding-input-opts a {
+        width: 5%;
+        margin-top: 3%;
+    }
+
+    #voeding-input-opts:nth-child(0) {
+        width: 100% !important;
+    }
+
+    #voeding-input-opts>label:first-of-type {
+        width: 100%;
+        padding-right: 15px;
+    }
+
+    #workshops-input-opts #date {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    #workshops-input-opts #date input {
+        width: 13.5%;
+        margin-right: 20px;
+    }
+
+    #workshops-input-opts #date label {
+        width: 10%;
+    }
+
+    #voeding-input-opts>input,
+    #workshops-input-opts>input {
+        width: 65%;
+        margin-right: 20px;
+    }
+
+    #ingredients-inputs {
+        width: 100%;
+    }
+
+    #manage-posts {
+        width: 70%;
+        margin-top: 0vh;
+        position: absolute;
+        z-index: 5;
+        left: 15%;
+    }
+
+    #manage-posts article {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 30px 0;
+    }
+
+    #manage-posts h2,
+    #manage-posts p,
+    #manage-posts .post-tags {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    #manage-posts p {
+        width: 40%;
+    }
+
+    #manage-posts article {
+        padding-bottom: 30px;
+        position: relative;
+        border-bottom: 2px solid var(--l-green);
+    }
+
+    #manage-posts .post-tags {
+        font-size: .8rem;
+        margin: 10px auto 0 auto;
+    }
+
+    #manage-posts .post-date {
+        width: 100%;
+        font-size: .8rem;
+        margin: 1px auto 20px auto;
+    }
+
+    #manage-posts .post-tags {
+        width: 100%;
+        display: flex;
+    }
+
+    #manage-posts .post-tags li {
+        margin-right: 5px;
+    }
+
+    #manage-posts .post-tags li:first-of-type {
+        font-weight: 700;
+    }
+
+    #manage-posts .img-wrapper {
+        height: 100%;
+        width: 25%;
+        position: absolute;
+        right: 0;
+    }
+
+    #manage-posts a {
+        margin-top: 1%;
+    }
+
+    #admin-header {
+        min-width: 100vw;
+    }
+
+    #admin-header ul {
+        color: #fff;
+        display: flex !important;
+        max-height: 6vh;
+    }
+
+    #admin-header ul li {
+        width: 10vw !important;
+    }
+
+    #admin-header ul li a {
+        color: #fff;
+    }
+
+    #admin-header #main-nav {
+        margin-left: 20%;
+
+    }
+
+    #admin-header #logo {
+        margin-left: 0%;
+    }
+
+    #time-opts input[type="radio"],
+    #edition-opts input[type="radio"] {
+        width: 5%;
+    }
+
+    #cke_posteditor {
+        margin-top: 5px;
+    }
+
+    #time-opts,
+    #edition-opts {
+        margin: 15px 0;
+        width: 50%;
+    }
+
+    #login-form input,
+    #signup-form input,
+    #manage-acc-form input,
+    #addpost-form input {
+        width: 70%;
+    }
+
+    p.signup,
+    p.login {
+        text-align: left;
+    }
+
+    #workshop-input-opts {
+        margin-top: 5px;
+    }
+
+
+    #voeding-input-opts input {
+        width: 70%;
+    }
+
+
+    #edit-post label:nth-of-type(4) {
+        margin-top: 30px;
+    }
+
+    #edit-post-btn {
+        width: 30%;
+    }
+
+    #warns {
+        width: 70%;
+        margin: auto;
+        margin-top: -20vh;
+    }
+}

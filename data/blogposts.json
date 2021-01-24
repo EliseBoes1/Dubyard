@@ -1,0 +1,183 @@
+{
+    "blogposts": [{
+        "title": "Gezocht: plantenkenners",
+        "type": "vrijwilligers",
+        "placeholder": "img/placeholders/DSC_0565.JPG",
+        "imgs": ["img/placeholders/DSC_0565.JPG"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22"
+    }],
+    "recipes": [{
+        "title": "Rasta pasta",
+        "type": "recept",
+        "placeholder": "img/placeholders/pasta.jpg",
+        "tags": ["hoofdgerecht", "festival", "2017"],
+        "imgs": ["img/placeholders/pasta.jpg"],
+        "alt": ["pasta"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 0
+    }, {
+        "title": "Gezonde toast",
+        "type": "recept",
+        "placeholder": "img/placeholders/DSC_0565.JPG",
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["toast"],
+        "tags": ["voorgerecht", "seizoensgebonden", "2019"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 1
+    }, {
+        "title": "Nacho's met pikante dipsaus",
+        "type": "recept",
+        "placeholder": "img/placeholders/nachos.jpg",
+        "tags": ["voorgerecht", "festival", "2018"],
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["nachos, pikant, dipsaus"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 2
+    }, {
+        "title": "Vegetarische lasagne",
+        "type": "recept",
+        "placeholder": "img/placeholders/lasagna.jpg",
+        "tags": ["hoofdgerecht", "festival", "2017"],
+        "imgs": ["img/placeholders/lasagne.jpg"],
+        "alt": ["lasagne, vegetarisch"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 3
+    }, {
+        "title": "Veganistische pizza",
+        "type": "recept",
+        "placeholder": "img/placeholders/pizza.JPG",
+        "tags": ["hoofdgerecht", "festival", "2018"],
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["pizza"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 4
+    }],
+    "workshops": [{
+        "title": "Rasta pasta",
+        "type": "recept",
+        "placeholder": "img/placeholders/pasta.jpg",
+        "tags": ["hoofdgerecht", "festival", "2017"],
+        "imgs": ["img/placeholders/pasta.jpg"],
+        "alt": ["pasta"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 0
+    }, {
+        "title": "Gezonde toast",
+        "type": "recept",
+        "placeholder": "img/placeholders/DSC_0565.JPG",
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["toast"],
+        "tags": ["voorgerecht", "seizoensgebonden", "2019"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 1
+    }, {
+        "title": "Nacho's met pikante dipsaus",
+        "type": "recept",
+        "placeholder": "img/placeholders/nachos.jpg",
+        "tags": ["voorgerecht", "nagerecht", "festival", "2018"],
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["nachos, pikant, dipsaus"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 2
+    }, {
+        "title": "Vegetarische lasagne",
+        "type": "recept",
+        "placeholder": "img/placeholders/lasagne.JPG",
+        "tags": ["hoofdgerecht", "festival", "2017"],
+        "imgs": ["img/placeholders/lasagne.jpg"],
+        "alt": ["lasagne, vegetarisch"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 3
+    }, {
+        "title": "Veganistische pizza",
+        "type": "recept",
+        "placeholder": "img/placeholders/pizza.JPG",
+        "tags": ["hoofdgerecht", "festival", "2018"],
+        "imgs": ["img/placeholders/toast.jpg"],
+        "alt": ["pizza"],
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+        "date": "09/10/22",
+        "id": 4
+    }],
+    "calendar": [{
+            "title": "Dit is een titel",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+            "type": "kalender",
+            "img": "img/placeholders/pizza.jpg",
+            "alt": ["pizza"],
+            "day": 9,
+            "month": 2,
+            "year": 2020,
+            "timeFrom": "16:00",
+            "timeTo": "18:00",
+            "id": 1,
+            "location": "Meerbeek"
+        },
+        {
+            "title": "Dit is een titel",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+            "type": "kalender",
+            "img": "img/placeholders/pexels-visually-us-1909572.jpg",
+            "alt": ["pizza"],
+            "day": 9,
+            "month": 2,
+            "year": 2020,
+            "timeFrom": "16:00",
+            "timeTo": "18:00",
+            "location": "Meerbeek",
+            "id": 2
+        },
+        {
+            "title": "Dit is een titel",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+            "type": "kalender",
+            "img": "img/placeholders/pexels-sergio-souza-3553903.jpg",
+            "alt": ["pizza"],
+            "day": 9,
+            "month": 2,
+            "year": 2020,
+            "timeFrom": "16:00",
+            "timeTo": "18:00",
+            "location": "Meerbeek",
+            "id": 3
+        },
+        {
+            "title": "Dit is een titel",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+            "type": "kalender",
+            "img": "img/placeholders/pexels-lisa-fotios-4938733.jpg",
+            "alt": ["pizza"],
+            "day": 9,
+            "month": 2,
+            "year": 2020,
+            "timeFrom": "16:00",
+            "timeTo": "18:00",
+            "location": "Meerbeek",
+            "id": 4
+        },
+        {
+            "title": "Dit is een titel",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus voluptas officiis reiciendis totam deleniti laborum vel nulla accusantium, quos ipsam?",
+            "type": "kalender",
+            "img": "img/placeholders/pexels-buğra-doğan-3561946.jpg",
+            "alt": ["pizza"],
+            "day": 9,
+            "month": 2,
+            "year": 2020,
+            "timeFrom": "16:00",
+            "timeTo": "18:00",
+            "location": "Meerbeek",
+            "id": 5
+        }
+    ]
+}
