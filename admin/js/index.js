@@ -73,19 +73,35 @@ let signupUser = () => {
     const rptPw = document.getElementById('rptpassword-signup').value;
 
     if (newUser.password == rptPw) {
+        if(checkEmail(newUser.email)){
+            console.log(checkEmail(newUser.email))
         postData('http://127.0.0.1:12345/signup', newUser)
             .then(data => {
                 if (data.resp == "false") {
-                    document.getElementById('signup-email-warn').style.display = 'block';
+                    document.getElementById('signup-warn').style.display = 'block';
+                    document.getElementById('signup-warn').innerHTML = 'Email adress already in use';
                 } else {
                     document.getElementById('signup-succes').style.display = 'block';
-                    document.getElementById('signup-email-warn').style.display = 'none';
+                    document.getElementById('signup-warn').style.display = 'none';
                     setTimeout(switchSignup(), 2000);
                 };
             });
-        document.getElementById('signup-pw-warning').style.display = 'none';
+        document.getElementById('signup-warn').style.display = 'none';
+        }else{
+            document.getElementById('signup-warn').style.display = 'block';
+            document.getElementById('signup-warn').innerHTML = 'Incorrect email';
+        }
     } else {
-        document.getElementById('signup-pw-warning').style.display = 'block';
+        document.getElementById('signup-warn').style.display = 'block';
+        document.getElementById('signup-warn').innerHTML = 'Incorrect repeated password';
+    }
+}
+
+let checkEmail = email =>{
+    if(email.includes('@') && email.includes('.') && email.indexOf('.') > 0 && email.indexOf('.') < email.length){
+        return true;
+    }else{
+        return false
     }
 }
 
@@ -97,12 +113,12 @@ let loginUser = () => {
     try {
         postData('http://127.0.0.1:12345/login', loggedInUser)
             .then(data => {
-                if(data.resp == 'falsepw'){
-                    document.getElementById('login-pw-warn').style.display = 'block';
-                }else if(data.resp == 'falseusername'){
+                if (data.resp == 'falsepw') {
+                    document.getElementById('login-warn').style.display = 'block';
+                } else if (data.resp == 'falseusername') {
                     document.getElementById('login-username-warn').style.display = 'block';
-                }else {
-                    document.getElementById('login-pw-warn').style.display = 'none';
+                } else {
+                    document.getElementById('login-warn').style.display = 'none';
                     localStorage.setItem('loggedIn', true);
                     localStorage.setItem('userId', data._id);
                     localStorage.setItem('name', data.firstname);
@@ -155,7 +171,6 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
 
     let addPost = () => {
         let submitPostBtn = document.getElementById('submit-post');
-
         submitPostBtn.addEventListener('click', function (e) {
             e.preventDefault();
             Array.from(document.querySelectorAll('#tags input[type="checkbox"]')).forEach(checkbox => {});
@@ -188,9 +203,22 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
                 ingredientInputs.forEach(input => {
                     newPost.recept.ingredients.push(input.value);
                 });
-                newPost.recept.edition =  document.querySelectorAll('input[name="edition"]');
-                newPost.recept.time =  document.querySelectorAll('input[name="time"]');
-                console.log(newPost);
+                let selectedEditions = [];
+                Array.from(document.querySelectorAll('input[name="edition"]')).forEach(inp => {
+                    if (inp.checked) {
+                        selectedEditions.push(inp.nextSibling.innerHTML);
+                    }
+                });
+                let selectedTime = [];
+                Array.from(document.querySelectorAll('input[name="time"]')).forEach(inp => {
+                    if (inp.checked) {
+                        selectedTime.push(inp.nextSibling.innerHTML);
+                    }
+                });
+                newPost.recept.edition = selectedEditions;
+                newPost.recept.time = selectedTime;
+                newPost.recept.cookdur = document.getElementById('cookdur').value;
+                newPost.recept.amtpeople = document.getElementById('amtpeople').value;
             }
             if (newPost.tags.includes('Workshops')) {
                 newPost.workshop = {};
@@ -220,3 +248,14 @@ if (document.getElementById('addpost-form') != null && document.querySelector('#
         addPost();
     }
 }
+
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const mainNav = document.getElementById('main-nav');
+hamburgerMenu.addEventListener('click', function () {
+    if (mainNav.style.display === "none") {
+        mainNav.style.display = "block";
+    } else {
+        mainNav.style.display = "none";
+    }
+    this.src = '';
+});

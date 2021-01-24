@@ -1,22 +1,26 @@
-.admin-nav ul,
-.admin-nav ul li {
-    opacity: 0;
-}
-
-.admin-main {
-    opacity: 0;
-}
-
-#admin-header #logo {
-    margin-left: 5%;
+#signup-succes,
+#login-pw-warn,
+#login-username-warn,
+#signup-warn,
+#signup-pw-warning,
+.pw-warning {
+    display: none;
 }
 
 #admin-header {
     background-color: var(--d-green);
 }
 
-#admin-header a{
+#admin-header a {
     color: #fff !important;
+}
+
+#signup-succes {
+    margin-top: 10vh;
+}
+
+#warns {
+    margin-top: 50px;
 }
 
 #signup-form,
@@ -30,40 +34,41 @@
     flex-wrap: wrap;
 }
 
+#admin-header #main-nav ul li a,
+#admin-header #main-nav ul li,
+#admin-header #main-nav ul {
+    z-index: 9999;
+    color: #fff !important;
+}
+
 #signup-form h2,
 #login-form h2 {
     width: 100%;
-
 }
 
 #signup-form label,
 #login-form label {
-    width: 20%;
-    max-width: 20%;
+    width: 100%;
 }
 
 #signup-form input,
 #login-form input {
-    width: 75%;
+    width: 100%;
     padding: 5px;
 }
 
-#signup-form input,
 #signup-form label,
-#login-form input,
 #login-form label {
     margin-top: 10px;
+    margin-bottom: 5px;
 }
+
 
 #signup-form .btn,
 #signup-form p,
 #login-form .btn,
 #login-form p {
     margin-top: 30px;
-}
-
-input.btn{
-    width: 25% !important;
 }
 
 #signup-form p,
@@ -93,15 +98,188 @@ input.btn{
     width: 48%;
 }
 
+label {
+    font-weight: bold;
+}
+
 #account-inf p {
     color: #1c1c1c;
+}
+
+#addpost-form {}
+
+#addpost-form>label {
+    width: 100%;
+}
+
+#addpost-form>input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#addpost-form #tags {
+    margin-top: 15px;
+}
+
+#addpost-form #tags h4 {
+    margin-bottom: 10px;
+}
+
+#voeding-input-opts {
+    margin-top: 20px;
+}
+
+#voeding-input-opts label {
+    margin-right: 15px;
+}
+
+#voeding-input-opts input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#voeding-input-opts #edition-opts,
+#voeding-input-opts #time-opts {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#signup-pw-warning {
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+}
+
+#signup-btn #login-btn {
+    width: 50% !important;
+    margin: 10px auto !important;
+}
+
+.login,
+.signup {
+    width: 100%;
+    margin-left: 0 !important;
+    text-align: center;
+}
+
+.succes,
+.warning {
+    display: hidden !important;
+}
+
+#manage-acc-form {
+    margin-top: 10vh;
+}
+
+#manage-acc-form input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#edit-post {
+    background-color: #fff;
+    width: 100vw;
+    min-height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+    flex-wrap: wrap;
+}
+
+#edit-post a {
+    margin-top: 10px;
+}
+
+#edit-post #tags>a {
+    width: 50%;
+    text-align: center;
+}
+
+#edit-post #tags>a>input {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#manage-posts img {
+    width: 100%;
+}
+
+#manage-posts {
+    margin-top: 10vh;
+}
+
+#manage-posts .img-wrapper {
+    max-height: 20vh;
+    margin-top: 3vh;
+    margin-bottom: 7vh;
+}
+
+#edit-post {
+    margin-top: 15vh;
+    padding: 15px;
+    background-color: #fff;
+}
+
+#manage-posts article h2 {
+    text-align: left;
+}
+
+#manage-posts article {
+    margin-top: 20px;
+    border-bottom: 2px solid var(--l-green);
+}
+
+#manage-posts article .post-date {
+    margin-bottom: 2vh;
+}
+
+#manage-posts a {
+    border: 1px solid #1c1c1c;
+    padding: 5px;
+    font-weight: 500;
+    margin-top: 10%;
+}
+
+#workshops-input-opts {
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+#workshops-input-opts input {
+    width: 100%;
+}
+
+#addpost-form input {
+    margin-bottom: 10px;
+}
+
+#calendar-input-opts,
+#voeding-input-opts,
+#workshops-input-opts {
+    width: 100%;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+    background-color: var(--l-green);
+    color: #fff;
+    padding: 20px 10px;
+}
+
+#voeding-input-opts {}
+
+#ingredient-inputs {
+    padding-bottom: 5vh;
 }
 
 @media screen and (min-width: 1000px) {
 
     .admin-nav ul,
     .admin-nav ul li {
-        opacity: 0;
+        opacity: 1;
     }
 
     .admin-main {
@@ -119,11 +297,20 @@ input.btn{
         width: 50%;
         position: absolute;
         z-index: 999;
-        top: 25vh;
+        top: 15vh;
         left: 15vw;
         display: flex;
         flex-wrap: wrap;
         padding-bottom: 5%;
+    }
+
+    #addpost-form{
+        margin-top: 7.5vh;
+    }
+    
+    #signup-form,
+    #login-form {
+        margin-top: 10vh;
     }
 
     #addpost-form h4 {
@@ -233,6 +420,13 @@ input.btn{
         flex-direction: row-reverse;
     }
 
+
+    #time-opts,
+    #edition-opts {
+        margin: 15px 0;
+        width: 100%;
+    }
+
     #sign-btns li {
         width: 48%;
     }
@@ -244,7 +438,8 @@ input.btn{
     .warning {
         width: 100%;
         color: #ff0000;
-        margin: 20vh 0px 0px 0 !important;
+        margin-left: 14.4vw;
+        margin-top: 15px;
         display: none;
     }
 
@@ -270,15 +465,6 @@ input.btn{
     #logout {
         position: absolute;
         z-index: 99999;
-    }
-
-    #calendar-input-opts,
-    #voeding-input-opts {
-        width: 100%;
-        display: none;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 10px 0;
     }
 
     #calendar-input-opts label,
@@ -346,7 +532,8 @@ input.btn{
     }
 
     #manage-posts {
-        margin-top: 20vh;
+        width: 70%;
+        margin-top: 0vh;
         position: absolute;
         z-index: 5;
         left: 15%;
@@ -366,44 +553,14 @@ input.btn{
         margin-bottom: 5px;
     }
 
-    #manage-posts a {
-        border: 1px solid #1c1c1c;
-        padding: 10px;
-        font-weight: 500;
-    }
-
-
-    #edit-post {
-        background-color: #fff;
-        width: 100vw;
-        height: 100vw;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        display: none;
-        flex-wrap: wrap;
-    }
-
-    #edit-post #tags>a {
-        width: 50%;
-        text-align: center;
-    }
-
-    #edit-post #tags>a>input {
-        width: 100%;
-        margin-top: 50px;
-    }
-
     #manage-posts p {
         width: 40%;
     }
 
     #manage-posts article {
-        width: 60%;
-        border-bottom: 2px solid var(--d-green);
         padding-bottom: 30px;
         position: relative;
+        border-bottom: 2px solid var(--l-green);
     }
 
     #manage-posts .post-tags {
@@ -430,27 +587,92 @@ input.btn{
         font-weight: 700;
     }
 
-    #manage-posts img {
+    #manage-posts .img-wrapper {
         height: 100%;
+        width: 25%;
         position: absolute;
         right: 0;
     }
 
+    #manage-posts a {
+        margin-top: 1%;
+    }
+
+    #admin-header {
+        min-width: 100vw;
+    }
+
     #admin-header ul {
-        width: 40vw !important;
-        top: 0 !important;
-        left: 40% !important;
         color: #fff;
         display: flex !important;
         max-height: 6vh;
     }
 
     #admin-header ul li {
-        width: 10 vw !important;
+        width: 10vw !important;
     }
 
-    #time-opts input[type="radio"], #edition-opts input[type="radio"]{
+    #admin-header ul li a {
+        color: #fff;
+    }
+
+    #admin-header #main-nav {
+        margin-left: 20%;
+
+    }
+
+    #admin-header #logo {
+        margin-left: 0%;
+    }
+
+    #time-opts input[type="radio"],
+    #edition-opts input[type="radio"] {
         width: 5%;
     }
-    
+
+    #cke_posteditor {
+        margin-top: 5px;
+    }
+
+    #time-opts,
+    #edition-opts {
+        margin: 15px 0;
+        width: 50%;
+    }
+
+    #login-form input,
+    #signup-form input,
+    #manage-acc-form input,
+    #addpost-form input {
+        width: 70%;
+    }
+
+    p.signup,
+    p.login {
+        text-align: left;
+    }
+
+    #workshop-input-opts {
+        margin-top: 5px;
+    }
+
+
+    #voeding-input-opts input {
+        width: 70%;
+    }
+
+
+    #edit-post label:nth-of-type(4) {
+        margin-top: 30px;
+    }
+
+    #edit-post-btn {
+        width: 30%;
+    }
+
+    #warns {
+        width: 70%;
+        margin: auto;
+        margin-top: -20vh;
+    }
 }

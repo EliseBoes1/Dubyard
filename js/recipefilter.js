@@ -13,19 +13,22 @@ const selectedFilters = {
 
 let results;
 
-
-
 const addSelected = (selectedType, value) => {
-    console.log(selectedType)
     selectedFilters[selectedType] = value;
 }
+
+const capitalize = word => {
+    const lower = str.toLowerCase();
+    return str.charAt(0).toUpperCase() + lower.slice(1);
+  }
 
 const evalSelected = element => {
     element.addEventListener('click', function () {
         Array.from(document.getElementsByClassName('reg-post')).forEach(post => {
             post.style.display = "none";
         });
-        const valueToFilter = this.innerHTML.split(' ')[0].toLocaleLowerCase();
+        const valueToFilter = this.innerHTML.split(' ')[0];
+        console.log(valueToFilter);
         Array.from(
             document.getElementsByClassName(valueToFilter)).forEach(post => {
             post.style.display = "block";

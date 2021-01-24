@@ -4,7 +4,7 @@ if (document.querySelector('#addpost-form #submit-post') != null) {
     CKEDITOR.replace('posteditor', {
         extraPlugins: 'editorplaceholder',
         editorplaceholder: 'Start typing here...'
-      });
+    });
 
 }
 
@@ -12,7 +12,7 @@ if (document.querySelector('#edit-post #addpost-form') != null) {
     CKEDITOR.replace('posteditoredit', {
         extraPlugins: 'editorplaceholder',
         editorplaceholder: 'Start typing here...'
-      });
+    });
 };
 
 async function postData(url = '', data = {}) {
@@ -35,22 +35,15 @@ let showPosts = () => {
             if (data != null) {
                 document.getElementById('noposts-warn').style.display = 'none';
                 data.forEach(post => {
-                    console.log(post)
                     document.getElementById('manage-posts').insertAdjacentHTML('afterbegin', `
                         <article id="${post.id}">
                             <h2>${post.title}</h2>
                             <p>${post.description}</p>
-                            <ul class="post-tags"><li>Tags: </li></ul>
                             <ul class="post-date">Geplaatst op: ${post.day}/${post.month}/${post.year}</ul>
                             <a class="edit-post ${post.id}">Edit post</a><a class="remove-post ${post.id}">Remove post</a>
-                            <img src ="${post.img}" alt="">
+                            <div class="img-wrapper"><img src ="${post.img}" alt=""></div>
                         </article>
                     `)
-                    post.tags.forEach(tag => {
-                        document.querySelector(`article#${post.id} .post-tags`).insertAdjacentHTML("beforeend", `
-                            <li>${tag}</li>
-                        `)
-                    });
                     let removeBtns = document.querySelectorAll('.remove-post');
                     removeBtns.forEach(removeBtn => {
                         removeBtn.addEventListener('click', function () {
@@ -73,6 +66,17 @@ let showPosts = () => {
                                 document.getElementById('description-post').value = post.description;
                                 CKEDITOR.instances.posteditoredit.setData(post.content);
                                 document.getElementById('img-post').value = post.img;
+                                post.tags.forEach(tag => {
+                                    let labelsTags = Array.from(document.querySelectorAll('#tags>label'));
+                                    labelsTags.forEach(tag => {
+                                        if (post.tags.includes(tag.innerHTML)) {
+                                            tag.nextSibling.checked = true;
+                                        }
+                                        if (post.tags.includes('kunstdeco') && tag.innerHTML == 'Kunst &amp; deco') {
+                                            tag.nextSibling.checked = true;
+                                        }
+                                    });
+                                });
                             }
                             postData('http://127.0.0.1:12345/getpost', {
                                 id: postId
@@ -106,7 +110,7 @@ let postForm = (data, postId) => {
             title: document.getElementById('title-post').value,
             content: CKEDITOR.instances.posteditoredit.getData(),
             description: document.getElementById('description-post').value,
-            img: document.getElementById('img-post'),
+            img: document.getElementById('img-post').value,
             tags: [],
             user: localStorage.getItem('userId'),
             id: postId,
@@ -121,7 +125,9 @@ let postForm = (data, postId) => {
             let tagName = tag.id;
             editedPost.tags.push(tagName.replace('-input', ''));
         });
-        postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {});
+        postData('http://127.0.0.1:12345/editpost', editedPost).then(data => {
+            window.location.href = 'manageposts.html'
+        });
     }
 
     document.getElementById('edit-post-btn').addEventListener('click', function (e) {

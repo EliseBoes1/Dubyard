@@ -12,7 +12,6 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-
 let showUser = (user) => {
     let name = localStorage.getItem('name');
     document.getElementById('user-inf').innerHTML = `Logged in as ${name}`;

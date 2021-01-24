@@ -17,13 +17,13 @@
         </li>
     </nav>
     <header id="admin-header">
-        <a href="#" id="logo">
-            <img src="../img/logo_dubyard.png" alt="logo dubyard">
+        <a href="index.html" id="logo">
+            <img src="../../img/logo_dubyard.png" alt="logo dubyard">
         </a>
         <a id="hamburger-menu">
-            <img src="../img/icons/menu.svg" alt="menu metro hamburger">
+            <img src="../../img/icons/menu.svg" alt="menu metro hamburger">
         </a>
-        <nav id="main-nav">
+        <nav id="main-nav" class="admin-nav">
             <ul>
                 <li>
                     <a href="addpost.html">Creeër post</a>
@@ -32,7 +32,7 @@
                     <a href="manageposts.html">Beheer posts</a>
                 </li>
                 <li>
-                    <a href="#" class="selected">Beheer account</a>
+                    <a href="manageaccount.html">Beheer account</a>
                 </li>
             </ul>
         </nav>
@@ -43,12 +43,12 @@
             <label for="firstname-manage">First name:</label><input id="firstname-manage" type="text">
             <label for="lastname-manage">Last name:</label><input id="lastname-manage" type="text">
             <label for="email-manage">Email</label><input id="email-manage" type="email">
-            <label for="oldpassword-manage">Old password</label><input id="oldpassword-manage" type="password">
-            <label for="password-manage">New assword</label><input id="password-manage" type="password">
-            <p class="warning" id="manage-pw-warning">Password do not match</p>
+            <!-- <label for="oldpassword-manage">Old password</label><input id="oldpassword-manage" type="password"> -->
+            <!-- <label for="password-manage">New password</label><input id="password-manage" type="password"> -->
+            <!-- <p class="warning" id="manage-pw-warning">Password do not match</p> -->
             <input type="submit" class="btn" id="manage-btn"></input>
+            <!-- <a id="delete-account">Delete account</a> -->
         </form>
-        <a id="delete-account">Delete account</a>
     </main>
 </body>
 <script type="module" src="js/index.js"></script>

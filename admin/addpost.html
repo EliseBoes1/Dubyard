@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/ckeditor_4.15.0_full/ckeditor/ckeditor.js"></script>
     <title>Dubyard</title>
 </head>
@@ -20,16 +21,16 @@
         </li>
     </nav>
     <header id="admin-header">
-        <a href="#" id="logo">
-            <img src="../img/logo_dubyard.png" alt="logo dubyard">
+        <a href="index.html" id="logo">
+            <img src="../../img/logo_dubyard.png" alt="logo dubyard">
         </a>
         <a id="hamburger-menu">
-            <img src="../img/icons/menu.svg" alt="menu metro hamburger">
+            <img src="../../img/icons/menu.svg" alt="menu metro hamburger">
         </a>
-        <nav id="main-nav">
+        <nav id="main-nav" class="admin-nav">
             <ul>
                 <li>
-                    <a href="#" class="selected">Creeër post</a>
+                    <a href="addpost.html">Creeër post</a>
                 </li>
                 <li>
                     <a href="manageposts.html">Beheer posts</a>
@@ -42,6 +43,7 @@
     </header>
     <main>
         <form id="addpost-form">
+            <div id="addpost-warn"></div>
             <h2>Add post</h2>
             <label for="title-post">Titel:</label><input id="title-post" type="text">
             <label for="description-post">Beschrijving:</label><input id="description-post" type="text">
@@ -57,7 +59,14 @@
                     name="vrijwilligers">
                 <label for="tag">Duurzaamheid</label><input id="duurzaamheid-input" type="checkbox" name="duurzaamheid">
                 <label for="tag">Voeding</label><input id="voeding-input" type="checkbox" name="voeding">
+                <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
+                <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
+
                 <div id="voeding-input-opts">
+                    <label for="amtpeople">Voor x aantal personen:</label>
+                    <input type="text" id="amtpeople" name="amtpeople">
+                    <label for="cookdur">Kookduur:</label>
+                    <input type="cookdur" id="cookdur" name="amtpeople">
                     <div id="edition-opts">
                         <label for="editie">Editie:</label>
                         <input type="radio" id="2016" name="edition" value="2016"><label for="2016">2016</label>
@@ -82,8 +91,6 @@
                         <input class="ingredients-input" type="text" name="ingredients-input">
                     </div>
                 </div>
-                <label for="tag">Kunst & deco</label><input id="kunstdeco-input" type="checkbox" name="kunstdeco">
-                <label for="tag">Sport</label><input id="sport-input" type="checkbox" name="sport">
                 <div id="workshops-input-opts">
                     <label for="tag">Start uur:</label><input id="starthour-input" type="text" name="starthour">
                     <p class="inf-small">

@@ -34,11 +34,32 @@ hamburgerMenu.addEventListener('click', function () {
     this.src = '';
 });
 
-let showBlogposts = (divToAppend, blogposts) => {
-    let allPostsEl = document.getElementById(divToAppend);
+let showAllPosts = (divToAppend, blogposts) => {
+    let allPostsEl = document.querySelector(divToAppend);
     blogposts.forEach(post => {
-        const postImg = encodeURI(post.img);
-        allPostsEl.insertAdjacentHTML('beforeend', `
+        if (post.tags.includes('Voeding')) {
+            const postImg = encodeURI(post.img);
+            allPostsEl.prepend(`
+        <figure class="reg-post" id="${post.id}">
+            <div class="img-wrapper">
+                <img src ="${postImg}" alt="">
+            </div>
+                <figcaption>
+                <h3>${post.title}</h3>
+                <div class="post-inf">
+                    <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
+                    <p class="post-tags"></p>
+                </div>
+                <p class="line"></p>  
+                    <a href="recept.html?id=${post.id}" class="read-more ${post.id}">
+                            Bekijk recept >>
+                        </a>
+                </figcaption>
+            </figure>
+        `)
+        } else {
+            const postImg = encodeURI(post.img);
+            allPostsEl.insertAdjacentHTML('beforeend', `
         <figure class="reg-post" id="${post.id}">
             <div class="img-wrapper">
                 <img src ="${postImg}" alt="">
@@ -56,7 +77,56 @@ let showBlogposts = (divToAppend, blogposts) => {
                 </figcaption>
             </figure>
         `)
+        }
     });
+};
+
+let showBlogposts = (divToAppend, blogposts) => {
+    let allPostsEl = document.getElementById(divToAppend);
+    for (let i = 0; i < 9; i++) {
+        const post = blogposts[i]
+        if (post.tags.includes('Voeding')) {
+            const postImg = encodeURI(post.img);
+            allPostsEl.insertAdjacentHTML('beforeend', `
+        <figure class="reg-post" id="${post.id}">
+            <div class="img-wrapper">
+                <img src ="${postImg}" alt="">
+            </div>
+                <figcaption>
+                <h3>${post.title}</h3>
+                <div class="post-inf">
+                    <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
+                    <p class="post-tags"></p>
+                </div>
+                <p class="line"></p>  
+                    <a href="recept.html?id=${post.id}" class="read-more ${post.id}">
+                            Bekijk recept >>
+                        </a>
+                </figcaption>
+            </figure>
+        `)
+        } else {
+            const postImg = encodeURI(post.img);
+            allPostsEl.insertAdjacentHTML('beforeend', `
+        <figure class="reg-post" id="${post.id}">
+            <div class="img-wrapper">
+                <img src ="${postImg}" alt="">
+            </div>
+                <figcaption>
+                <h3>${post.title}</h3>
+                <div class="post-inf">
+                    <p class="added-on">Geplaatst op: ${post.day}/${post.month}/${post.year}</p>
+                    <p class="post-tags"></p>
+                </div>
+                <p class="line"></p>  
+                    <a href="blogpost.html?id=${post.id}" class="read-more ${post.id}">
+                            Lees blogpost >>
+                        </a>
+                </figcaption>
+            </figure>
+        `)
+        }
+    };
 };
 // let readmore = Array.from(document.getElementsByClassName('read-more'));
 // readmore.forEach(readmoreBtn => {
@@ -77,9 +147,11 @@ let showBlogposts = (divToAppend, blogposts) => {
 
 let showAllRecipes = recipes => {
     recipes.forEach(recipe => {
+        const recipeTime = recipe.recept.time;
+        const recipeEdition = recipe.recept.edition;
         let recipesEl = document.getElementById('posts');
         recipesEl.insertAdjacentHTML('beforeend', `
-        <figure id="${recipe.id}" class="reg-post ${recipe.tags[0]}">
+        <figure id="${recipe.id}" class="reg-post ${recipeEdition} ${recipeTime}">
         <h3>${recipe.title}</h3>
         <div class="post-inf">
             <p class="added-on">Geplaatst op: ${recipe.day}/${recipe.month}/${recipe.year}</p>
@@ -88,7 +160,7 @@ let showAllRecipes = recipes => {
         <img src="${recipe.img}">
         <figcaption>
         <p class="line"></p>   
-        <a href="recept.html" class="read-more ${recipe.id}">
+        <a href="recept.html?id=${recipe.id}" class="read-more ${recipe.id}">
                 Bekijk recept >>
             </a>
         </figcaption>
@@ -105,11 +177,13 @@ let showAllRecipes = recipes => {
     let searchRecipes = (searchInput) => {
         let recipesEl = document.getElementById('posts');
         recipesEl.innerHTML = '';
-        recipes.forEach(recipe =>{
+        recipes.forEach(recipe => {
+            const recipeTime = recipe.recept.time;
+            const recipeEdition = recipe.recept.edition;
             const recipeTitle = recipe['title'].toLocaleLowerCase();
-            if(recipeTitle.includes(searchInput.toLocaleLowerCase())){
-        recipesEl.insertAdjacentHTML('beforeend', `
-        <figure id="${recipe.id}" class="reg-post ${recipe.tags[0]}">
+            if (recipeTitle.includes(searchInput.toLocaleLowerCase())) {
+                recipesEl.insertAdjacentHTML('beforeend', `
+        <figure id="${recipe.id}" class="reg-post ${recipeTime} ${recipeEdition}">
         <h3>${recipe.title}</h3>
         <div class="post-inf">
             <p class="added-on">Geplaatst op: ${recipe.day}/${recipe.month}/${recipe.year}</p>
@@ -118,7 +192,7 @@ let showAllRecipes = recipes => {
         <img src="${recipe.img}">
         <figcaption>
         <p class="line"></p>   
-        <a href="recept.html" class="read-more ${recipe.id}">
+        <a href="recept.html?id=${recipe.id}" class="read-more ${recipe.id}">
                 Bekijk recept >>
             </a>
         </figcaption>
@@ -141,61 +215,29 @@ let goToBlogPost = allPosts => {
 
 let calendarDivs = Array.from(document.getElementsByClassName('calendar'));
 calendarDivs.forEach(calendarDiv => {
-    calendarDiv.innerHTML = `
-<div class="month">
-    <ul>
-        <li class="prev">&#10094;</li>
-        <li id="month-inf">
-            August<br>
-            <span style="font-size:18px">2017</span>
-        </li>
-        <li class="next">&#10095;</li>
-    </ul>
-</div>
 
-<ul class="weekdays">
-    <li>Mo</li>
-    <li>Tu</li>
-    <li>We</li>
-    <li>Th</li>
-    <li>Fr</li>
-    <li>Sa</li>
-    <li>Su</li>
-</ul>
+    const nextYear = new Date().getFullYear() + 1;
+    const myCalender = new CalendarPicker('#calendar .calendar', {
+        // If max < min or min > max then the only available day will be today.
+        min: new Date(),
+        max: new Date(nextYear, 10) // NOTE: new Date(nextYear, 10) is "Sun Nov 01 nextYear"
+    });
 
-<ul class="days">
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
-    <li>5</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
-    <li><span class="active">10</span></li>
-    <li>11</li>
-    <li>12</li>
-    <li>13</li>
-    <li>14</li>
-    <li>15</li>
-    <li>16</li>
-    <li>17</li>
-    <li>18</li>
-    <li>19</li>
-    <li>20</li>
-    <li>21</li>
-    <li>22</li>
-    <li>23</li>
-    <li>24</li>
-    <li>25</li>
-    <li>26</li>
-    <li>27</li>
-    <li>28</li>
-    <li>29</li>
-    <li>30</li>
-    <li>31</li>
-</ul>`
+    // const currentDateElement = document.getElementById('current-date');
+    // currentDateElement.textContent = myCalender.value;
+
+    // const currentDayElement = document.getElementById('current-day');
+    // currentDayElement.textContent = myCalender.value.getDay();
+
+    // const currentToDateString = document.getElementById('current-datestring');
+    // currentToDateString.textContent = myCalender.value.toDateString();
+
+    // myCalender.onValueChange((currentValue) => {
+    //    currentDateElement.textContent = currentValue;
+    //    currentDayElement.textContent = currentValue.getDay();
+    //    currentToDateString.textContent = currentValue.toDateString();
+    //    console.log(`The current value of the calendar is: ${currentValue}`);
+    // });
 });
 
 let date = new Date();
@@ -292,6 +334,9 @@ let showWorkshops = posts => {
             activeMonth = (+activeMonth) + 1;
             updateMonth(activeMonth);
             updatePosts(posts, activeMonth, activeYear);
+        } else {
+            activeMonth = 0;
+            activeYear += 1;
         }
     }
     updatePosts(posts, activeMonth, activeYear);
@@ -304,29 +349,29 @@ let findByPage = () => {
     }
     if (selectedPage == 'Home') {
         getData('http://127.0.0.1:12345/allposts')
-        .then(data => {
-            showBlogposts(`posts-wrapper`, data);
-        });
-    }else{
+            .then(data => {
+                showBlogposts(`posts-wrapper`, data);
+            });
+    } else {
         postData('http://127.0.0.1:12345/getpostperpage', {
-        'tag': selectedPage
-    })
-    .then(data => {
-        const selectedToLower = selectedPage.toLocaleLowerCase();
-        if (document.getElementById('workshop-calendar') != null) {
-            showWorkshops(data);
-        } else if (document.getElementById('recipes') != null) {
-            const recipes = data.filter(post => post.tags.includes('Voeding'));
-            showAllRecipes(recipes);
-        }else {
-            showBlogposts(`posts`, data);
-        }
-    })}
-   
+                'tag': selectedPage
+            })
+            .then(data => {
+                const selectedToLower = selectedPage.toLocaleLowerCase();
+                if (document.getElementById('workshop-calendar') != null) {
+                    showWorkshops(data);
+                } else if (document.getElementById('recipes') != null) {
+                    const recipes = data.filter(post => post.tags.includes('Voeding'));
+                    showAllRecipes(recipes);
+                } else {
+                    showAllPosts(`#posts`, data);
+                }
+            })
+    }
+
 }
 
-if (document.getElementById('blogpost') != null) {}
-else {
+if (document.getElementById('blogpost') != null) {} else {
     findByPage();
 }
 
@@ -341,7 +386,34 @@ let findPost = (selectedId) => {
 
 let showPost = post => {
     const blogpostDiv = document.querySelector('#blogpost');
-    blogpostDiv.innerHTML = `<h1>${post.title}</h1>
+    if (post.tags.includes('Voeding')) {
+        const ingrEl = document.querySelector('#ingredients ul');
+        const titleEl = document.querySelector('#recipe-inf article');
+        titleEl.innerHTML = `  <h1>${post.title}</h1>
+        <ul>
+            <li>
+                <img src="img/icons/clock_white.svg" alt="">
+                <p>${post.recept.cookdur}</p>   
+            </li>
+            <li>
+                <img src="img/icons/group_white.svg" alt="">
+                <p>${post.recept.amtpeople}</p>
+            </li>
+        </ul>
+    <p>${post.description} </p>`;
+        post.recept.ingredients.forEach(ingredient => {
+            ingrEl.insertAdjacentHTML('beforeend', `
+                <li>${ingredient}</li>
+            `)
+        });
+        blogpostDiv.innerHTML = `
+    <div id="article">
+        <div id="content">${ post.content}</div>
+    </div>`;
+        const recipeHeader = document.querySelector('#recipe-header img');
+        recipeHeader.src = post.img;
+    } else {
+        blogpostDiv.innerHTML = `<h1>${post.title}</h1>
         <div id="blog-inf">
             <p id="blog-tags" ></p>
             <p id="added-on"> Geplaats op: ${post.day}/${post.month}/${post.year}</p>
@@ -353,16 +425,26 @@ let showPost = post => {
         <div id="content">${ post.content}</div>
     </div>`;
 
-    post.tags.forEach(tag => {
-        let tagDiv = document.getElementById('#blog-tags');
-        tagDiv.insertAdjacentHTML('beforeend', `${tag}`);
-    })
+        post.tags.forEach(tag => {
+            let tagDiv = document.getElementById('#blog-tags');
+            tagDiv.insertAdjacentHTML('beforeend', `${tag}`);
+        });
+    }
 }
 
 const blogpost = document.getElementById('blogpost');
+const recipe = document.getElementById('recipe');
 
 if (blogpost != null) {
     const url = window.location.href;
     const selectedPage = url.split('id=');
     findPost(selectedPage[1]);
+}
+
+const allPostsEl = document.getElementById('allposts');
+if (allPostsEl.length != 0) {
+    getData('http://127.0.0.1:12345/allposts')
+        .then(data => {
+            showAllPosts('#allposts #posts #posts-wrapper', data)
+        });
 }

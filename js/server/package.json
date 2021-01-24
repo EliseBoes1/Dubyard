@@ -12,6 +12,7 @@
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "calendarpickerjs": "^1.3.0",
     "cors": "^2.8.5",
     "disconnect": "^1.2.1",
     "express": "^4.17.1",
